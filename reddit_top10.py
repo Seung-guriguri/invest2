@@ -28,6 +28,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -141,14 +142,34 @@ class RedditRSS:
 
     headers = {"User-Agent": "python:invest2-reddit-top10:v1.0 (by /u/invest2bot)"}
 
+    def fetch(self, url, retries=4):
+        """429(요청 과다) 시 Retry-After 또는 지수 백오프로 재시도."""
+        for attempt in range(retries + 1):
+            req = urllib.request.Request(url, headers=self.headers)
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    return resp.read()
+            except urllib.error.HTTPError as e:
+                if e.code != 429 or attempt == retries:
+                    raise
+                wait = as_int(e.headers.get("Retry-After")) or 10 * 2 ** attempt
+                print(f"[정보] Reddit 429 → {wait}초 대기 후 재시도", file=sys.stderr)
+                time.sleep(min(wait, 90))
+
     def listing(self, path, since, max_pages):
         after = None
         for page in range(max_pages):
+            if page:
+                time.sleep(5)
             query = {"limit": 100, **({"after": after} if after else {})}
             url = f"https://www.reddit.com{path}/.rss?{urllib.parse.urlencode(query)}"
-            req = urllib.request.Request(url, headers=self.headers)
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                entries = ET.fromstring(resp.read()).findall(f"{ATOM}entry")
+            try:
+                entries = ET.fromstring(self.fetch(url)).findall(f"{ATOM}entry")
+            except Exception as e:
+                if page == 0:
+                    raise
+                print(f"[경고] {path} {page + 1}페이지 실패, 받은 데이터만 사용: {e}", file=sys.stderr)
+                return
             for entry in entries:
                 ts = entry.findtext(f"{ATOM}published") or entry.findtext(f"{ATOM}updated")
                 if datetime.fromisoformat(ts).timestamp() < since:
@@ -161,7 +182,6 @@ class RedditRSS:
             if len(entries) < 25:
                 return
             after = entries[-1].findtext(f"{ATOM}id")
-            time.sleep(2)
 
 
 def fetch_reddit_direct(limit, source):
@@ -170,8 +190,17 @@ def fetch_reddit_direct(limit, source):
     client = RedditOAuth(client_id, secret) if client_id and secret else RedditRSS()
     since = time.time() - 24 * 3600
     mentions, upvotes = defaultdict(int), defaultdict(int)
-    items = list(client.listing(f"/r/{source}/new", since, max_pages=5))
-    items += list(client.listing(f"/r/{source}/comments", since, max_pages=10))
+    rss = isinstance(client, RedditRSS)  # RSS는 요청 제한이 빡빡해 페이지 수를 줄인다
+    items = []
+    for path, pages in ((f"/r/{source}/new", 2 if rss else 5), (f"/r/{source}/comments", 3 if rss else 10)):
+        try:
+            items += list(client.listing(path, since, max_pages=pages))
+        except Exception as e:
+            print(f"[경고] {path} 수집 실패: {e}", file=sys.stderr)
+        if rss:
+            time.sleep(5)
+    if not items:
+        raise RuntimeError(f"r/{source} 글/댓글을 하나도 가져오지 못했습니다.")
     for text, score in items:
         found = set()
         for dollar, ticker in TICKER_RE.findall(text):
