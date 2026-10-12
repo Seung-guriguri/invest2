@@ -2,14 +2,27 @@ name: Reddit Top 10 → Telegram
 
 on:
   schedule:
-    # 매주 화~토 07:47 KST (미국 장 마감 후) = 월~금 22:47 UTC
-    - cron: "47 22 * * 1-5"
+    # 매일 07:47 KST (미국 장 마감 후) = 22:47 UTC 전날
+    #   화~토(KST): 최근 24시간 일간 순위 + 스냅샷 저장
+    #   월(KST):   지난 7일 스냅샷 합산 주간 종합 순위
+    - cron: "47 22 * * 0-5"
   workflow_dispatch:
     inputs:
+      mode:
+        description: "auto: 월요일(KST)이면 주간, 아니면 일간"
+        type: choice
+        options: [auto, daily, weekly]
+        default: auto
       dry_run:
-        description: "텔레그램 전송 없이 결과만 로그에 출력"
+        description: "텔레그램 전송·스냅샷 저장 없이 결과만 로그에 출력"
         type: boolean
         default: false
+
+permissions:
+  contents: write  # 일간 스냅샷(data/daily) 커밋용
+
+concurrency:
+  group: reddit-top10
 
 jobs:
   send:
@@ -19,10 +32,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Send WSB Top 5 + ValueInvesting Top 5 to Telegram
+      - name: Send Reddit ranking to Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python reddit_top10.py ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }}
+      - name: Commit daily snapshot
+        run: |
+          git add data/daily
+          if git diff --cached --quiet; then
+            echo "새 스냅샷 없음"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: daily snapshot $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do
+            git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

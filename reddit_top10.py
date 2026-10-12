@@ -18,6 +18,10 @@
   python reddit_top10.py            # 텔레그램 전송
   python reddit_top10.py --dry-run  # 전송 없이 메시지만 출력
   python reddit_top10.py --sources wallstreetbets:5,stocks:3
+  python reddit_top10.py --mode weekly --dry-run   # 지난 7일 주간 종합 순위
+
+매일 실행 시 data/daily/YYYY-MM-DD.json 에 순위 스냅샷을 저장하고,
+월요일(KST)에는 지난 7일 스냅샷을 합산한 주간 종합 순위를 보낸다.
 """
 
 import argparse
@@ -40,6 +44,7 @@ TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCES = "wallstreetbets:5,ValueInvesting:5"
+SNAPSHOT_SIZE = 100  # 주간 집계를 위해 일간 스냅샷에 저장하는 종목 수
 SUBREDDIT_DESCRIPTIONS = {
     "wallstreetbets": "밈주식·옵션·단타 위주의 공격적인 개인투자자 커뮤니티",
     "valueinvesting": "버핏식 가치투자 — 실적·밸류에이션 기반 저평가 종목 토론",
@@ -81,8 +86,8 @@ def http_text(url):
         return resp.read().decode("utf-8", "replace")
 
 
-def fetch_apewisdom(limit, source):
-    return http_json(APEWISDOM_URL.format(filter=source)).get("results", [])[:limit]
+def fetch_apewisdom(source):
+    return http_json(APEWISDOM_URL.format(filter=source)).get("results", [])
 
 
 def load_us_symbols():
@@ -192,7 +197,7 @@ class RedditRSS:
             after = entries[-1].findtext(f"{ATOM}id")
 
 
-def fetch_reddit_direct(limit, source):
+def fetch_reddit_direct(source):
     symbols = load_us_symbols()
     client_id, secret = os.environ.get("REDDIT_CLIENT_ID"), os.environ.get("REDDIT_CLIENT_SECRET")
     client = RedditOAuth(client_id, secret) if client_id and secret else RedditRSS()
@@ -222,7 +227,7 @@ def fetch_reddit_direct(limit, source):
             upvotes[ticker] += score or 0
     has_score = isinstance(client, RedditOAuth)
     print(f"[정보] r/{source} 직접 수집({type(client).__name__}): 글/댓글 {len(items)}개", file=sys.stderr)
-    ranked = sorted(mentions, key=lambda t: (-mentions[t], -upvotes[t]))[:limit]
+    ranked = sorted(mentions, key=lambda t: (-mentions[t], -upvotes[t]))
     return [
         {"rank": i, "ticker": t, "name": symbols[t], "mentions": mentions[t],
          "upvotes": upvotes[t] if has_score else None}
@@ -230,16 +235,17 @@ def fetch_reddit_direct(limit, source):
     ]
 
 
-def fetch_top(limit, source):
+def fetch_top(source):
+    """해당 서브레딧의 언급 순위 전체 목록 (ApeWisdom 우선, 없으면 Reddit 직접 수집)."""
     try:
-        stocks = fetch_apewisdom(limit, source)
+        stocks = fetch_apewisdom(source)
     except Exception as e:
         print(f"[경고] ApeWisdom r/{source} 조회 실패: {e}", file=sys.stderr)
         stocks = []
     if stocks:
         return stocks
     print(f"[정보] ApeWisdom에 r/{source} 데이터 없음 → Reddit 직접 수집", file=sys.stderr)
-    return fetch_reddit_direct(limit, source)
+    return fetch_reddit_direct(source)
 
 
 def as_int(value):
@@ -294,6 +300,73 @@ def build_message(sections):
     return "\n".join(lines)
 
 
+def save_snapshot(data_dir, sections):
+    """일간 순위를 data/daily/YYYY-MM-DD.json (KST 날짜) 으로 저장 — 주간 집계용."""
+    day = datetime.now(KST).strftime("%Y-%m-%d")
+    path = os.path.join(data_dir, "daily", f"{day}.json")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    keep = ("ticker", "name", "mentions", "upvotes")
+    snapshot = {
+        "date": day,
+        "sources": {
+            source: [{k: stock.get(k) for k in keep} for stock in stocks[:SNAPSHOT_SIZE]]
+            for source, _, stocks in sections if stocks
+        },
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=1)
+    print(f"[정보] 스냅샷 저장: {path}", file=sys.stderr)
+
+
+def load_week(data_dir, today):
+    """today(KST 날짜) 직전 7일간의 일간 스냅샷 목록."""
+    snapshots = []
+    for back in range(7, 0, -1):
+        day = (today - timedelta(days=back)).strftime("%Y-%m-%d")
+        path = os.path.join(data_dir, "daily", f"{day}.json")
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                snapshots.append(json.load(f))
+    return snapshots
+
+
+def aggregate_week(snapshots, source):
+    totals = {}
+    for snap in snapshots:
+        for stock in snap["sources"].get(source, []):
+            entry = totals.setdefault(stock["ticker"], {
+                "ticker": stock["ticker"], "name": stock.get("name", ""),
+                "mentions": 0, "upvotes": None, "days": 0,
+            })
+            entry["mentions"] += as_int(stock.get("mentions")) or 0
+            if as_int(stock.get("upvotes")) is not None:
+                entry["upvotes"] = (entry["upvotes"] or 0) + as_int(stock["upvotes"])
+            entry["days"] += 1
+    return sorted(totals.values(), key=lambda e: (-e["mentions"], -(e["upvotes"] or 0)))
+
+
+def build_weekly_message(sources, snapshots):
+    days = [snap["date"] for snap in snapshots]
+    period = f"{days[0][5:].replace('-', '/')} ~ {days[-1][5:].replace('-', '/')}"
+    lines = ["<b>📅 Reddit 주간 종합 순위</b>", f"<i>{period} KST 수집분 · {len(days)}일 합산</i>"]
+    for source, limit in sources:
+        lines += ["", f"<b>🏆 r/{html.escape(source)} 주간 Top {limit}</b>"]
+        if source.lower() in SUBREDDIT_DESCRIPTIONS:
+            lines.append(f"<i>{SUBREDDIT_DESCRIPTIONS[source.lower()]}</i>")
+        ranked = aggregate_week(snapshots, source)[:limit]
+        if not ranked:
+            lines.append("    집계할 데이터가 없습니다.")
+            continue
+        for position, e in enumerate(ranked, 1):
+            ticker = html.escape(e["ticker"])
+            name = html.escape(html.unescape(e["name"] or ""))
+            votes = f" · 👍 {e['upvotes']:,}" if e["upvotes"] is not None else ""
+            lines.append(f"<b>{position}. ${ticker}</b> {name}")
+            lines.append(f"    💬 {e['mentions']:,}회{votes} · 📆 {e['days']}/{len(days)}일 언급")
+    lines += ["", "출처: <a href=\"https://apewisdom.io\">ApeWisdom</a>, Reddit"]
+    return "\n".join(lines)
+
+
 def parse_sources(spec):
     sources = []
     for item in spec.split(","):
@@ -314,31 +387,10 @@ def send_telegram(token, chat_id, text):
         raise RuntimeError(f"Telegram API error: {result}")
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--sources", default=DEFAULT_SOURCES,
-                        help=f"서브레딧:개수 목록, 쉼표 구분 (기본 {DEFAULT_SOURCES})")
-    parser.add_argument("--dry-run", action="store_true", help="텔레그램 전송 없이 출력만")
-    args = parser.parse_args()
-
-    sections = []
-    for source, limit in parse_sources(args.sources):
-        try:
-            stocks = fetch_top(limit, source)
-        except Exception as e:  # 한 소스가 실패해도 나머지는 전송
-            print(f"[경고] r/{source} 조회 실패: {e}", file=sys.stderr)
-            stocks = None
-        if not stocks:
-            print(f"[경고] r/{source} 결과 없음", file=sys.stderr)
-        sections.append((source, limit, stocks))
-    if not any(stocks for _, _, stocks in sections):
-        sys.exit("어떤 소스에서도 데이터를 가져오지 못했습니다.")
-    message = build_message(sections)
-
-    if args.dry_run:
+def deliver(message, dry_run):
+    if dry_run:
         print(message)
         return
-
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
     if not token or not chat_id:
@@ -348,6 +400,52 @@ def main():
                  "Repository secrets 에 등록했는지 확인하세요.")
     send_telegram(token, chat_id, message)
     print("전송 완료")
+
+
+def run_daily(sources, data_dir, dry_run):
+    sections = []
+    for source, limit in sources:
+        try:
+            stocks = fetch_top(source)
+        except Exception as e:  # 한 소스가 실패해도 나머지는 전송
+            print(f"[경고] r/{source} 조회 실패: {e}", file=sys.stderr)
+            stocks = None
+        if not stocks:
+            print(f"[경고] r/{source} 결과 없음", file=sys.stderr)
+        sections.append((source, limit, stocks))
+    if not any(stocks for _, _, stocks in sections):
+        sys.exit("어떤 소스에서도 데이터를 가져오지 못했습니다.")
+    if not dry_run:
+        save_snapshot(data_dir, sections)
+    message = build_message([(src, limit, stocks and stocks[:limit]) for src, limit, stocks in sections])
+    deliver(message, dry_run)
+
+
+def run_weekly(sources, data_dir, dry_run):
+    snapshots = load_week(data_dir, datetime.now(KST).date())
+    if not snapshots:
+        sys.exit(f"{data_dir}/daily 에 지난 7일간 일간 스냅샷이 없어 주간 순위를 만들 수 없습니다.")
+    deliver(build_weekly_message(sources, snapshots), dry_run)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--sources", default=DEFAULT_SOURCES,
+                        help=f"서브레딧:개수 목록, 쉼표 구분 (기본 {DEFAULT_SOURCES})")
+    parser.add_argument("--mode", choices=["auto", "daily", "weekly"], default="auto",
+                        help="auto: 월요일(KST)이면 weekly, 아니면 daily")
+    parser.add_argument("--data-dir", default="data", help="일간 스냅샷 저장 폴더 (기본 data)")
+    parser.add_argument("--dry-run", action="store_true", help="텔레그램 전송·스냅샷 저장 없이 출력만")
+    args = parser.parse_args()
+
+    mode = args.mode
+    if mode == "auto":
+        mode = "weekly" if datetime.now(KST).weekday() == 0 else "daily"
+    sources = parse_sources(args.sources)
+    if mode == "weekly":
+        run_weekly(sources, args.data_dir, args.dry_run)
+    else:
+        run_daily(sources, args.data_dir, args.dry_run)
 
 
 if __name__ == "__main__":

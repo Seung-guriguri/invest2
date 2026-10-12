@@ -34,7 +34,12 @@ Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 
 4. Actions 탭 → **Reddit Top 10 → Telegram** → *Run workflow* 로 바로 테스트
    (`dry_run` 체크 시 텔레그램 전송 없이 로그에만 출력)
 
-이후 매주 화~토 오전 07:47(KST)에 자동 전송됩니다. 시간은 `.github/workflows/reddit-top10.yml`의 `cron`(UTC 기준)에서 바꿀 수 있습니다.
+이후 자동 전송됩니다.
+- **화~토 07:47 (KST)**: 최근 24시간 일간 순위. 실행할 때마다 `data/daily/YYYY-MM-DD.json`에 순위 스냅샷을 커밋합니다.
+- **월 07:47 (KST)**: 지난 7일간 스냅샷을 합산한 **주간 종합 순위** (언급 합계 · 추천 합계 · 언급된 일수).
+  미국 기준 월~금 활동이 반영되며 주말은 수집하지 않습니다.
+
+Actions에서 수동 실행 시 `mode`로 daily / weekly를 직접 고를 수 있습니다. 시간은 `.github/workflows/reddit-top10.yml`의 `cron`(UTC 기준)에서 바꿀 수 있습니다.
 
 ## 로컬 실행
 
