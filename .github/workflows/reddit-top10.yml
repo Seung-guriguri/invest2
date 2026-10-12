@@ -2,10 +2,10 @@ name: Reddit Top 10 → Telegram
 
 on:
   schedule:
-    # 매일 07:47 KST (미국 장 마감 후) = 22:47 UTC 전날
+    # 월~토 12:40 KST = 03:40 UTC
     #   화~토(KST): 최근 24시간 일간 순위 + 스냅샷 저장
     #   월(KST):   지난 7일 스냅샷 합산 주간 종합 순위
-    - cron: "47 22 * * 0-5"
+    - cron: "40 3 * * 1-6"
   workflow_dispatch:
     inputs:
       mode:

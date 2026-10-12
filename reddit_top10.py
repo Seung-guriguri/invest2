@@ -1,6 +1,6 @@
 """서브레딧별로 가장 많이 언급된 미국 상장 종목 순위를 텔레그램으로 전송한다.
 
-기본: r/wallstreetbets Top 5 + r/ValueInvesting(가치투자) Top 5
+기본: r/wallstreetbets Top 5 + r/dividends(배당주) Top 5
 
 데이터 출처:
   1) ApeWisdom (https://apewisdom.io) — 서브레딧별 최근 24시간 티커 언급 수
@@ -43,10 +43,11 @@ APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/1"
 TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
-DEFAULT_SOURCES = "wallstreetbets:5,ValueInvesting:5"
+DEFAULT_SOURCES = "wallstreetbets:5,dividends:5"
 SNAPSHOT_SIZE = 100  # 주간 집계를 위해 일간 스냅샷에 저장하는 종목 수
 SUBREDDIT_DESCRIPTIONS = {
     "wallstreetbets": "밈주식·옵션·단타 위주의 공격적인 개인투자자 커뮤니티",
+    "dividends": "배당주·배당 ETF로 꾸준한 현금흐름을 노리는 투자자 커뮤니티",
     "valueinvesting": "버핏식 가치투자 — 실적·밸류에이션 기반 저평가 종목 토론",
     "stocks": "개별 종목·시장 뉴스를 다루는 일반 주식 토론 커뮤니티",
     "investing": "장기투자·자산배분 중심의 일반 투자 커뮤니티",
@@ -68,6 +69,7 @@ NASDAQ OP OTC PEG REIT RSI SP TLDR TL DR VS WSB ARE BEST CAN CARE EDIT EVER FAST
 FUN GOOD HOPE JUST KEY LIFE LOW MAN MOM NEXT NICE OPEN PLAY REAL RUN SAFE SEE
 TOP TRUE TWO VERY WELL WIN WORK YEAR ELSE FREE GAIN HUGE INFO LINK MORE MOST
 ONCE PAY PER POST RISK SAVE SELL STAY TECH TELL TIME WAY WHO WHY CAT DAY OPEN
+DRIP YOC DGI HYSA ROTH CD APY APR YTD TTM NAV DIV
 """.split())
 TICKER_RE = re.compile(r"(?<![A-Za-z0-9$])(\$?)([A-Z]{1,5}(?:\.[AB])?)(?![A-Za-z0-9])")
 
