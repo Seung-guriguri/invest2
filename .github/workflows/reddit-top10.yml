@@ -5,6 +5,11 @@ on:
     # 매주 화~토 07:47 KST (미국 장 마감 후) = 월~금 22:47 UTC
     - cron: "47 22 * * 1-5"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "텔레그램 전송 없이 결과만 로그에 출력"
+        type: boolean
+        default: false
 
 jobs:
   send:
@@ -18,4 +23,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python reddit_top10.py
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+        run: python reddit_top10.py ${{ inputs.dry_run && '--dry-run' || '' }}

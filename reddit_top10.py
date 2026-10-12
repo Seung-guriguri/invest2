@@ -2,12 +2,16 @@
 
 기본: r/wallstreetbets Top 5 + r/ValueInvesting(가치투자) Top 5
 
-데이터 출처: ApeWisdom (https://apewisdom.io) — 서브레딧별 최근 24시간
-티커 언급 수를 집계한다.
+데이터 출처:
+  1) ApeWisdom (https://apewisdom.io) — 서브레딧별 최근 24시간 티커 언급 수
+  2) ApeWisdom이 지원하지 않는 서브레딧은 Reddit에서 최근 24시간 글/댓글을
+     직접 가져와 미국 상장 티커(NASDAQ Trader 종목 목록 기준) 언급을 센다.
 
 환경변수:
-  TELEGRAM_BOT_TOKEN  BotFather에서 발급받은 봇 토큰
-  TELEGRAM_CHAT_ID    메시지를 받을 채팅 ID (개인/그룹/채널)
+  TELEGRAM_BOT_TOKEN    BotFather에서 발급받은 봇 토큰
+  TELEGRAM_CHAT_ID      메시지를 받을 채팅 ID (개인/그룹/채널)
+  REDDIT_CLIENT_ID      (선택) Reddit 앱 client id — 직접 수집이 차단될 때 사용
+  REDDIT_CLIENT_SECRET  (선택) Reddit 앱 secret
 
 사용법:
   python reddit_top10.py            # 텔레그램 전송
@@ -16,12 +20,16 @@
 """
 
 import argparse
+import base64
 import html
 import json
 import os
+import re
 import sys
+import time
 import urllib.parse
 import urllib.request
+from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
 APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/1"
@@ -29,6 +37,23 @@ TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCES = "wallstreetbets:5,ValueInvesting:5"
+
+SYMBOL_LISTS = [
+    "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt",
+    "https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt",
+]
+# 티커와 철자가 같지만 대부분 일반 단어/약어로 쓰이는 것들 ($를 붙이면 집계됨)
+STOPWORDS = set("""
+A I AM AN AND ANY ARE AS AT BE BIG BY CAN CEO CFO COO CTO DD DO EOD EPS ETF EV
+FOR FUD GDP GO HAS HE HOLD IF IN IPO IS IT ITS LOL ME MY NEW NO NOT NOW OF OK
+ON ONE OR OUT PE PM RH SEC SO THE TO TV UK UP US USA USD WE YOLO YOU AI ALL
+ATH BUY CASH DCF EBIT ROE ROI ROIC FCF FY GAAP IMO IRA LONG LOVE MOAT NYSE
+NASDAQ OP OTC PEG REIT RSI SP TLDR TL DR VS WSB ARE BEST CAN CARE EDIT EVER FAST
+FUN GOOD HOPE JUST KEY LIFE LOW MAN MOM NEXT NICE OPEN PLAY REAL RUN SAFE SEE
+TOP TRUE TWO VERY WELL WIN WORK YEAR ELSE FREE GAIN HUGE INFO LINK MORE MOST
+ONCE PAY PER POST RISK SAVE SELL STAY TECH TELL TIME WAY WHO WHY CAT DAY OPEN
+""".split())
+TICKER_RE = re.compile(r"(?<![A-Za-z0-9$])(\$?)([A-Z]{1,5}(?:\.[AB])?)(?![A-Za-z0-9])")
 
 
 def http_json(url, data=None):
@@ -39,9 +64,114 @@ def http_json(url, data=None):
         return json.load(resp)
 
 
+def http_text(url):
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read().decode("utf-8", "replace")
+
+
+def fetch_apewisdom(limit, source):
+    return http_json(APEWISDOM_URL.format(filter=source)).get("results", [])[:limit]
+
+
+def load_us_symbols():
+    """NASDAQ/NYSE/AMEX 상장 종목 {티커: 회사명}."""
+    symbols = {}
+    for url in SYMBOL_LISTS:
+        rows = http_text(url).splitlines()
+        header = rows[0].split("|")
+        sym_col = header.index("Symbol") if "Symbol" in header else header.index("ACT Symbol")
+        name_col = header.index("Security Name")
+        test_col = header.index("Test Issue")
+        for row in rows[1:]:
+            cols = row.split("|")
+            if len(cols) <= max(sym_col, name_col, test_col) or cols[test_col] == "Y":
+                continue
+            ticker = cols[sym_col]
+            if "$" in ticker:  # 우선주 등
+                continue
+            name = re.split(r" - | Common Stock| Class [A-Z]| Ordinary Shares", cols[name_col])[0]
+            symbols.setdefault(ticker, name.strip().rstrip(","))
+    return symbols
+
+
+class RedditClient:
+    def __init__(self):
+        client_id = os.environ.get("REDDIT_CLIENT_ID")
+        secret = os.environ.get("REDDIT_CLIENT_SECRET")
+        self.headers = {"User-Agent": "python:invest2-reddit-top10:v1.0 (by /u/invest2bot)"}
+        if client_id and secret:
+            auth = base64.b64encode(f"{client_id}:{secret}".encode()).decode()
+            req = urllib.request.Request(
+                "https://www.reddit.com/api/v1/access_token",
+                data=b"grant_type=client_credentials",
+                headers={**self.headers, "Authorization": f"Basic {auth}"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                token = json.load(resp)["access_token"]
+            self.headers["Authorization"] = f"Bearer {token}"
+            self.base = "https://oauth.reddit.com"
+        else:
+            self.base = "https://www.reddit.com"
+
+    def listing(self, path, since, max_pages):
+        """since(unix time) 이후 항목을 최신순으로 페이지를 넘기며 가져온다."""
+        after = None
+        for _ in range(max_pages):
+            query = {"limit": 100, "raw_json": 1, **({"after": after} if after else {})}
+            suffix = "" if "oauth" in self.base else ".json"
+            url = f"{self.base}{path}{suffix}?{urllib.parse.urlencode(query)}"
+            req = urllib.request.Request(url, headers=self.headers)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.load(resp)["data"]
+            for child in data["children"]:
+                item = child["data"]
+                if item["created_utc"] < since:
+                    return
+                yield item
+            after = data.get("after")
+            if not after:
+                return
+            time.sleep(1)
+
+
+def fetch_reddit_direct(limit, source):
+    symbols = load_us_symbols()
+    client = RedditClient()
+    since = time.time() - 24 * 3600
+    mentions, upvotes = defaultdict(int), defaultdict(int)
+    items = list(client.listing(f"/r/{source}/new", since, max_pages=5))
+    items += list(client.listing(f"/r/{source}/comments", since, max_pages=10))
+    for item in items:
+        text = " ".join(filter(None, [item.get("title"), item.get("selftext"), item.get("body")]))
+        found = set()
+        for dollar, ticker in TICKER_RE.findall(text):
+            if ticker not in symbols:
+                continue
+            if not dollar and (len(ticker) < 2 or ticker in STOPWORDS):
+                continue
+            found.add(ticker)
+        for ticker in found:
+            mentions[ticker] += 1
+            upvotes[ticker] += max(item.get("score", 0), 0)
+    print(f"[정보] r/{source} 직접 수집: 글/댓글 {len(items)}개", file=sys.stderr)
+    ranked = sorted(mentions, key=lambda t: (-mentions[t], -upvotes[t]))[:limit]
+    return [
+        {"rank": i, "ticker": t, "name": symbols[t], "mentions": mentions[t], "upvotes": upvotes[t]}
+        for i, t in enumerate(ranked, 1)
+    ]
+
+
 def fetch_top(limit, source):
-    results = http_json(APEWISDOM_URL.format(filter=source)).get("results", [])
-    return results[:limit]
+    try:
+        stocks = fetch_apewisdom(limit, source)
+    except Exception as e:
+        print(f"[경고] ApeWisdom r/{source} 조회 실패: {e}", file=sys.stderr)
+        stocks = []
+    if stocks:
+        return stocks
+    print(f"[정보] ApeWisdom에 r/{source} 데이터 없음 → Reddit 직접 수집", file=sys.stderr)
+    return fetch_reddit_direct(limit, source)
 
 
 def as_int(value):
@@ -52,6 +182,8 @@ def as_int(value):
 
 
 def format_change(stock):
+    if "rank_24h_ago" not in stock:  # Reddit 직접 수집 — 전일 비교 데이터 없음
+        return ""
     rank, prev_rank = as_int(stock.get("rank")), as_int(stock.get("rank_24h_ago"))
     if prev_rank is None:
         return "🆕"
@@ -71,7 +203,7 @@ def format_stock(stock, position):
     upvotes = as_int(stock.get("upvotes")) or 0
     delta = f" ({mentions - prev_mentions:+,})" if prev_mentions is not None else ""
     return [
-        f"<b>{position}. ${ticker}</b> {name} {format_change(stock)}",
+        f"<b>{position}. ${ticker}</b> {name} {format_change(stock)}".rstrip(),
         f"    💬 {mentions:,}회{delta} · 👍 {upvotes:,}",
     ]
 
@@ -87,7 +219,7 @@ def build_message(sections):
             continue
         for position, stock in enumerate(stocks, 1):
             lines += format_stock(stock, position)
-    lines += ["", "출처: <a href=\"https://apewisdom.io\">ApeWisdom</a>"]
+    lines += ["", "출처: <a href=\"https://apewisdom.io\">ApeWisdom</a>, Reddit"]
     return "\n".join(lines)
 
 
@@ -129,7 +261,7 @@ def main():
             print(f"[경고] r/{source} 결과 없음", file=sys.stderr)
         sections.append((source, limit, stocks))
     if not any(stocks for _, _, stocks in sections):
-        sys.exit("ApeWisdom에서 데이터를 가져오지 못했습니다.")
+        sys.exit("어떤 소스에서도 데이터를 가져오지 못했습니다.")
     message = build_message(sections)
 
     if args.dry_run:
@@ -139,7 +271,10 @@ def main():
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
     if not token or not chat_id:
-        sys.exit("TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID 환경변수를 설정하세요.")
+        print(message)
+        sys.exit("TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID 가 비어 있습니다. "
+                 "GitHub 저장소 Settings → Secrets and variables → Actions → "
+                 "Repository secrets 에 등록했는지 확인하세요.")
     send_telegram(token, chat_id, message)
     print("전송 완료")
 
