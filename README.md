@@ -1,18 +1,23 @@
 # invest2
 
-Reddit(r/wallstreetbets, r/stocks 등)에서 가장 많이 언급된 미국 상장 종목 Top 10을 텔레그램으로 보내는 스크립트입니다.
+Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 텔레그램에 보내는 스크립트입니다.
+기본: **r/wallstreetbets Top 5** + **r/ValueInvesting(가치투자) Top 5**
 데이터는 [ApeWisdom](https://apewisdom.io)의 최근 24시간 언급 집계를 사용합니다 (API 키 불필요).
 
 ## 메시지 예시
 
 ```
-📈 Reddit 언급 미국주식 Top 10
+📈 Reddit 언급 미국주식 순위
 2026-10-13 07:47 KST · 최근 24시간
 
+🔥 r/wallstreetbets Top 5
 1. $NVDA NVIDIA 🔺2
     💬 812회 (+143) · 👍 5,120
-2. $TSLA Tesla ➖
-    💬 640회 (-21) · 👍 3,877
+...
+
+🔥 r/ValueInvesting Top 5
+1. $GOOGL Alphabet ➖
+    💬 64회 (+5) · 👍 410
 ...
 ```
 
@@ -32,7 +37,7 @@ Reddit(r/wallstreetbets, r/stocks 등)에서 가장 많이 언급된 미국 상�
 ```bash
 python reddit_top10.py --dry-run                 # 전송 없이 출력만
 TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... python reddit_top10.py
-python reddit_top10.py --source wallstreetbets   # 특정 서브레딧만
+python reddit_top10.py --sources wallstreetbets:5,stocks:3   # 서브레딧:개수 변경
 ```
 
 Python 3.8+ 표준 라이브러리만 사용합니다.
