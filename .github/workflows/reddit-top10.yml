@@ -40,7 +40,12 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Commit daily snapshot
+        if: ${{ !inputs.dry_run }}
         run: |
+          if [ ! -d data/daily ]; then
+            echo "새 스냅샷 없음"
+            exit 0
+          fi
           git add data/daily
           if git diff --cached --quiet; then
             echo "새 스냅샷 없음"
