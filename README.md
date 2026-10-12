@@ -5,12 +5,13 @@ Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 
 - r/wallstreetbets: [ApeWisdom](https://apewisdom.io)의 최근 24시간 언급 집계 (전일 대비 순위·언급 변화 포함)
 - r/dividends: ApeWisdom에 데이터가 없으면 Reddit RSS로 최근 24시간 글/댓글을 직접 모아 미국 상장 티커 언급을 셉니다.
   RSS에는 추천 수가 없어 언급 횟수만 표시되며, Reddit 요청 제한 때문에 실행에 몇 분 걸릴 수 있습니다.
+- StockTwits 트렌딩: StockTwits 트렌딩 종목과 StockTwits가 제공하는 화제 요약의 첫 문장을 한국어로 번역해 붙입니다 (일간 메시지만).
   (선택) Reddit 앱을 만들어 `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET` Secret을 등록하면 공식 API로 추천 수까지 가져옵니다.
 
 ## 메시지 예시
 
 ```
-📈 Reddit 언급 미국주식 순위
+📈 미국주식 커뮤니티 화제 종목
 2026-10-13 12:40 KST · 최근 24시간
 
 🔥 r/wallstreetbets Top 10
@@ -21,6 +22,12 @@ Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 
 🔥 r/dividends Top 5
 1. $SCHD Schwab US Dividend Equity ETF
     💬 12회
+...
+
+📊 StockTwits 트렌딩 Top 5
+미국 개인투자자 SNS에서 지금 가장 화제인 종목
+1. $ONDS Ondas Inc
+    💡 Ondas와 Palantir의 국방 AI 벤처 Regna AI 출범이 논의를 이끌고 있습니다.
 ...
 ```
 

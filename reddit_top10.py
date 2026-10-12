@@ -41,6 +41,10 @@ from datetime import datetime, timedelta, timezone
 
 APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/1"
 TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
+STOCKTWITS_TRENDING_URL = "https://api.stocktwits.com/api/2/trending/symbols/equities.json"
+TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q={q}"
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/130.0 Safari/537.36")
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCES = "wallstreetbets:10,dividends:5"
@@ -250,6 +254,54 @@ def fetch_top(source):
     return fetch_reddit_direct(source)
 
 
+def first_sentence(text, max_len=160):
+    text = " ".join((text or "").split())
+    match = re.match(r"(.+?[.!?])(\s|$)", text)
+    sentence = match.group(1) if match else text
+    return sentence if len(sentence) <= max_len else sentence[:max_len - 1].rstrip() + "…"
+
+
+def translate_ko(text):
+    """영문 한 줄을 한국어로 번역 (실패 시 원문)."""
+    try:
+        req = urllib.request.Request(TRANSLATE_URL.format(q=urllib.parse.quote(text)),
+                                     headers={"User-Agent": BROWSER_UA})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.load(resp)
+        return "".join(seg[0] for seg in data[0] if seg and seg[0]).strip() or text
+    except Exception as e:
+        print(f"[경고] 번역 실패, 원문 사용: {e}", file=sys.stderr)
+        return text
+
+
+def fetch_stocktwits_trending(limit):
+    """StockTwits 트렌딩 종목 + 화제 이유(StockTwits 요약 첫 문장, 한국어 번역)."""
+    req = urllib.request.Request(STOCKTWITS_TRENDING_URL, headers={"User-Agent": BROWSER_UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        symbols = json.load(resp).get("symbols", [])
+    trending = []
+    for sym in symbols[:limit]:
+        summary = first_sentence((sym.get("trends") or {}).get("summary", ""))
+        trending.append({
+            "ticker": sym.get("symbol", "?"),
+            "name": sym.get("title", ""),
+            "reason": translate_ko(summary) if summary else "",
+        })
+    return trending
+
+
+def format_stocktwits(trending, limit):
+    lines = ["", f"<b>📊 StockTwits 트렌딩 Top {limit}</b>",
+             "<i>미국 개인투자자 SNS에서 지금 가장 화제인 종목</i>"]
+    if not trending:
+        return lines + ["    데이터를 가져오지 못했습니다."]
+    for position, sym in enumerate(trending, 1):
+        lines.append(f"<b>{position}. ${html.escape(sym['ticker'])}</b> {html.escape(sym['name'])}")
+        if sym["reason"]:
+            lines.append(f"    💡 {html.escape(sym['reason'])}")
+    return lines
+
+
 def as_int(value):
     try:
         return int(value)
@@ -285,10 +337,11 @@ def format_stock(stock, position):
     ]
 
 
-def build_message(sections):
-    """sections: [(source, limit, stocks 또는 None(실패))] 목록."""
+def build_message(sections, stocktwits=None):
+    """sections: [(source, limit, stocks 또는 None(실패))] 목록.
+    stocktwits: (limit, trending 또는 None) — None이면 섹션 생략."""
     now = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
-    lines = ["<b>📈 Reddit 언급 미국주식 순위</b>", f"<i>{now} KST · 최근 24시간</i>"]
+    lines = ["<b>📈 미국주식 커뮤니티 화제 종목</b>", f"<i>{now} KST · 최근 24시간</i>"]
     for source, limit, stocks in sections:
         lines += ["", f"<b>🔥 r/{html.escape(source)} Top {limit}</b>"]
         if source.lower() in SUBREDDIT_DESCRIPTIONS:
@@ -298,7 +351,12 @@ def build_message(sections):
             continue
         for position, stock in enumerate(stocks, 1):
             lines += format_stock(stock, position)
-    lines += ["", "출처: <a href=\"https://apewisdom.io\">ApeWisdom</a>, Reddit"]
+    if stocktwits:
+        lines += format_stocktwits(stocktwits[1], stocktwits[0])
+    sources = "<a href=\"https://apewisdom.io\">ApeWisdom</a>, Reddit"
+    if stocktwits:
+        sources += ", <a href=\"https://stocktwits.com/sentiment/trending\">StockTwits</a>"
+    lines += ["", f"출처: {sources}"]
     return "\n".join(lines)
 
 
@@ -404,7 +462,7 @@ def deliver(message, dry_run):
     print("전송 완료")
 
 
-def run_daily(sources, data_dir, dry_run):
+def run_daily(sources, data_dir, dry_run, stocktwits_limit=5):
     sections = []
     for source, limit in sources:
         try:
@@ -419,7 +477,15 @@ def run_daily(sources, data_dir, dry_run):
         sys.exit("어떤 소스에서도 데이터를 가져오지 못했습니다.")
     if not dry_run:
         save_snapshot(data_dir, sections)
-    message = build_message([(src, limit, stocks and stocks[:limit]) for src, limit, stocks in sections])
+    stocktwits = None
+    if stocktwits_limit:
+        try:
+            stocktwits = (stocktwits_limit, fetch_stocktwits_trending(stocktwits_limit))
+        except Exception as e:
+            print(f"[경고] StockTwits 트렌딩 조회 실패: {e}", file=sys.stderr)
+            stocktwits = (stocktwits_limit, None)
+    message = build_message([(src, limit, stocks and stocks[:limit]) for src, limit, stocks in sections],
+                            stocktwits)
     deliver(message, dry_run)
 
 
@@ -437,6 +503,8 @@ def main():
     parser.add_argument("--mode", choices=["auto", "daily", "weekly"], default="auto",
                         help="auto: 월요일(KST)이면 weekly, 아니면 daily")
     parser.add_argument("--data-dir", default="data", help="일간 스냅샷 저장 폴더 (기본 data)")
+    parser.add_argument("--stocktwits", type=int, default=5,
+                        help="일간 메시지에 붙일 StockTwits 트렌딩 개수 (0이면 생략, 기본 5)")
     parser.add_argument("--dry-run", action="store_true", help="텔레그램 전송·스냅샷 저장 없이 출력만")
     args = parser.parse_args()
 
@@ -447,7 +515,7 @@ def main():
     if mode == "weekly":
         run_weekly(sources, args.data_dir, args.dry_run)
     else:
-        run_daily(sources, args.data_dir, args.dry_run)
+        run_daily(sources, args.data_dir, args.dry_run, args.stocktwits)
 
 
 if __name__ == "__main__":
