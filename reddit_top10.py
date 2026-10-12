@@ -4,13 +4,14 @@
 
 데이터 출처:
   1) ApeWisdom (https://apewisdom.io) — 서브레딧별 최근 24시간 티커 언급 수
-  2) ApeWisdom이 지원하지 않는 서브레딧은 Reddit에서 최근 24시간 글/댓글을
-     직접 가져와 미국 상장 티커(NASDAQ Trader 종목 목록 기준) 언급을 센다.
+  2) ApeWisdom이 지원하지 않는 서브레딧은 Reddit RSS(또는 OAuth API)로 최근
+     24시간 글/댓글을 직접 가져와 미국 상장 티커(NASDAQ Trader 종목 목록 기준)
+     언급을 센다. RSS에는 추천 수가 없어 언급 횟수만 표시된다.
 
 환경변수:
   TELEGRAM_BOT_TOKEN    BotFather에서 발급받은 봇 토큰
   TELEGRAM_CHAT_ID      메시지를 받을 채팅 ID (개인/그룹/채널)
-  REDDIT_CLIENT_ID      (선택) Reddit 앱 client id — 직접 수집이 차단될 때 사용
+  REDDIT_CLIENT_ID      (선택) Reddit 앱 client id — 설정하면 RSS 대신 API 사용(추천 수 포함)
   REDDIT_CLIENT_SECRET  (선택) Reddit 앱 secret
 
 사용법:
@@ -29,6 +30,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
@@ -95,32 +97,30 @@ def load_us_symbols():
     return symbols
 
 
-class RedditClient:
-    def __init__(self):
-        client_id = os.environ.get("REDDIT_CLIENT_ID")
-        secret = os.environ.get("REDDIT_CLIENT_SECRET")
+ATOM = "{http://www.w3.org/2005/Atom}"
+
+
+class RedditOAuth:
+    """Reddit 공식 API (REDDIT_CLIENT_ID/SECRET 필요). 추천 수까지 제공."""
+
+    def __init__(self, client_id, secret):
         self.headers = {"User-Agent": "python:invest2-reddit-top10:v1.0 (by /u/invest2bot)"}
-        if client_id and secret:
-            auth = base64.b64encode(f"{client_id}:{secret}".encode()).decode()
-            req = urllib.request.Request(
-                "https://www.reddit.com/api/v1/access_token",
-                data=b"grant_type=client_credentials",
-                headers={**self.headers, "Authorization": f"Basic {auth}"},
-            )
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                token = json.load(resp)["access_token"]
-            self.headers["Authorization"] = f"Bearer {token}"
-            self.base = "https://oauth.reddit.com"
-        else:
-            self.base = "https://www.reddit.com"
+        auth = base64.b64encode(f"{client_id}:{secret}".encode()).decode()
+        req = urllib.request.Request(
+            "https://www.reddit.com/api/v1/access_token",
+            data=b"grant_type=client_credentials",
+            headers={**self.headers, "Authorization": f"Basic {auth}"},
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            token = json.load(resp)["access_token"]
+        self.headers["Authorization"] = f"Bearer {token}"
 
     def listing(self, path, since, max_pages):
-        """since(unix time) 이후 항목을 최신순으로 페이지를 넘기며 가져온다."""
+        """since(unix time) 이후 항목을 최신순으로 (text, score) 형태로 가져온다."""
         after = None
         for _ in range(max_pages):
             query = {"limit": 100, "raw_json": 1, **({"after": after} if after else {})}
-            suffix = "" if "oauth" in self.base else ".json"
-            url = f"{self.base}{path}{suffix}?{urllib.parse.urlencode(query)}"
+            url = f"https://oauth.reddit.com{path}?{urllib.parse.urlencode(query)}"
             req = urllib.request.Request(url, headers=self.headers)
             with urllib.request.urlopen(req, timeout=30) as resp:
                 data = json.load(resp)["data"]
@@ -128,22 +128,51 @@ class RedditClient:
                 item = child["data"]
                 if item["created_utc"] < since:
                     return
-                yield item
+                text = " ".join(filter(None, [item.get("title"), item.get("selftext"), item.get("body")]))
+                yield text, max(item.get("score", 0), 0)
             after = data.get("after")
             if not after:
                 return
             time.sleep(1)
 
 
+class RedditRSS:
+    """Reddit RSS 피드 (인증 불필요, GitHub Actions에서도 접근 가능). 추천 수 없음."""
+
+    headers = {"User-Agent": "python:invest2-reddit-top10:v1.0 (by /u/invest2bot)"}
+
+    def listing(self, path, since, max_pages):
+        after = None
+        for page in range(max_pages):
+            query = {"limit": 100, **({"after": after} if after else {})}
+            url = f"https://www.reddit.com{path}/.rss?{urllib.parse.urlencode(query)}"
+            req = urllib.request.Request(url, headers=self.headers)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                entries = ET.fromstring(resp.read()).findall(f"{ATOM}entry")
+            for entry in entries:
+                ts = entry.findtext(f"{ATOM}published") or entry.findtext(f"{ATOM}updated")
+                if datetime.fromisoformat(ts).timestamp() < since:
+                    return
+                entry_id = entry.findtext(f"{ATOM}id", "")
+                body = html.unescape(re.sub(r"<[^>]+>", " ", entry.findtext(f"{ATOM}content", "")))
+                # 댓글(t1_) 제목은 "/u/작성자 on 글제목" 이라 제외
+                title = "" if entry_id.startswith("t1_") else entry.findtext(f"{ATOM}title", "")
+                yield f"{title} {body}", None
+            if len(entries) < 25:
+                return
+            after = entries[-1].findtext(f"{ATOM}id")
+            time.sleep(2)
+
+
 def fetch_reddit_direct(limit, source):
     symbols = load_us_symbols()
-    client = RedditClient()
+    client_id, secret = os.environ.get("REDDIT_CLIENT_ID"), os.environ.get("REDDIT_CLIENT_SECRET")
+    client = RedditOAuth(client_id, secret) if client_id and secret else RedditRSS()
     since = time.time() - 24 * 3600
     mentions, upvotes = defaultdict(int), defaultdict(int)
     items = list(client.listing(f"/r/{source}/new", since, max_pages=5))
     items += list(client.listing(f"/r/{source}/comments", since, max_pages=10))
-    for item in items:
-        text = " ".join(filter(None, [item.get("title"), item.get("selftext"), item.get("body")]))
+    for text, score in items:
         found = set()
         for dollar, ticker in TICKER_RE.findall(text):
             if ticker not in symbols:
@@ -153,11 +182,13 @@ def fetch_reddit_direct(limit, source):
             found.add(ticker)
         for ticker in found:
             mentions[ticker] += 1
-            upvotes[ticker] += max(item.get("score", 0), 0)
-    print(f"[정보] r/{source} 직접 수집: 글/댓글 {len(items)}개", file=sys.stderr)
+            upvotes[ticker] += score or 0
+    has_score = isinstance(client, RedditOAuth)
+    print(f"[정보] r/{source} 직접 수집({type(client).__name__}): 글/댓글 {len(items)}개", file=sys.stderr)
     ranked = sorted(mentions, key=lambda t: (-mentions[t], -upvotes[t]))[:limit]
     return [
-        {"rank": i, "ticker": t, "name": symbols[t], "mentions": mentions[t], "upvotes": upvotes[t]}
+        {"rank": i, "ticker": t, "name": symbols[t], "mentions": mentions[t],
+         "upvotes": upvotes[t] if has_score else None}
         for i, t in enumerate(ranked, 1)
     ]
 
@@ -200,11 +231,12 @@ def format_stock(stock, position):
     name = html.escape(html.unescape(str(stock.get("name", ""))))
     mentions = as_int(stock.get("mentions")) or 0
     prev_mentions = as_int(stock.get("mentions_24h_ago"))
-    upvotes = as_int(stock.get("upvotes")) or 0
+    upvotes = as_int(stock.get("upvotes"))
     delta = f" ({mentions - prev_mentions:+,})" if prev_mentions is not None else ""
+    votes = f" · 👍 {upvotes:,}" if upvotes is not None else ""
     return [
         f"<b>{position}. ${ticker}</b> {name} {format_change(stock)}".rstrip(),
-        f"    💬 {mentions:,}회{delta} · 👍 {upvotes:,}",
+        f"    💬 {mentions:,}회{delta}{votes}",
     ]
 
 
