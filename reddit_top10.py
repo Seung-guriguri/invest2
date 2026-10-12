@@ -40,6 +40,14 @@ TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCES = "wallstreetbets:5,ValueInvesting:5"
+SUBREDDIT_DESCRIPTIONS = {
+    "wallstreetbets": "밈주식·옵션·단타 위주의 공격적인 개인투자자 커뮤니티",
+    "valueinvesting": "버핏식 가치투자 — 실적·밸류에이션 기반 저평가 종목 토론",
+    "stocks": "개별 종목·시장 뉴스를 다루는 일반 주식 토론 커뮤니티",
+    "investing": "장기투자·자산배분 중심의 일반 투자 커뮤니티",
+    "options": "옵션 전략·거래 토론 커뮤니티",
+    "pennystocks": "소형·저가주 위주의 고위험 투자 커뮤니티",
+}
 
 SYMBOL_LISTS = [
     "https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt",
@@ -275,6 +283,8 @@ def build_message(sections):
     lines = ["<b>📈 Reddit 언급 미국주식 순위</b>", f"<i>{now} KST · 최근 24시간</i>"]
     for source, limit, stocks in sections:
         lines += ["", f"<b>🔥 r/{html.escape(source)} Top {limit}</b>"]
+        if source.lower() in SUBREDDIT_DESCRIPTIONS:
+            lines.append(f"<i>{SUBREDDIT_DESCRIPTIONS[source.lower()]}</i>")
         if not stocks:
             lines.append("    데이터를 가져오지 못했습니다.")
             continue
