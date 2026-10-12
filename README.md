@@ -1,7 +1,7 @@
 # invest2
 
 Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 텔레그램에 보내는 스크립트입니다.
-기본: **r/wallstreetbets Top 5** + **r/dividends(배당주) Top 5**
+기본: **r/wallstreetbets Top 10** + **r/dividends(배당주) Top 5**
 - r/wallstreetbets: [ApeWisdom](https://apewisdom.io)의 최근 24시간 언급 집계 (전일 대비 순위·언급 변화 포함)
 - r/dividends: ApeWisdom에 데이터가 없으면 Reddit RSS로 최근 24시간 글/댓글을 직접 모아 미국 상장 티커 언급을 셉니다.
   RSS에는 추천 수가 없어 언급 횟수만 표시되며, Reddit 요청 제한 때문에 실행에 몇 분 걸릴 수 있습니다.
@@ -13,7 +13,7 @@ Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 
 📈 Reddit 언급 미국주식 순위
 2026-10-13 12:40 KST · 최근 24시간
 
-🔥 r/wallstreetbets Top 5
+🔥 r/wallstreetbets Top 10
 1. $NVDA NVIDIA 🔺2
     💬 812회 (+143) · 👍 5,120
 ...

@@ -1,6 +1,6 @@
 """서브레딧별로 가장 많이 언급된 미국 상장 종목 순위를 텔레그램으로 전송한다.
 
-기본: r/wallstreetbets Top 5 + r/dividends(배당주) Top 5
+기본: r/wallstreetbets Top 10 + r/dividends(배당주) Top 5
 
 데이터 출처:
   1) ApeWisdom (https://apewisdom.io) — 서브레딧별 최근 24시간 티커 언급 수
@@ -43,7 +43,7 @@ APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/1"
 TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
-DEFAULT_SOURCES = "wallstreetbets:5,dividends:5"
+DEFAULT_SOURCES = "wallstreetbets:10,dividends:5"
 SNAPSHOT_SIZE = 100  # 주간 집계를 위해 일간 스냅샷에 저장하는 종목 수
 SUBREDDIT_DESCRIPTIONS = {
     "wallstreetbets": "밈주식·옵션·단타 위주의 공격적인 개인투자자 커뮤니티",
