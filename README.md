@@ -3,6 +3,7 @@
 Reddit에서 가장 많이 언급된 미국 상장 종목을 서브레딧별로 텔레그램에 보내는 스크립트입니다.
 기본: **r/wallstreetbets Top 10** + **r/dividends(배당주) Top 5** + **StockTwits 트렌딩 Top 5**
 - r/wallstreetbets: [ApeWisdom](https://apewisdom.io)의 최근 24시간 언급 집계 (전일 대비 순위·언급 변화 포함)
+  + **🚀 언급 급증 Top 5**: 상위 300개 중 오늘 20회 이상 & 전일 대비 2배 이상(또는 신규)인 종목을 증가량 순으로. 기준은 `SURGE_RULES`에서 조정.
 - r/dividends: ApeWisdom에 데이터가 없으면 Reddit RSS로 최근 24시간 글/댓글을 직접 모아 미국 상장 티커 언급을 셉니다.
   RSS에는 추천 수가 없어 언급 횟수만 표시되며, Reddit 요청 제한 때문에 실행에 몇 분 걸릴 수 있습니다.
   (선택) Reddit 앱을 만들어 `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET` Secret을 등록하면 공식 API로 추천 수까지 가져옵니다.

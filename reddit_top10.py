@@ -39,7 +39,7 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
-APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/1"
+APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/{page}"
 TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 STOCKTWITS_TRENDING_URL = "https://api.stocktwits.com/api/2/trending/symbols/equities.json"
 TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q={q}"
@@ -48,6 +48,9 @@ BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
 KST = timezone(timedelta(hours=9))
 DEFAULT_SOURCES = "wallstreetbets:10,dividends:5"
+# 전일 대비 언급 급증 — 해당 서브레딧: (오늘 최소 언급 수, 최소 증가 배수)
+SURGE_RULES = {"wallstreetbets": (20, 2.0)}
+SURGE_LIMIT = 5
 SNAPSHOT_SIZE = 100  # 주간 집계를 위해 일간 스냅샷에 저장하는 종목 수
 SUBREDDIT_DESCRIPTIONS = {
     "wallstreetbets": "밈주식·옵션·단타 위주의 공격적인 개인투자자 커뮤니티",
@@ -92,8 +95,15 @@ def http_text(url):
         return resp.read().decode("utf-8", "replace")
 
 
-def fetch_apewisdom(source):
-    return http_json(APEWISDOM_URL.format(filter=source)).get("results", [])
+def fetch_apewisdom(source, max_pages=3):
+    """ApeWisdom 순위 (페이지당 100개). 소형주 급증도 잡도록 3페이지까지."""
+    results = []
+    for page in range(1, max_pages + 1):
+        data = http_json(APEWISDOM_URL.format(filter=source, page=page))
+        results += data.get("results", [])
+        if page >= (as_int(data.get("pages")) or 0):
+            break
+    return results
 
 
 def load_us_symbols():
@@ -337,9 +347,41 @@ def format_stock(stock, position):
     ]
 
 
-def build_message(sections, stocktwits=None):
+def find_surges(stocks, min_mentions, min_ratio, limit):
+    """전일 대비 언급 급증 종목: 오늘 min_mentions 이상 & (전일 대비 min_ratio배 이상 또는 신규).
+    증가한 언급 수가 큰 순."""
+    surges = []
+    for stock in stocks or []:
+        if "mentions_24h_ago" not in stock:  # 전일 데이터가 없는 소스
+            continue
+        now, prev = as_int(stock.get("mentions")) or 0, as_int(stock.get("mentions_24h_ago")) or 0
+        if now >= min_mentions and (prev == 0 or now >= prev * min_ratio):
+            surges.append((now - prev, stock))
+    surges.sort(key=lambda x: -x[0])
+    return [stock for _, stock in surges[:limit]]
+
+
+def format_surges(source, surges, min_mentions, min_ratio):
+    lines = ["", f"<b>🚀 r/{html.escape(source)} 언급 급증 Top {SURGE_LIMIT}</b>",
+             f"<i>전일 대비 {min_ratio:g}배 이상 또는 신규 · 오늘 {min_mentions}회 이상</i>"]
+    if not surges:
+        return lines + ["    조건에 맞는 급증 종목이 없습니다."]
+    for position, stock in enumerate(surges, 1):
+        ticker = html.escape(str(stock.get("ticker", "?")))
+        name = html.escape(html.unescape(str(stock.get("name", ""))))
+        now, prev = as_int(stock.get("mentions")) or 0, as_int(stock.get("mentions_24h_ago")) or 0
+        change = f"← {prev:,}회 (×{now / prev:.1f})" if prev else "← 신규"
+        rank, prev_rank = as_int(stock.get("rank")), as_int(stock.get("rank_24h_ago"))
+        ranks = f" · 순위 {prev_rank}→{rank}" if rank and prev_rank else ""
+        lines.append(f"<b>{position}. ${ticker}</b> {name}")
+        lines.append(f"    💬 {now:,}회 {change}{ranks}")
+    return lines
+
+
+def build_message(sections, stocktwits=None, surges=None):
     """sections: [(source, limit, stocks 또는 None(실패))] 목록.
-    stocktwits: (limit, trending 또는 None) — None이면 섹션 생략."""
+    stocktwits: (limit, trending 또는 None) — None이면 섹션 생략.
+    surges: {source: 급증 종목 목록} — 해당 서브레딧 섹션 바로 뒤에 표시."""
     now = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
     lines = ["<b>📈 미국주식 커뮤니티 화제 종목</b>", f"<i>{now} KST · 최근 24시간</i>"]
     for source, limit, stocks in sections:
@@ -351,6 +393,8 @@ def build_message(sections, stocktwits=None):
             continue
         for position, stock in enumerate(stocks, 1):
             lines += format_stock(stock, position)
+        if surges and source in surges:
+            lines += format_surges(source, surges[source], *SURGE_RULES[source])
     if stocktwits:
         lines += format_stocktwits(stocktwits[1], stocktwits[0])
     sources = "<a href=\"https://apewisdom.io\">ApeWisdom</a>, Reddit"
@@ -503,8 +547,10 @@ def run_daily(sources, data_dir, dry_run, stocktwits_limit=5):
         except Exception as e:
             print(f"[경고] StockTwits 트렌딩 조회 실패: {e}", file=sys.stderr)
             stocktwits = (stocktwits_limit, None)
+    surges = {src: find_surges(stocks, *SURGE_RULES[src], SURGE_LIMIT)
+              for src, _, stocks in sections if src in SURGE_RULES and stocks}
     message = build_message([(src, limit, stocks and stocks[:limit]) for src, limit, stocks in sections],
-                            stocktwits)
+                            stocktwits, surges)
     deliver(message, dry_run)
 
 
