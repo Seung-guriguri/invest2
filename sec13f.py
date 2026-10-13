@@ -138,7 +138,8 @@ def quarter(period):
 def label(key, entry, holdings):
     name = entry["name"].title()
     # 같은 회사의 다른 주식 종류(예: Zillow A/C)가 있으면 종류를 붙임
-    if sum(1 for e in holdings.values() if e["name"] == entry["name"]) > 1 and entry["class"]:
+    same = sum(1 for k, e in holdings.items() if e["name"] == entry["name"] and k[1] == key[1])
+    if same > 1 and entry["class"]:
         name += f" {entry['class'].upper()}"
     if key[1]:
         name += f" ({key[1]})"
