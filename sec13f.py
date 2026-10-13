@@ -26,23 +26,26 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from datetime import datetime
 
 from reddit_top10 import deliver
 
 # (표시 이름, 운용자, CIK 또는 None) — CIK가 None이면 EDGAR에서 이름으로 검색
 FUNDS = [
     ("Berkshire Hathaway", "워런 버핏 → 그레그 에이블", 1067983, None),
-    ("Pershing Square", "빌 애크먼", 1336528, None),
+    # 2026 Q2부터 운용사(1336528) 대신 상장 지주사 Pershing Square Inc.가 13F-HR 제출
+    ("Pershing Square", "빌 애크먼", 2026053, None),
     ("Duquesne Family Office", "스탠리 드러켄밀러", 1536411, None),
     ("Baupost Group", "세스 클라만", 1061768, None),
     ("Himalaya Capital", "리루", 1709323, None),
     ("Dalal Street (Pabrai)", "모니시 파브라이", 1549575, None),
-    ("Aquamarine Capital", "가이 스파이어", None, "Aquamarine Capital"),
+    ("Aquamarine Capital", "가이 스파이어", 1404599, None),  # 2022 Q2 이후 13F 미제출 — 재개 시 자동 알림
     ("Tiger Global", "체이스 콜먼", 1167483, None),
     ("Coatue Management", "필립 라퐁", 1135730, None),
-    ("Thiel Macro", "피터 틸", None, "Thiel Macro"),
+    ("Thiel Macro", "피터 틸", 1562087, None),
 ]
 MAX_ITEMS = 10  # 신규/매도 각각 최대 표시 개수
+STALE_DAYS = 270  # 최신 13F가 이보다 오래되면 더 이상 제출하지 않는 것으로 보고 건너뜀
 STATE_PATH = os.path.join("data", "13f", "state.json")
 
 
@@ -90,7 +93,7 @@ class SEC:
         if not xml_files:
             raise RuntimeError(f"{accession}: 보유 종목 XML을 찾지 못했습니다")
         root = ET.fromstring(self.get(f"{folder}/{xml_files[0]}"))
-        result = defaultdict(lambda: {"name": "", "value": 0, "shares": 0})
+        result = defaultdict(lambda: {"name": "", "class": "", "value": 0, "shares": 0})
         for row in root.iter():
             if local(row.tag) != "infoTable":
                 continue
@@ -98,9 +101,11 @@ class SEC:
             key = (fields.get("cusip", ""), fields.get("putCall", ""))
             entry = result[key]
             entry["name"] = fields.get("nameOfIssuer", "")
+            entry["class"] = fields.get("titleOfClass", "")
             entry["value"] += int(float(fields.get("value") or 0))
             entry["shares"] += int(float(fields.get("sshPrnamt") or 0))
-        return dict(result)
+        # 빈 보고서용 자리표시 행(NA, 0 등) 제외
+        return {k: v for k, v in result.items() if v["value"] > 1 and k[0].strip("0")}
 
 
 def local(tag):
@@ -108,8 +113,11 @@ def local(tag):
 
 
 def to_dollars(holdings, period):
-    """2023년 이전 13F는 value 단위가 천 달러."""
-    if period < "2023-01-01":
+    """value 단위를 달러로 맞춤. 2023년 이전 13F는 천 달러 단위이고, 이후에도 천 달러로 내는 곳이 있어
+    주당 가격(value/주식수)의 중앙값이 $1 미만이면 천 달러 단위로 판단한다."""
+    prices = sorted(e["value"] / e["shares"] for e in holdings.values() if e["shares"] > 0)
+    in_thousands = period < "2023-01-01" or (prices and prices[len(prices) // 2] < 1)
+    if in_thousands:
         for entry in holdings.values():
             entry["value"] *= 1000
     return holdings
@@ -127,9 +135,14 @@ def quarter(period):
     return f"{year} Q{(month - 1) // 3 + 1}"
 
 
-def label(key, entry):
-    name = html.escape(entry["name"].title())
-    return f"{name} ({key[1]})" if key[1] else name
+def label(key, entry, holdings):
+    name = entry["name"].title()
+    # 같은 회사의 다른 주식 종류(예: Zillow A/C)가 있으면 종류를 붙임
+    if sum(1 for e in holdings.values() if e["name"] == entry["name"]) > 1 and entry["class"]:
+        name += f" {entry['class'].upper()}"
+    if key[1]:
+        name += f" ({key[1]})"
+    return html.escape(name)
 
 
 def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
@@ -145,12 +158,12 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
         "",
         f"<b>🆕 신규 편입 ({len(new)})</b>",
     ]
-    lines += [f" • {label(k, cur_hold[k])} — {money(cur_hold[k]['value'])} (비중 {cur_hold[k]['value'] / total:.1%})"
+    lines += [f" • {label(k, cur_hold[k], cur_hold)} — {money(cur_hold[k]['value'])} (비중 {cur_hold[k]['value'] / total:.1%})"
               for k in new[:MAX_ITEMS]] or [" • 없음"]
     if len(new) > MAX_ITEMS:
         lines.append(f" • …외 {len(new) - MAX_ITEMS}종목")
     lines += ["", f"<b>❌ 전량 매도 ({len(exits)})</b>"]
-    lines += [f" • {label(k, prev_hold[k])} — 직전 {money(prev_hold[k]['value'])} (비중 {prev_hold[k]['value'] / prev_total:.1%})"
+    lines += [f" • {label(k, prev_hold[k], prev_hold)} — 직전 {money(prev_hold[k]['value'])} (비중 {prev_hold[k]['value'] / prev_total:.1%})"
               for k in exits[:MAX_ITEMS]] or [" • 없음"]
     if len(exits) > MAX_ITEMS:
         lines.append(f" • …외 {len(exits) - MAX_ITEMS}종목")
@@ -196,6 +209,11 @@ def main():
             print(f"[정보] {fund}: CIK {cik} ({sec_name}) 최신 13F "
                   f"{filings[0]['period'] if filings else '없음'}", file=sys.stderr)
             if len(filings) < 2:
+                continue
+            age = (datetime.now() - datetime.strptime(filings[0]["filed"], "%Y-%m-%d")).days
+            if age > STALE_DAYS:
+                print(f"[경고] {fund}: 최근 13F가 {filings[0]['filed']} 제출분이라 건너뜀 "
+                      f"(더 이상 제출하지 않는 것으로 보임)", file=sys.stderr)
                 continue
             cur, prev = filings
             key = str(cik)
