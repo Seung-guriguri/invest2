@@ -60,3 +60,15 @@ python reddit_top10.py --sources wallstreetbets:5,stocks:3   # 서브레딧:개�
 ```
 
 Python 3.8+ 표준 라이브러리만 사용합니다.
+
+## 13F 기관 포트폴리오 변화 (`sec13f.py`)
+
+관심 펀드(버크셔, 퍼싱스퀘어, 듀케인, 바우포스트, 히말라야, 파브라이, 아쿠아마린, 타이거 글로벌, 코튜, 틸 매크로)의
+새 13F 보고서가 SEC EDGAR에 올라오면 직전 분기 대비 **신규 편입 / 전량 매도** 종목을 별도 메시지로 보냅니다.
+매일 일간 실행 때 함께 확인하며, 펀드별로 마지막으로 알린 보고서를 `data/13f/state.json`에 기록해 중복 전송을 막습니다.
+
+- 필요한 Secret: `SEC_USER_AGENT` — SEC 규정상 `이름 이메일` 형식 (예: `Hong Gildong hong@example.com`). 없으면 13F 단계는 건너뜁니다.
+- 처음 실행 시에는 현재 최신 보고서를 기준점으로만 기록하고, 다음 분기 보고서부터 알립니다.
+- 테스트: Actions → Run workflow → `mode: sec13f`, `sec13f_force` 체크 → 각 펀드의 최신 변화를 바로 받아볼 수 있습니다.
+- 펀드 목록은 `sec13f.py`의 `FUNDS`에서 수정합니다.
+
