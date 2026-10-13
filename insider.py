@@ -1,12 +1,14 @@
 """SEC Form 4 내부자 장내 매수 다이제스트를 하루 한 번 텔레그램으로 보낸다.
 
 필터
-  - 거래 코드 P(장내 매수)만, 매수 금액 $100K 이상
-  - 시가총액 $1B 이상 (Yahoo 주가 × SEC 공시 발행주식수)
+  - 거래 코드 P(장내 매수)만, 매수 금액 $100K 이상, 10b5-1(사전 약정 자동 매매) 제외
+  - 시가총액 $300M 이상 (Yahoo 주가 × SEC 공시 발행주식수)
   - CEO · CFO · 이사만
+  - 신고 매수가가 실제 주가와 2배 이상 차이 나면 제외 (해외 통화 표기 등 데이터 오류)
 시그널 / 점수
-  금액 점수(1~4) + CEO/CFO(+2) + 클러스터(+3: 14일 안에 같은 회사 내부자 2명 이상 매수)
+  금액 점수(1~4) + CEO/CFO(+2) + 클러스터(+3: 14일 안에 같은 회사 임원·이사 2명 이상이 $25K+ 매수)
   + 오랜만의 매수(+2: 해당 내부자가 1년 넘게 이 회사 주식을 사지 않음) + 하락 중 매수(+1: 52주 고점 대비 -20% 이하)
+  + 보유량 대비 매수(+1: 기존 보유 +10% 이상, +2: +50% 이상 또는 신규 보유)
 점수 상위 5개만 보내고, 없으면 "오늘 의미 있는 내부자 매수 없음" 한 줄을 보낸다.
 
 공시일 기준으로 처리하며, 마지막으로 처리한 날짜를 data/insider/state.json 에 기록해 하루 한 번만 보낸다.
@@ -40,7 +42,9 @@ INDEX_URL = "https://www.sec.gov/Archives/edgar/daily-index/{y}/QTR{q}/form.{ymd
 CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=2y&interval=1d"
 
 MIN_VALUE = 100_000
-MIN_MARKET_CAP = 1_000_000_000
+MIN_MARKET_CAP = 300_000_000
+CLUSTER_MIN_VALUE = 25_000  # 클러스터 인원으로 셀 최소 매수 금액
+PRICE_TOLERANCE = 2.0  # 신고 매수가 vs 실제 주가 허용 배수
 CLUSTER_DAYS = 14
 FIRST_BUY_DAYS = 365
 DIP = 0.20
@@ -74,6 +78,7 @@ def parse_form4(root):
             "cik": text_of(owner, "reportingOwnerId/rptOwnerCik").lstrip("0"),
             "name": text_of(owner, "reportingOwnerId/rptOwnerName"),
             "director": flag("isDirector"),
+            "officer": flag("isOfficer"),
             "title": text_of(rel, "officerTitle") if flag("isOfficer") else "",
         })
     purchases = []
@@ -87,7 +92,12 @@ def parse_form4(root):
             price = float(text_of(tx, "transactionAmounts/transactionPricePerShare/value") or 0)
         except ValueError:
             continue
-        purchases.append({"date": text_of(tx, "transactionDate/value")[:10], "shares": shares, "price": price})
+        try:
+            after = float(text_of(tx, "postTransactionAmounts/sharesOwnedFollowingTransaction/value") or 0)
+        except ValueError:
+            after = 0
+        purchases.append({"date": text_of(tx, "transactionDate/value")[:10], "shares": shares, "price": price,
+                          "after": after, "nature": text_of(tx, "ownershipNature/directOrIndirectOwnership/value")})
     symbol = re.split(r"[\s,;/]+", text_of(issuer, "issuerTradingSymbol").upper())[0]
     return {
         "issuer_cik": text_of(issuer, "issuerCik").lstrip("0"),
@@ -95,7 +105,23 @@ def parse_form4(root):
         "symbol": "" if symbol in ("", "NONE", "N/A", "NA") else symbol,
         "owners": owners,
         "purchases": purchases,
+        "plan_10b5_1": text_of(root, "aff10b5One").lower() in ("1", "true"),
     }
+
+
+def holding_increase(purchases):
+    """매수로 늘어난 보유 비율 (직접 보유 기준, 없으면 전체). 기존 보유가 0이면 inf."""
+    direct = [p for p in purchases if p["nature"] == "D"] or purchases
+    bought = sum(p["shares"] for p in direct)
+    after = direct[-1]["after"]
+    before = after - bought
+    if not after:
+        return None
+    return float("inf") if before <= 0 else bought / before
+
+
+def purchase_value(doc):
+    return sum(p["shares"] * p["price"] for p in doc["purchases"])
 
 
 def roles(owner):
@@ -132,12 +158,21 @@ def form4_paths(sec, day):
 # ---------- 시장 데이터 ----------
 
 def yahoo_chart(symbol):
+    """(현재가, [(날짜, 고가, 종가)])"""
     req = urllib.request.Request(CHART_URL.format(sym=symbol.replace(".", "-")), headers={"User-Agent": BROWSER_UA})
     with urllib.request.urlopen(req, timeout=20) as resp:
         result = json.load(resp)["chart"]["result"][0]
     quote = result["indicators"]["quote"][0]
     days = [datetime.fromtimestamp(t, ET_TZ).date() for t in result.get("timestamp", [])]
-    return result["meta"].get("regularMarketPrice"), list(zip(days, quote.get("high") or []))
+    return result["meta"].get("regularMarketPrice"), list(zip(days, quote.get("high") or [], quote.get("close") or []))
+
+
+def business_days(start, end):
+    days, day = 0, start
+    while day < end:
+        day += timedelta(days=1)
+        days += day.weekday() < 5
+    return days
 
 
 def shares_outstanding(sec, cik):
@@ -166,9 +201,15 @@ def cluster_buyers(sec, issuer_cik, filed_day, today_buyers):
     start = (filed_day - timedelta(days=CLUSTER_DAYS)).isoformat()
     for path in past_form4s(sec, issuer_cik, start, filed_day.isoformat()):
         doc = fetch_form4(sec, path)
-        if doc and doc["purchases"]:
-            buyers.update(o["name"] for o in doc["owners"])
+        if doc and counts_for_cluster(doc, doc["owners"][0] if doc["owners"] else None, purchase_value(doc)):
+            buyers.add(doc["owners"][0]["name"])
     return buyers
+
+
+def counts_for_cluster(doc, owner, value):
+    """클러스터 인원: 임원·이사가 10b5-1이 아닌 $25K 이상 장내 매수."""
+    return (owner is not None and doc["purchases"] and not doc["plan_10b5_1"]
+            and (owner["officer"] or owner["director"]) and value >= CLUSTER_MIN_VALUE)
 
 
 def is_first_buy(sec, owner_cik, issuer_cik, tx_day):
@@ -206,12 +247,13 @@ def collect(sec, day):
             continue
         if not doc or not doc["purchases"] or not doc["owners"]:
             continue
-        value = sum(p["shares"] * p["price"] for p in doc["purchases"])
+        value = purchase_value(doc)
         priced = [p for p in doc["purchases"] if p["price"] > 0]
         avg_price = value / sum(p["shares"] for p in priced) if priced else 0
         owner = doc["owners"][0]
         tx_dates = [p["date"] for p in doc["purchases"] if re.match(r"\d{4}-\d{2}-\d{2}$", p["date"])]
         buys.append({**doc, "owner": owner, "roles": roles(owner), "value": value, "avg_price": avg_price,
+                     "increase": holding_increase(doc["purchases"]),
                      "tx_date": min(tx_dates) if tx_dates else day.isoformat(), "filed": day})
     return buys
 
@@ -220,10 +262,11 @@ def score_issuers(sec, buys):
     """금액·직책 필터를 통과한 매수를 회사별로 묶고 시총 필터와 시그널 점수 계산."""
     all_buyers = defaultdict(set)
     for b in buys:
-        all_buyers[b["issuer_cik"]].add(b["owner"]["name"])
+        if counts_for_cluster(b, b["owner"], b["value"]):
+            all_buyers[b["issuer_cik"]].add(b["owner"]["name"])
     qualified = defaultdict(list)
     for b in buys:
-        if b["value"] >= MIN_VALUE and b["roles"] and b["symbol"]:
+        if b["value"] >= MIN_VALUE and b["roles"] and b["symbol"] and not b["plan_10b5_1"]:
             qualified[b["issuer_cik"]].append(b)
 
     results = []
@@ -237,13 +280,27 @@ def score_issuers(sec, buys):
             continue
         if cap < MIN_MARKET_CAP:
             continue
+        # 신고 매수가 vs 매수일 종가 비교 — 크게 다르면 통화/단위 오류로 보고 제외
+        items_checked = []
+        for b in items:
+            tx = date.fromisoformat(b["tx_date"])
+            closes = [c for d, _, c in highs if d <= tx and c]
+            ref = closes[-1] if closes else price
+            if ref and b["avg_price"] and not (1 / PRICE_TOLERANCE <= b["avg_price"] / ref <= PRICE_TOLERANCE):
+                print(f"[경고] {first['symbol']} 매수가 ${b['avg_price']:.2f} vs 주가 ${ref:.2f} — 데이터 이상으로 제외",
+                      file=sys.stderr)
+                continue
+            items_checked.append(b)
+        items = items_checked
+        if not items:
+            continue
         total = sum(b["value"] for b in items)
         filed_day = max(b["filed"] for b in items)
         cluster = cluster_buyers(sec, issuer_cik, min(b["filed"] for b in items), all_buyers[issuer_cik])
         firsts = [b for b in items
                   if is_first_buy(sec, b["owner"]["cik"], issuer_cik, date.fromisoformat(b["tx_date"]))]
         tx_day = date.fromisoformat(min(b["tx_date"] for b in items))
-        window = [h for d, h in highs if tx_day - timedelta(days=365) <= d <= tx_day and h]
+        window = [h for d, h, _ in highs if tx_day - timedelta(days=365) <= d <= tx_day and h]
         high52 = max(window) if window else None
         avg_price = sum(b["avg_price"] * b["value"] for b in items) / total if total else 0
         drawdown = (1 - avg_price / high52) if high52 and avg_price else None
@@ -253,9 +310,11 @@ def score_issuers(sec, buys):
         score += 3 if len(cluster) >= 2 else 0
         score += 2 if firsts else 0
         score += 1 if drawdown is not None and drawdown >= DIP else 0
+        increase = max((b["increase"] for b in items if b["increase"] is not None), default=None)
+        score += 2 if increase is not None and increase >= 0.5 else 1 if increase is not None and increase >= 0.1 else 0
         results.append({"symbol": first["symbol"], "issuer": first["issuer"], "items": items, "total": total,
                         "cap": cap, "cluster": cluster, "firsts": firsts, "drawdown": drawdown,
-                        "score": score, "filed": filed_day})
+                        "increase": increase, "score": score, "filed": filed_day})
     results.sort(key=lambda r: (-r["score"], -r["total"]))
     return results
 
@@ -265,7 +324,7 @@ def build_message(days, results):
     head = f"<b>🕵️ 내부자 매수 다이제스트</b> <i>({period} 공시분)</i>"
     if not results:
         return f"{head}\n오늘 의미 있는 내부자 매수 없음"
-    lines = [head, "<i>장내매수 · $100K+ · 시총 $1B+ · CEO/CFO/이사 · 점수순</i>"]
+    lines = [head, "<i>장내매수(10b5-1 제외) · $100K+ · 시총 $300M+ · CEO/CFO/이사 · 점수순</i>"]
     for i, r in enumerate(results[:TOP_N], 1):
         people = []
         for b in sorted(r["items"], key=lambda b: -b["value"]):
@@ -278,11 +337,18 @@ def build_message(days, results):
             signals.append("🆕 1년+ 만의 매수")
         if r["drawdown"] is not None and r["drawdown"] >= DIP:
             signals.append(f"📉 52주 고점 -{r['drawdown']:.0%}")
+        inc = r["increase"]
+        if inc is not None and inc >= 0.1:
+            signals.append("📦 신규 보유" if inc == float("inf") else f"📦 보유 +{inc:.0%}")
+        tx_day = date.fromisoformat(min(b["tx_date"] for b in r["items"]))
+        lag = business_days(tx_day, r["filed"])
+        timing = f"📅 매수 {tx_day:%m/%d} · 신고 {r['filed']:%m/%d}" + (f" ⚠️ {lag}영업일 지연" if lag > 2 else "")
         lines += [
             "",
             f"<b>{i}. ${html.escape(r['symbol'])}</b> {html.escape(r['issuer'])} — 점수 {r['score']}",
             f"    💰 {money(r['total'])} · 시총 {money(r['cap'])}",
             f"    👔 {' · '.join(people)}",
+            f"    {timing}",
         ]
         if signals:
             lines.append(f"    {' · '.join(signals)}")
