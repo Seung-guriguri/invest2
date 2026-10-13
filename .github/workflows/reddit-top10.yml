@@ -6,6 +6,10 @@ on:
     #   화~토(KST): 최근 24시간 일간 순위 + 스냅샷 저장
     #   월(KST):   지난 7일 스냅샷 합산 주간 종합 순위
     - cron: "40 3 * * 1-6"
+    # 백업: GitHub이 예약 실행을 누락하는 경우가 있어 13:40 / 15:10 KST에 재시도.
+    # 이미 보낸 날은 --skip-if-done 으로 바로 종료.
+    - cron: "40 4 * * 1-6"
+    - cron: "10 6 * * 1-6"
   workflow_dispatch:
     inputs:
       mode:
@@ -19,7 +23,7 @@ on:
         default: false
 
 permissions:
-  contents: write  # 일간 스냅샷(data/daily) 커밋용
+  contents: write  # 스냅샷(data/daily, data/weekly) 커밋용
 
 concurrency:
   group: reddit-top10
@@ -38,22 +42,22 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }}
-      - name: Commit daily snapshot
+        run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }} ${{ github.event_name == 'schedule' && '--skip-if-done' || '' }}
+      - name: Commit snapshot
         if: ${{ !inputs.dry_run }}
         run: |
-          if [ ! -d data/daily ]; then
+          if [ ! -d data ]; then
             echo "새 스냅샷 없음"
             exit 0
           fi
-          git add data/daily
+          git add data
           if git diff --cached --quiet; then
             echo "새 스냅샷 없음"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "data: daily snapshot $(TZ=Asia/Seoul date +%F)"
+          git commit -m "data: snapshot $(TZ=Asia/Seoul date +%F)"
           for i in 1 2 3; do
             git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
             sleep $((i * 5))

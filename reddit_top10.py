@@ -462,6 +462,25 @@ def deliver(message, dry_run):
     print("전송 완료")
 
 
+def already_sent(data_dir, mode):
+    """오늘(KST) 해당 모드 메시지를 이미 보냈는지 — 스냅샷/기록 파일 존재 여부로 판단."""
+    day = datetime.now(KST).strftime("%Y-%m-%d")
+    return os.path.exists(os.path.join(data_dir, mode, f"{day}.json"))
+
+
+def save_weekly_record(data_dir, sources, snapshots):
+    day = datetime.now(KST).strftime("%Y-%m-%d")
+    path = os.path.join(data_dir, "weekly", f"{day}.json")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    record = {
+        "date": day,
+        "days": [snap["date"] for snap in snapshots],
+        "sources": {source: aggregate_week(snapshots, source)[:limit] for source, limit in sources},
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(record, f, ensure_ascii=False, indent=1)
+
+
 def run_daily(sources, data_dir, dry_run, stocktwits_limit=5):
     sections = []
     for source, limit in sources:
@@ -494,6 +513,8 @@ def run_weekly(sources, data_dir, dry_run):
     if not snapshots:
         sys.exit(f"{data_dir}/daily 에 지난 7일간 일간 스냅샷이 없어 주간 순위를 만들 수 없습니다.")
     deliver(build_weekly_message(sources, snapshots), dry_run)
+    if not dry_run:
+        save_weekly_record(data_dir, sources, snapshots)
 
 
 def main():
@@ -505,12 +526,17 @@ def main():
     parser.add_argument("--data-dir", default="data", help="일간 스냅샷 저장 폴더 (기본 data)")
     parser.add_argument("--stocktwits", type=int, default=5,
                         help="일간 메시지에 붙일 StockTwits 트렌딩 개수 (0이면 생략, 기본 5)")
+    parser.add_argument("--skip-if-done", action="store_true",
+                        help="오늘(KST) 이미 보냈으면 아무것도 하지 않음 (예약 백업 실행용)")
     parser.add_argument("--dry-run", action="store_true", help="텔레그램 전송·스냅샷 저장 없이 출력만")
     args = parser.parse_args()
 
     mode = args.mode
     if mode == "auto":
         mode = "weekly" if datetime.now(KST).weekday() == 0 else "daily"
+    if args.skip_if_done and already_sent(args.data_dir, mode):
+        print(f"오늘 {mode} 메시지는 이미 전송됨 — 건너뜀")
+        return
     sources = parse_sources(args.sources)
     if mode == "weekly":
         run_weekly(sources, args.data_dir, args.dry_run)
