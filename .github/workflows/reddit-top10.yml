@@ -21,6 +21,10 @@ on:
         description: "텔레그램 전송·스냅샷 저장 없이 결과만 로그에 출력"
         type: boolean
         default: false
+      skip_if_done:
+        description: "오늘 이미 보냈으면 건너뛰기 (외부 예약 서비스 호출용)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write  # 스냅샷(data/daily, data/weekly) 커밋용
@@ -42,7 +46,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }} ${{ github.event_name == 'schedule' && '--skip-if-done' || '' }}
+        run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }} ${{ (github.event_name == 'schedule' || inputs.skip_if_done) && '--skip-if-done' || '' }}
       - name: Commit snapshot
         if: ${{ !inputs.dry_run }}
         run: |
