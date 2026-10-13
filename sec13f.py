@@ -33,18 +33,18 @@ from reddit_top10 import deliver
 # (표시 이름, 운용자, CIK 또는 None) — CIK가 None이면 EDGAR에서 이름으로 검색
 FUNDS = [
     ("Berkshire Hathaway", "워런 버핏 → 그레그 에이블", 1067983, None),
-    # 2026 Q2부터 운용사(1336528) 대신 상장 지주사 Pershing Square Inc.가 13F-HR 제출
-    ("Pershing Square", "빌 애크먼", 2026053, None),
     ("Duquesne Family Office", "스탠리 드러켄밀러", 1536411, None),
-    ("Baupost Group", "세스 클라만", 1061768, None),
-    ("Himalaya Capital", "리루", 1709323, None),
-    ("Dalal Street (Pabrai)", "모니시 파브라이", 1549575, None),
-    ("Aquamarine Capital", "가이 스파이어", 1404599, None),  # 2022 Q2 이후 13F 미제출 — 재개 시 자동 알림
-    ("Tiger Global", "체이스 콜먼", 1167483, None),
-    ("Coatue Management", "필립 라퐁", 1135730, None),
     ("Thiel Macro", "피터 틸", 1562087, None),
+    # 추가 후보 (CIK 확인 완료):
+    # ("Pershing Square", "빌 애크먼", 2026053, None),  # 2026 Q2부터 상장 지주사 Pershing Square Inc.가 제출
+    # ("Baupost Group", "세스 클라만", 1061768, None),
+    # ("Himalaya Capital", "리루", 1709323, None),
+    # ("Dalal Street (Pabrai)", "모니시 파브라이", 1549575, None),
+    # ("Tiger Global", "체이스 콜먼", 1167483, None),
+    # ("Coatue Management", "필립 라퐁", 1135730, None),
 ]
-MAX_ITEMS = 10  # 신규/매도 각각 최대 표시 개수
+MAX_ITEMS = 5  # 항목별 최대 표시 개수
+CHANGE_MIN = 0.10  # 비중 증가/축소: 보유 주식 수가 이 비율 이상 변한 종목 (가격 변동만으로 인한 비중 변화 제외)
 STALE_DAYS = 270  # 최신 13F가 이보다 오래되면 더 이상 제출하지 않는 것으로 보고 건너뜀
 STATE_PATH = os.path.join("data", "13f", "state.json")
 
@@ -149,25 +149,45 @@ def label(key, entry, holdings):
 def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
     total = sum(e["value"] for e in cur_hold.values()) or 1
     prev_total = sum(e["value"] for e in prev_hold.values()) or 1
-    new = sorted((k for k in cur_hold if k not in prev_hold), key=lambda k: -cur_hold[k]["value"])
-    exits = sorted((k for k in prev_hold if k not in cur_hold), key=lambda k: -prev_hold[k]["value"])
+    weight = lambda k: cur_hold[k]["value"] / total
+    prev_weight = lambda k: prev_hold[k]["value"] / prev_total
+
+    new = sorted((k for k in cur_hold if k not in prev_hold), key=lambda k: -weight(k))
+    exits = sorted((k for k in prev_hold if k not in cur_hold), key=lambda k: -prev_weight(k))
+    changed = []
+    for k in cur_hold.keys() & prev_hold.keys():
+        before, after = prev_hold[k]["shares"], cur_hold[k]["shares"]
+        if before and abs(after - before) / before >= CHANGE_MIN:
+            changed.append((k, (after - before) / before))
+    increased = sorted((c for c in changed if c[1] > 0), key=lambda c: -(weight(c[0]) - prev_weight(c[0])))
+    decreased = sorted((c for c in changed if c[1] < 0), key=lambda c: weight(c[0]) - prev_weight(c[0]))
+    top = sorted(cur_hold, key=lambda k: -weight(k))
+
+    def section(title, items, fmt):
+        out = ["", f"<b>{title} ({len(items)})</b>"]
+        out += [fmt(item) for item in items[:MAX_ITEMS]] or [" • 없음"]
+        if len(items) > MAX_ITEMS:
+            out.append(f" • …외 {len(items) - MAX_ITEMS}종목")
+        return out
+
+    def moved(c):
+        k, pct = c
+        return (f" • {label(k, cur_hold[k], cur_hold)} — {prev_weight(k):.1%} → {weight(k):.1%}"
+                f" (주식 수 {pct:+.0%})")
+
     lines = [
-        f"<b>🏦 13F 포트폴리오 변화 — {html.escape(fund)}</b>",
-        f"<i>{html.escape(manager)}</i>",
-        f"{quarter(cur['period'])} ({cur['period']} 기준) · 제출 {cur['filed']}",
-        f"총 {money(total)} · {len(cur_hold)}종목 (직전 {quarter(prev['period'])}: {money(prev_total)} · {len(prev_hold)}종목)",
-        "",
-        f"<b>🆕 신규 편입 ({len(new)})</b>",
+        f"<b>🏦 13F — {html.escape(fund)}</b> <i>{html.escape(manager)}</i>",
+        f"{quarter(cur['period'])} 보유 현황 (제출 {cur['filed']}) · 총 {money(total)} · {len(cur_hold)}종목",
+        f"<i>비교: 직전 {quarter(prev['period'])}</i>",
     ]
-    lines += [f" • {label(k, cur_hold[k], cur_hold)} — {money(cur_hold[k]['value'])} (비중 {cur_hold[k]['value'] / total:.1%})"
-              for k in new[:MAX_ITEMS]] or [" • 없음"]
-    if len(new) > MAX_ITEMS:
-        lines.append(f" • …외 {len(new) - MAX_ITEMS}종목")
-    lines += ["", f"<b>❌ 전량 매도 ({len(exits)})</b>"]
-    lines += [f" • {label(k, prev_hold[k], prev_hold)} — 직전 {money(prev_hold[k]['value'])} (비중 {prev_hold[k]['value'] / prev_total:.1%})"
-              for k in exits[:MAX_ITEMS]] or [" • 없음"]
-    if len(exits) > MAX_ITEMS:
-        lines.append(f" • …외 {len(exits) - MAX_ITEMS}종목")
+    lines += section("🆕 신규 편입", new,
+                     lambda k: f" • {label(k, cur_hold[k], cur_hold)} — 비중 {weight(k):.1%}")
+    lines += section("📈 추가 매수 (주식 수 증가)", increased, moved)
+    lines += section("📉 일부 매도 (주식 수 감소)", decreased, moved)
+    lines += section("❌ 편출 (전량 매도)", exits,
+                     lambda k: f" • {label(k, prev_hold[k], prev_hold)} — 직전 비중 {prev_weight(k):.1%}")
+    lines += ["", f"<b>📊 비중 상위 {MAX_ITEMS}</b>"]
+    lines += [f" {i}. {label(k, cur_hold[k], cur_hold)} — {weight(k):.1%}" for i, k in enumerate(top[:MAX_ITEMS], 1)]
     lines += ["", "출처: SEC EDGAR 13F-HR"]
     return "\n".join(lines)
 
