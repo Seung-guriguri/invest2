@@ -6,10 +6,12 @@
   - CEO · CFO · 이사만
   - 신고 매수가가 실제 주가와 2배 이상 차이 나면 제외 (해외 통화 표기 등 데이터 오류)
 시그널 / 점수
-  금액 점수(1~4) + CEO/CFO(+2) + 클러스터(+3: 14일 안에 같은 회사 임원·이사 2명 이상이 $25K+ 매수)
+  금액 점수(1~4) + 직책(CFO +3, CEO +2, 이사 +1) + 시총(<$2B +2, <$10B +1)
+  + 클러스터(+3: 14일 안에 같은 회사 임원·이사 2명 이상이 $25K+ 매수)
   + 오랜만의 매수(+2: 해당 내부자가 1년 넘게 이 회사 주식을 사지 않음) + 하락 중 매수(+1: 52주 고점 대비 -20% 이하)
-  + 보유량 대비 매수(+1: 기존 보유 +10% 이상, +2: +50% 이상 또는 신규 보유)
-점수 상위 5개만 보내고, 없으면 "오늘 의미 있는 내부자 매수 없음" 한 줄을 보낸다.
+  + 보유량 대비 매수(+1: +10% 이상, +2: +50% 이상, +3: +100% 이상 또는 신규 보유 — 직접·간접 보유 합산 기준)
+점수 7점 이상인 회사를 최대 10개까지 보내고, 없으면 "오늘 의미 있는 내부자 매수 없음" 한 줄을 보낸다.
+점수와 관계없이 모든 후보는 data/insider/candidates/YYYY-MM-DD.json 에 저장해 기준점 보정·사후 검증에 쓴다.
 
 공시일 기준으로 처리하며, 마지막으로 처리한 날짜를 data/insider/state.json 에 기록해 하루 한 번만 보낸다.
 
@@ -49,7 +51,9 @@ PRICE_TOLERANCE = 2.0  # 신고 매수가 vs 실제 주가 허용 배수
 CLUSTER_DAYS = 14
 FIRST_BUY_DAYS = 365
 DIP = 0.20
-TOP_N = 5
+SCORE_THRESHOLD = 7  # 이 점수 이상만 전송 (후보 기록을 보며 조정)
+MAX_RESULTS = 10
+CANDIDATE_DIR = os.path.join("data", "insider", "candidates")
 MAX_LOOKUPS = 30  # 클러스터/첫 매수 확인 시 조회할 과거 Form 4 최대 개수
 
 
@@ -99,6 +103,16 @@ def parse_form4(root):
             after = 0
         purchases.append({"date": text_of(tx, "transactionDate/value")[:10], "shares": shares, "price": price,
                           "after": after, "nature": text_of(tx, "ownershipNature/directOrIndirectOwnership/value")})
+    # 보유 줄(증권 종류 × 직접/간접 × 보유 형태)별 마지막 보유 수량 → 합계 = 신고 후 총 보유
+    last_after = {}
+    for row in root.findall("nonDerivativeTable/*"):
+        key = (text_of(row, "securityTitle/value").lower(),
+               text_of(row, "ownershipNature/directOrIndirectOwnership/value"),
+               text_of(row, "ownershipNature/natureOfOwnership/value").lower())
+        try:
+            last_after[key] = float(text_of(row, "postTransactionAmounts/sharesOwnedFollowingTransaction/value") or 0)
+        except ValueError:
+            pass
     symbol = re.split(r"[\s,;/]+", text_of(issuer, "issuerTradingSymbol").upper())[0]
     return {
         "issuer_cik": text_of(issuer, "issuerCik").lstrip("0"),
@@ -106,18 +120,18 @@ def parse_form4(root):
         "symbol": "" if symbol in ("", "NONE", "N/A", "NA") else symbol,
         "owners": owners,
         "purchases": purchases,
+        "total_after": sum(last_after.values()),
         "plan_10b5_1": text_of(root, "aff10b5One").lower() in ("1", "true"),
     }
 
 
-def holding_increase(purchases):
-    """매수로 늘어난 보유 비율 (직접 보유 기준, 없으면 전체). 기존 보유가 0이면 inf."""
-    direct = [p for p in purchases if p["nature"] == "D"] or purchases
-    bought = sum(p["shares"] for p in direct)
-    after = direct[-1]["after"]
-    before = after - bought
+def holding_increase(doc):
+    """매수로 늘어난 총 보유 비율 (직접·간접 보유 합산). 기존 보유가 0이면 inf, 보유 수량 미기재면 None."""
+    after = doc["total_after"]
     if not after:
         return None
+    bought = sum(p["shares"] for p in doc["purchases"])
+    before = after - bought
     return float("inf") if before <= 0 else bought / before
 
 
@@ -274,7 +288,7 @@ def collect(sec, day):
         owner = doc["owners"][0]
         tx_dates = [p["date"] for p in doc["purchases"] if re.match(r"\d{4}-\d{2}-\d{2}$", p["date"])]
         buys.append({**doc, "owner": owner, "roles": roles(owner), "value": value, "avg_price": avg_price,
-                     "increase": holding_increase(doc["purchases"]),
+                     "increase": holding_increase(doc),
                      "tx_date": min(tx_dates) if tx_dates else day.isoformat(), "filed": day})
     return buys
 
@@ -326,29 +340,60 @@ def score_issuers(sec, buys):
         avg_price = sum(b["avg_price"] * b["value"] for b in items) / total if total else 0
         drawdown = (1 - avg_price / high52) if high52 and avg_price else None
 
-        score = amount_score(total)
-        score += 2 if any(r in ("CEO", "CFO") for b in items for r in b["roles"]) else 0
-        score += 3 if len(cluster) >= 2 else 0
-        score += 2 if firsts else 0
-        score += 1 if drawdown is not None and drawdown >= DIP else 0
         increase = max((b["increase"] for b in items if b["increase"] is not None), default=None)
-        score += 2 if increase is not None and increase >= 0.5 else 1 if increase is not None and increase >= 0.1 else 0
+        all_roles = {r for b in items for r in b["roles"]}
+        breakdown = {
+            "amount": amount_score(total),
+            "role": 3 if "CFO" in all_roles else 2 if "CEO" in all_roles else 1 if "이사" in all_roles else 0,
+            "cap": 2 if cap < 2e9 else 1 if cap < 10e9 else 0,
+            "cluster": 3 if len(cluster) >= 2 else 0,
+            "first_buy": 2 if firsts else 0,
+            "dip": 1 if drawdown is not None and drawdown >= DIP else 0,
+            "holding": (0 if increase is None else 3 if increase >= 1.0 else 2 if increase >= 0.5
+                        else 1 if increase >= 0.1 else 0),
+        }
         results.append({"symbol": first["symbol"], "issuer": first["issuer"], "items": items, "total": total,
                         "cap": cap, "cluster": cluster, "firsts": firsts, "drawdown": drawdown,
-                        "increase": increase, "score": score, "filed": filed_day})
+                        "increase": increase, "breakdown": breakdown, "score": sum(breakdown.values()),
+                        "filed": filed_day, "avg_price": avg_price, "price_now": price})
     results.sort(key=lambda r: (-r["score"], -r["total"]))
-    for r in results[:TOP_N]:  # 실제로 보낼 종목만 회사 정보 조회
+    for r in selected(results):  # 실제로 보낼 종목만 회사 정보 조회
         r["industry"], r["summary"] = company_profile(sec, r["symbol"], r["items"][0]["issuer_cik"])
     return results
+
+
+def selected(results):
+    return [r for r in results if r["score"] >= SCORE_THRESHOLD][:MAX_RESULTS]
+
+
+def save_candidates(days, results):
+    """기준점 보정·사후 성과 검증용: 점수와 무관하게 모든 후보 기록."""
+    os.makedirs(CANDIDATE_DIR, exist_ok=True)
+    path = os.path.join(CANDIDATE_DIR, f"{days[-1].isoformat()}.json")
+    rows = [{
+        "symbol": r["symbol"], "issuer": r["issuer"], "issuer_cik": r["items"][0]["issuer_cik"],
+        "score": r["score"], "breakdown": r["breakdown"], "sent": r["score"] >= SCORE_THRESHOLD,
+        "total_value": round(r["total"]), "market_cap": round(r["cap"]),
+        "avg_price": round(r["avg_price"], 4), "price_at_run": r["price_now"],
+        "drawdown_52w": r["drawdown"], "holding_increase": None if r["increase"] is None else
+        ("new" if r["increase"] == float("inf") else round(r["increase"], 4)),
+        "cluster_size": len(r["cluster"]), "tx_date": min(b["tx_date"] for b in r["items"]),
+        "filed": r["filed"].isoformat(),
+        "insiders": [{"name": b["owner"]["name"], "roles": b["roles"], "value": round(b["value"])} for b in r["items"]],
+    } for r in results]
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"filing_days": [d.isoformat() for d in days], "threshold": SCORE_THRESHOLD, "candidates": rows},
+                  f, ensure_ascii=False, indent=1)
 
 
 def build_message(days, results):
     period = days[0].strftime("%m/%d") if len(days) == 1 else f"{days[0]:%m/%d}~{days[-1]:%m/%d}"
     head = f"<b>🕵️ 내부자 매수 다이제스트</b> <i>({period} 공시분)</i>"
-    if not results:
+    picks = selected(results)
+    if not picks:
         return f"{head}\n오늘 의미 있는 내부자 매수 없음"
-    lines = [head, "<i>장내매수(10b5-1 제외) · $100K+ · 시총 $300M+ · CEO/CFO/이사 · 점수순</i>"]
-    for i, r in enumerate(results[:TOP_N], 1):
+    lines = [head, f"<i>장내매수(10b5-1 제외) · $100K+ · 시총 $300M+ · CEO/CFO/이사 · {SCORE_THRESHOLD}점 이상</i>"]
+    for i, r in enumerate(picks, 1):
         people = []
         for b in sorted(r["items"], key=lambda b: -b["value"]):
             name = " ".join(w.capitalize() for w in b["owner"]["name"].split())
@@ -362,7 +407,7 @@ def build_message(days, results):
             signals.append(f"📉 52주 고점 -{r['drawdown']:.0%}")
         inc = r["increase"]
         if inc is not None and inc >= 0.1:
-            signals.append("📦 신규 보유" if inc == float("inf") else f"📦 보유 +{inc:.0%}")
+            signals.append("📦 신규 보유" if inc == float("inf") else f"📦 총보유 +{inc:.0%}")
         tx_day = date.fromisoformat(min(b["tx_date"] for b in r["items"]))
         lag = business_days(tx_day, r["filed"])
         timing = f"📅 매수 {tx_day:%m/%d} · 신고 {r['filed']:%m/%d}" + (f" ⚠️ {lag}영업일 지연" if lag > 2 else "")
@@ -449,6 +494,8 @@ def main():
 
     if processed:
         results = score_issuers(sec, buys)
+        if not args.dry_run and not args.date:
+            save_candidates(processed, results)
         print(f"[정보] 장내 매수 {len(buys)}건 → 조건 충족 {len(results)}개 회사", file=sys.stderr)
         deliver(build_message(processed, results), args.dry_run)
     else:

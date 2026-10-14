@@ -44,7 +44,9 @@ FUNDS = [
     # ("Coatue Management", "필립 라퐁", 1135730, None),
 ]
 MAX_ITEMS = 5  # 항목별 최대 표시 개수
-CHANGE_MIN = 0.10  # 비중 증가/축소: 보유 주식 수가 이 비율 이상 변한 종목 (가격 변동만으로 인한 비중 변화 제외)
+CHANGE_MIN = 0.10  # 추가 매수/일부 매도: 보유 주식 수가 이 비율 이상 변한 종목 (가격 변동만으로 인한 비중 변화 제외)
+CHANGE_MIN_WEIGHT = 0.01  # …그리고 직전 또는 현재 비중이 이 이상인 종목만 (작은 포지션 잡음 제외)
+SMALL_NEW = 0.001  # 비중 이 미만 신규 편입은 '소규모 신규'로 묶어 이름만 표시
 STALE_DAYS = 270  # 최신 13F가 이보다 오래되면 더 이상 제출하지 않는 것으로 보고 건너뜀
 STATE_PATH = os.path.join("data", "13f", "state.json")
 
@@ -152,12 +154,15 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
     weight = lambda k: cur_hold[k]["value"] / total
     prev_weight = lambda k: prev_hold[k]["value"] / prev_total
 
-    new = sorted((k for k in cur_hold if k not in prev_hold), key=lambda k: -weight(k))
+    new_all = sorted((k for k in cur_hold if k not in prev_hold), key=lambda k: -weight(k))
+    new = [k for k in new_all if weight(k) >= SMALL_NEW]
+    small_new = [k for k in new_all if weight(k) < SMALL_NEW]
     exits = sorted((k for k in prev_hold if k not in cur_hold), key=lambda k: -prev_weight(k))
     changed = []
     for k in cur_hold.keys() & prev_hold.keys():
         before, after = prev_hold[k]["shares"], cur_hold[k]["shares"]
-        if before and abs(after - before) / before >= CHANGE_MIN:
+        if (before and abs(after - before) / before >= CHANGE_MIN
+                and max(weight(k), prev_weight(k)) >= CHANGE_MIN_WEIGHT):
             changed.append((k, (after - before) / before))
     increased = sorted((c for c in changed if c[1] > 0), key=lambda c: -(weight(c[0]) - prev_weight(c[0])))
     decreased = sorted((c for c in changed if c[1] < 0), key=lambda c: weight(c[0]) - prev_weight(c[0]))
@@ -182,8 +187,12 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
     ]
     lines += section("🆕 신규 편입", new,
                      lambda k: f" • {label(k, cur_hold[k], cur_hold)} — 비중 {weight(k):.1%}")
-    lines += section("📈 추가 매수 (주식 수 증가)", increased, moved)
-    lines += section("📉 일부 매도 (주식 수 감소)", decreased, moved)
+    if small_new:
+        names = ", ".join(label(k, cur_hold[k], cur_hold) for k in small_new[:MAX_ITEMS])
+        more = f" 외 {len(small_new) - MAX_ITEMS}" if len(small_new) > MAX_ITEMS else ""
+        lines.append(f" <i>· 소규모 신규(비중 0.1% 미만) {len(small_new)}: {names}{more}</i>")
+    lines += section("📈 추가 매수 (주식 수 +10%↑, 비중 1%↑)", increased, moved)
+    lines += section("📉 일부 매도 (주식 수 -10%↓, 비중 1%↑)", decreased, moved)
     lines += section("❌ 편출 (전량 매도)", exits,
                      lambda k: f" • {label(k, prev_hold[k], prev_hold)} — 직전 비중 {prev_weight(k):.1%}")
     lines += ["", f"<b>📊 비중 상위 {MAX_ITEMS}</b>"]
