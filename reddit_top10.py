@@ -43,6 +43,7 @@ APEWISDOM_URL = "https://apewisdom.io/api/v1.0/filter/{filter}/page/{page}"
 TELEGRAM_URL = "https://api.telegram.org/bot{token}/sendMessage"
 STOCKTWITS_TRENDING_URL = "https://api.stocktwits.com/api/2/trending/symbols/equities.json"
 TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q={q}"
+MYMEMORY_URL = "https://api.mymemory.translated.net/get?langpair=en|ko&q={q}"  # 대체 번역 (키 불필요, 하루 5,000자)
 BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/130.0 Safari/537.36")
 USER_AGENT = "Mozilla/5.0 (compatible; invest2-reddit-top10/1.0)"
@@ -278,22 +279,38 @@ def first_sentence(text, max_len=160):
     return sentence if len(sentence) <= max_len else sentence[:max_len - 1].rstrip() + "…"
 
 
-def translate_ko(text, retries=3):
-    """영문 한 줄을 한국어로 번역 (요청 과다 시 재시도, 끝내 실패하면 원문)."""
-    for attempt in range(retries + 1):
-        try:
-            req = urllib.request.Request(TRANSLATE_URL.format(q=urllib.parse.quote(text)),
-                                         headers={"User-Agent": BROWSER_UA})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                data = json.load(resp)
-            time.sleep(0.5)
-            return "".join(seg[0] for seg in data[0] if seg and seg[0]).strip() or text
-        except Exception as e:
-            if attempt < retries and getattr(e, "code", None) == 429:
-                time.sleep(5 * 2 ** attempt)
-                continue
-            print(f"[경고] 번역 실패, 원문 사용: {e}", file=sys.stderr)
-            return text
+def _google_translate(text):
+    req = urllib.request.Request(TRANSLATE_URL.format(q=urllib.parse.quote(text)), headers={"User-Agent": BROWSER_UA})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        data = json.load(resp)
+    return "".join(seg[0] for seg in data[0] if seg and seg[0]).strip()
+
+
+def _mymemory_translate(text):
+    req = urllib.request.Request(MYMEMORY_URL.format(q=urllib.parse.quote(text)), headers={"User-Agent": BROWSER_UA})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        data = json.load(resp)
+    if data.get("responseStatus") != 200:
+        raise RuntimeError(data.get("responseDetails"))
+    return html.unescape(data["responseData"]["translatedText"]).strip()
+
+
+def translate_ko(text):
+    """영문 한 줄을 한국어로 번역. Google → (실패 시) MyMemory → 원문 순."""
+    for name, fn in (("Google", _google_translate), ("MyMemory", _mymemory_translate)):
+        for attempt in range(2):
+            try:
+                result = fn(text)
+                time.sleep(0.5)
+                if result:
+                    return result
+            except Exception as e:
+                if getattr(e, "code", None) == 429 and attempt == 0:
+                    time.sleep(3)
+                    continue
+                print(f"[경고] {name} 번역 실패: {e}", file=sys.stderr)
+            break
+    return text
 
 
 def fetch_stocktwits_trending(limit):
