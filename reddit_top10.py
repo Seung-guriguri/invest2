@@ -264,24 +264,36 @@ def fetch_top(source):
     return fetch_reddit_direct(source)
 
 
+ABBREV_RE = re.compile(r"(\b[A-Z]\.|\b[A-Z][a-z]{0,3}\.|\bU\.S\.)$")  # H.B. / Inc. / Co. / Corp. / U.S.
+
+
 def first_sentence(text, max_len=160):
     text = " ".join((text or "").split())
-    match = re.match(r"(.+?[.!?])(\s|$)", text)
-    sentence = match.group(1) if match else text
+    sentence = text
+    for match in re.finditer(r"[.!?](?=\s+[A-Z0-9\"']|$)", text):
+        candidate = text[:match.end()]
+        if not ABBREV_RE.search(candidate):  # 약어 뒤 마침표는 문장 끝이 아님
+            sentence = candidate
+            break
     return sentence if len(sentence) <= max_len else sentence[:max_len - 1].rstrip() + "…"
 
 
-def translate_ko(text):
-    """영문 한 줄을 한국어로 번역 (실패 시 원문)."""
-    try:
-        req = urllib.request.Request(TRANSLATE_URL.format(q=urllib.parse.quote(text)),
-                                     headers={"User-Agent": BROWSER_UA})
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.load(resp)
-        return "".join(seg[0] for seg in data[0] if seg and seg[0]).strip() or text
-    except Exception as e:
-        print(f"[경고] 번역 실패, 원문 사용: {e}", file=sys.stderr)
-        return text
+def translate_ko(text, retries=3):
+    """영문 한 줄을 한국어로 번역 (요청 과다 시 재시도, 끝내 실패하면 원문)."""
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(TRANSLATE_URL.format(q=urllib.parse.quote(text)),
+                                         headers={"User-Agent": BROWSER_UA})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.load(resp)
+            time.sleep(0.5)
+            return "".join(seg[0] for seg in data[0] if seg and seg[0]).strip() or text
+        except Exception as e:
+            if attempt < retries and getattr(e, "code", None) == 429:
+                time.sleep(5 * 2 ** attempt)
+                continue
+            print(f"[경고] 번역 실패, 원문 사용: {e}", file=sys.stderr)
+            return text
 
 
 def fetch_stocktwits_trending(limit):
