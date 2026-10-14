@@ -33,13 +33,14 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from reddit_top10 import BROWSER_UA, deliver
+from reddit_top10 import BROWSER_UA, deliver, first_sentence, translate_ko
 from sec13f import SEC, local, money
 
 ET_TZ = ZoneInfo("America/New_York")
 STATE_PATH = os.path.join("data", "insider", "state.json")
 INDEX_URL = "https://www.sec.gov/Archives/edgar/daily-index/{y}/QTR{q}/form.{ymd}.idx"
 CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=2y&interval=1d"
+PROFILE_URL = "https://api.nasdaq.com/api/company/{sym}/company-profile"
 
 MIN_VALUE = 100_000
 MIN_MARKET_CAP = 300_000_000
@@ -165,6 +166,26 @@ def yahoo_chart(symbol):
     quote = result["indicators"]["quote"][0]
     days = [datetime.fromtimestamp(t, ET_TZ).date() for t in result.get("timestamp", [])]
     return result["meta"].get("regularMarketPrice"), list(zip(days, quote.get("high") or [], quote.get("close") or []))
+
+
+def company_profile(sec, symbol, issuer_cik):
+    """(업종, 회사 소개 한 줄) — 업종은 SEC SIC 분류, 소개는 Nasdaq 회사 프로필 첫 문장. 둘 다 한국어 번역."""
+    industry = summary = ""
+    try:
+        industry = sec.json(f"https://data.sec.gov/submissions/CIK{int(issuer_cik):010d}.json").get("sicDescription", "")
+    except Exception as e:
+        print(f"[경고] {symbol} 업종 조회 실패: {e}", file=sys.stderr)
+    try:
+        req = urllib.request.Request(PROFILE_URL.format(sym=symbol.replace(".", "-")),
+                                     headers={"User-Agent": BROWSER_UA, "Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.load(resp).get("data") or {}
+        summary = ((data.get("CompanyDescription") or {}).get("value") or "").strip()
+    except Exception as e:
+        print(f"[경고] {symbol} 회사 소개 조회 실패: {e}", file=sys.stderr)
+    industry = translate_ko(industry) if industry else ""
+    summary = translate_ko(first_sentence(summary, max_len=150)) if summary else ""
+    return industry, summary
 
 
 def business_days(start, end):
@@ -316,6 +337,8 @@ def score_issuers(sec, buys):
                         "cap": cap, "cluster": cluster, "firsts": firsts, "drawdown": drawdown,
                         "increase": increase, "score": score, "filed": filed_day})
     results.sort(key=lambda r: (-r["score"], -r["total"]))
+    for r in results[:TOP_N]:  # 실제로 보낼 종목만 회사 정보 조회
+        r["industry"], r["summary"] = company_profile(sec, r["symbol"], r["items"][0]["issuer_cik"])
     return results
 
 
@@ -346,6 +369,11 @@ def build_message(days, results):
         lines += [
             "",
             f"<b>{i}. ${html.escape(r['symbol'])}</b> {html.escape(r['issuer'])} — 점수 {r['score']}",
+        ]
+        about = " · ".join(x for x in (r.get("industry"), r.get("summary")) if x)
+        if about:
+            lines.append(f"    🏢 {html.escape(about)}")
+        lines += [
             f"    💰 {money(r['total'])} · 시총 {money(r['cap'])}",
             f"    👔 {' · '.join(people)}",
             f"    {timing}",
