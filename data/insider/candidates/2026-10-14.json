@@ -1,0 +1,77 @@
+{
+ "filing_days": [
+  "2026-10-14"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "BORR",
+   "issuer": "Borr Drilling Ltd",
+   "issuer_cik": "1715497",
+   "score": 8,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 7401600,
+   "market_cap": 1437768161,
+   "avg_price": 4.9344,
+   "price_at_run": 4.68,
+   "drawdown_52w": 0.2585424726617551,
+   "holding_increase": 0.0401,
+   "cluster_size": 1,
+   "tx_date": "2026-10-13",
+   "filed": "2026-10-14",
+   "insiders": [
+    {
+     "name": "Troim Tor Olav",
+     "roles": [
+      "이사"
+     ],
+     "value": 7401600
+    }
+   ]
+  },
+  {
+   "symbol": "INBX",
+   "issuer": "Inhibrx Biosciences, Inc.",
+   "issuer_cik": "2007919",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 848977,
+   "market_cap": 1254827692,
+   "avg_price": 84.5594,
+   "price_at_run": 85.26,
+   "drawdown_52w": 0.45547395503632293,
+   "holding_increase": 0.0105,
+   "cluster_size": 1,
+   "tx_date": "2026-10-14",
+   "filed": "2026-10-14",
+   "insiders": [
+    {
+     "name": "Lappe Mark",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 848977
+    }
+   ]
+  }
+ ]
+}
