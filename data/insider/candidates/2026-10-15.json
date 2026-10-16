@@ -1,0 +1,42 @@
+{
+ "filing_days": [
+  "2026-10-15"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "BORR",
+   "issuer": "Borr Drilling Ltd",
+   "issuer_cik": "1715497",
+   "score": 7,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 3542550,
+   "market_cap": 1397830156,
+   "avg_price": 4.7234,
+   "price_at_run": 4.55,
+   "drawdown_52w": 0.29024795626024114,
+   "holding_increase": 0.0193,
+   "cluster_size": 1,
+   "tx_date": "2026-10-14",
+   "filed": "2026-10-15",
+   "insiders": [
+    {
+     "name": "Troim Tor Olav",
+     "roles": [
+      "이사"
+     ],
+     "value": 3542550
+    }
+   ]
+  }
+ ]
+}
