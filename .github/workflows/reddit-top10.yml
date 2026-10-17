@@ -25,6 +25,10 @@ on:
         description: "13F: 이미 알린 보고서여도 각 펀드 최신 변화를 전송 (테스트용)"
         type: boolean
         default: false
+      sec13f_only:
+        description: "13F: 이 CIK 펀드만 처리 (테스트용, 예: 1549575 = 파브라이)"
+        type: string
+        default: ""
       insider_date:
         description: "내부자 매수: 특정 공시일(YYYY-MM-DD)만 처리 (테스트용, 비우면 새 공시일 자동)"
         type: string
@@ -62,7 +66,7 @@ jobs:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python sec13f.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.sec13f_force && '--force' || '' }}
+        run: python sec13f.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.sec13f_force && '--force' || '' }} ${{ inputs.sec13f_only && format('--only {0}', inputs.sec13f_only) || '' }}
       - name: Insider buying digest
         if: ${{ !cancelled() && inputs.mode != 'sec13f' }}
         env:

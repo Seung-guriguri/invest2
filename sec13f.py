@@ -35,11 +35,11 @@ FUNDS = [
     ("Berkshire Hathaway", "워런 버핏 → 그레그 에이블", 1067983, None),
     ("Duquesne Family Office", "스탠리 드러켄밀러", 1536411, None),
     ("Thiel Macro", "피터 틸", 1562087, None),
+    ("Dalal Street (Pabrai)", "모니시 파브라이", 1549575, None),
     # 추가 후보 (CIK 확인 완료):
     # ("Pershing Square", "빌 애크먼", 2026053, None),  # 2026 Q2부터 상장 지주사 Pershing Square Inc.가 제출
     # ("Baupost Group", "세스 클라만", 1061768, None),
     # ("Himalaya Capital", "리루", 1709323, None),
-    # ("Dalal Street (Pabrai)", "모니시 파브라이", 1549575, None),
     # ("Tiger Global", "체이스 콜먼", 1167483, None),
     # ("Coatue Management", "필립 라퐁", 1135730, None),
 ]
@@ -49,6 +49,9 @@ CHANGE_MIN_WEIGHT = 0.01  # …그리고 직전 또는 현재 비중이 이 이�
 SMALL_NEW = 0.001  # 비중 이 미만 신규 편입은 '소규모 신규'로 묶어 이름만 표시
 STALE_DAYS = 270  # 최신 13F가 이보다 오래되면 더 이상 제출하지 않는 것으로 보고 건너뜀
 STATE_PATH = os.path.join("data", "13f", "state.json")
+# 전체 보유 내역(주식 수·평가액·직전 대비 변화·분기말 주가)을 상세히 보여줄 펀드
+DETAIL_FUNDS = {1549575: "13F에는 미국 상장 증권만 보고되므로, 해외 상장 종목 비중이 큰 파브라이 펀드는 "
+                         "포트폴리오의 일부만 나타납니다."}
 
 
 class SEC:
@@ -148,7 +151,38 @@ def label(key, entry, holdings):
     return html.escape(name)
 
 
-def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
+def shares_fmt(n):
+    for unit, size, digits in (("M", 1e6, 2), ("K", 1e3, 1)):
+        if n >= size:
+            return f"{n / size:,.{digits}f}{unit}주"
+    return f"{n:,.0f}주"
+
+
+def detail_section(cur_hold, prev_hold, total, prev_total):
+    """보유 종목 전체 + 편출 종목을 주식 수·평가액·직전 대비 변화와 함께 표시."""
+    lines = ["", f"<b>📋 전체 보유 내역 ({len(cur_hold)})</b>"]
+    for i, k in enumerate(sorted(cur_hold, key=lambda k: -cur_hold[k]["value"]), 1):
+        e = cur_hold[k]
+        price = e["value"] / e["shares"] if e["shares"] else 0
+        if k not in prev_hold:
+            change = "🆕 신규"
+        else:
+            before = prev_hold[k]["shares"]
+            pct = (e["shares"] - before) / before if before else 0
+            prev_w = prev_hold[k]["value"] / prev_total
+            change = ("변동 없음" if abs(pct) < 0.005 else f"주식 수 {pct:+.0%}") + f" · 직전 비중 {prev_w:.1%}"
+        lines.append(f" {i}. <b>{label(k, e, cur_hold)}</b> — 비중 {e['value'] / total:.1%}")
+        lines.append(f"     {money(e['value'])} · {shares_fmt(e['shares'])}"
+                     + (f" · 분기말 ${price:,.2f}" if price else "") + f" · {change}")
+    exits = sorted((k for k in prev_hold if k not in cur_hold), key=lambda k: -prev_hold[k]["value"])
+    for k in exits:
+        e = prev_hold[k]
+        lines.append(f" ❌ <b>{label(k, e, prev_hold)}</b> — 전량 매도 "
+                     f"(직전 {money(e['value'])} · {shares_fmt(e['shares'])} · 비중 {e['value'] / prev_total:.1%})")
+    return lines
+
+
+def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold, cik=None):
     total = sum(e["value"] for e in cur_hold.values()) or 1
     prev_total = sum(e["value"] for e in prev_hold.values()) or 1
     weight = lambda k: cur_hold[k]["value"] / total
@@ -185,6 +219,10 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold):
         f"{quarter(cur['period'])} 보유 현황 (제출 {cur['filed']}) · 총 {money(total)} · {len(cur_hold)}종목",
         f"<i>비교: 직전 {quarter(prev['period'])}</i>",
     ]
+    if cik in DETAIL_FUNDS:  # 상세 모드: 전체 보유 내역으로 대체
+        lines += detail_section(cur_hold, prev_hold, total, prev_total)
+        lines += ["", f"<i>ℹ️ {html.escape(DETAIL_FUNDS[cik])}</i>", "", "출처: SEC EDGAR 13F-HR"]
+        return "\n".join(lines)
     lines += section("🆕 신규 편입", new,
                      lambda k: f" • {label(k, cur_hold[k], cur_hold)} — 비중 {weight(k):.1%}")
     if small_new:
@@ -218,6 +256,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--dry-run", action="store_true", help="전송·상태 저장 없이 출력만")
     parser.add_argument("--force", action="store_true", help="이미 알린 보고서여도 최신 변화를 보냄")
+    parser.add_argument("--only", type=int, help="이 CIK의 펀드만 처리 (테스트용)")
     args = parser.parse_args()
 
     user_agent = os.environ.get("SEC_USER_AGENT", "").strip()
@@ -230,6 +269,8 @@ def main():
     sent = 0
 
     for fund, manager, cik, search in FUNDS:
+        if args.only and cik != args.only:
+            continue
         try:
             cik = cik or sec.find_cik(search)
             if not cik:
@@ -255,7 +296,7 @@ def main():
                 continue
             cur_hold = to_dollars(sec.holdings(cik, cur["accession"]), cur["period"])
             prev_hold = to_dollars(sec.holdings(cik, prev["accession"]), prev["period"])
-            deliver(build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold), args.dry_run)
+            deliver(build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold, cik), args.dry_run)
             state[key] = cur["accession"]
             sent += 1
         except Exception as e:  # 한 펀드가 실패해도 나머지는 계속
