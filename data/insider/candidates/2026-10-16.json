@@ -1,0 +1,110 @@
+{
+ "filing_days": [
+  "2026-10-16"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "PEP",
+   "issuer": "PEPSICO INC",
+   "issuer_cik": "77476",
+   "score": 10,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 23686389,
+   "market_cap": 179186826187,
+   "avg_price": 128.28,
+   "price_at_run": 131.49,
+   "drawdown_52w": 0.25192440403473426,
+   "holding_increase": 0.6805,
+   "cluster_size": 1,
+   "tx_date": "2026-10-14",
+   "filed": "2026-10-16",
+   "insiders": [
+    {
+     "name": "POHLAD ROBERT C",
+     "roles": [
+      "이사"
+     ],
+     "value": 23686389
+    }
+   ]
+  },
+  {
+   "symbol": "BORR",
+   "issuer": "Borr Drilling Ltd",
+   "issuer_cik": "1715497",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 2299150,
+   "market_cap": 1394758002,
+   "avg_price": 4.5983,
+   "price_at_run": 4.54,
+   "drawdown_52w": 0.3090458519861682,
+   "holding_increase": 0.0126,
+   "cluster_size": 2,
+   "tx_date": "2026-10-15",
+   "filed": "2026-10-16",
+   "insiders": [
+    {
+     "name": "Troim Tor Olav",
+     "roles": [
+      "이사"
+     ],
+     "value": 2299150
+    }
+   ]
+  },
+  {
+   "symbol": "PAM",
+   "issuer": "Pampa Energy Inc.",
+   "issuer_cik": "1469395",
+   "score": 8,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 35139300,
+   "market_cap": 110264057711,
+   "avg_price": 80.78,
+   "price_at_run": 81.1,
+   "drawdown_52w": 0.1451851851851852,
+   "holding_increase": 0.0644,
+   "cluster_size": 2,
+   "tx_date": "2026-10-15",
+   "filed": "2026-10-16",
+   "insiders": [
+    {
+     "name": "Mindlin Marcos Marcelo",
+     "roles": [
+      "이사"
+     ],
+     "value": 35139300
+    }
+   ]
+  }
+ ]
+}
