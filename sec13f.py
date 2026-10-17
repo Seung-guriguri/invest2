@@ -49,6 +49,10 @@ CHANGE_MIN_WEIGHT = 0.01  # …그리고 직전 또는 현재 비중이 이 이�
 SMALL_NEW = 0.001  # 비중 이 미만 신규 편입은 '소규모 신규'로 묶어 이름만 표시
 STALE_DAYS = 270  # 최신 13F가 이보다 오래되면 더 이상 제출하지 않는 것으로 보고 건너뜀
 STATE_PATH = os.path.join("data", "13f", "state.json")
+# 13D/13G(5% 이상 지분 공시)를 추적할 인물: (표시 이름, 신고 CIK 목록)
+STAKE_FILERS = {"모니시 파브라이": [1173334, 1549575]}  # 본인 명의, Dalal Street
+STAKE_FORMS = {"SCHEDULE 13D", "SCHEDULE 13D/A", "SCHEDULE 13G", "SCHEDULE 13G/A",
+               "SC 13D", "SC 13D/A", "SC 13G", "SC 13G/A"}
 # 전체 보유 내역(주식 수·평가액·직전 대비 변화·분기말 주가)을 상세히 보여줄 펀드
 DETAIL_FUNDS = {1549575: "13F에는 미국 상장 증권만 보고되므로, 해외 상장 종목 비중이 큰 파브라이 펀드는 "
                          "포트폴리오의 일부만 나타납니다."}
@@ -165,12 +169,19 @@ def detail_section(cur_hold, prev_hold, total, prev_total):
         e = cur_hold[k]
         price = e["value"] / e["shares"] if e["shares"] else 0
         if k not in prev_hold:
-            change = "🆕 신규"
+            change = f"🆕 신규 (약 {money(e['value'])} 매수 추정)"
         else:
             before = prev_hold[k]["shares"]
-            pct = (e["shares"] - before) / before if before else 0
+            diff = e["shares"] - before
+            pct = diff / before if before else 0
             prev_w = prev_hold[k]["value"] / prev_total
-            change = ("변동 없음" if abs(pct) < 0.005 else f"주식 수 {pct:+.0%}") + f" · 직전 비중 {prev_w:.1%}"
+            if abs(pct) < 0.005:
+                change = "변동 없음"
+            else:
+                # 추정 매매 금액 = 주식 수 변화 × 분기말 주가 (실제 체결가와 다를 수 있음)
+                verb = "매수" if diff > 0 else "매도"
+                change = f"주식 수 {pct:+.0%} ({abs(diff):,.0f}주, 약 {money(abs(diff) * price)} {verb} 추정)"
+            change += f" · 직전 비중 {prev_w:.1%}"
         lines.append(f" {i}. <b>{label(k, e, cur_hold)}</b> — 비중 {e['value'] / total:.1%}")
         lines.append(f"     {money(e['value'])} · {shares_fmt(e['shares'])}"
                      + (f" · 분기말 ${price:,.2f}" if price else "") + f" · {change}")
@@ -179,6 +190,7 @@ def detail_section(cur_hold, prev_hold, total, prev_total):
         e = prev_hold[k]
         lines.append(f" ❌ <b>{label(k, e, prev_hold)}</b> — 전량 매도 "
                      f"(직전 {money(e['value'])} · {shares_fmt(e['shares'])} · 비중 {e['value'] / prev_total:.1%})")
+    lines.append("<i>※ 매매 금액은 주식 수 변화 × 분기말 주가로 추정한 값이며 실제 체결가와 다를 수 있습니다.</i>")
     return lines
 
 
@@ -220,6 +232,10 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold, cik=None):
         f"<i>비교: 직전 {quarter(prev['period'])}</i>",
     ]
     if cik in DETAIL_FUNDS:  # 상세 모드: 전체 보유 내역으로 대체
+        change = (total - prev_total) / prev_total if prev_total else 0
+        lines[1] = (f"{quarter(cur['period'])} 보유 현황 (제출 {cur['filed']}) · "
+                    f"총 {money(prev_total)} → <b>{money(total)}</b> ({change:+.0%}) · "
+                    f"{len(prev_hold)} → {len(cur_hold)}종목")
         lines += detail_section(cur_hold, prev_hold, total, prev_total)
         lines += ["", f"<i>ℹ️ {html.escape(DETAIL_FUNDS[cik])}</i>", "", "출처: SEC EDGAR 13F-HR"]
         return "\n".join(lines)
@@ -237,6 +253,126 @@ def build_fund_message(fund, manager, cur, prev, cur_hold, prev_hold, cik=None):
     lines += [f" {i}. {label(k, cur_hold[k], cur_hold)} — {weight(k):.1%}" for i, k in enumerate(top[:MAX_ITEMS], 1)]
     lines += ["", "출처: SEC EDGAR 13F-HR"]
     return "\n".join(lines)
+
+
+# ---------- 13D/13G 지분 공시 ----------
+
+def stake_filings(sec, cik):
+    data = sec.json(f"https://data.sec.gov/submissions/CIK{cik:010d}.json")
+    r = data["filings"]["recent"]
+    return [{"form": f, "accession": a, "filed": fd, "cik": cik}
+            for f, a, fd in zip(r["form"], r["accessionNumber"], r["filingDate"]) if f in STAKE_FORMS]
+
+
+def parse_stake(sec, filing):
+    """새 XML 형식(2024.12~) 13D/13G의 핵심 수치. 옛 텍스트 형식이면 기본 정보만."""
+    folder = f"https://www.sec.gov/Archives/edgar/data/{filing['cik']}/{filing['accession'].replace('-', '')}"
+    info = {**filing, "url": folder + "/"}
+    try:
+        root = ET.fromstring(sec.get(folder + "/primary_doc.xml"))
+    except Exception:
+        return info
+    fields = {}
+    for el in root.iter():
+        name = local(el.tag)
+        if el.text and el.text.strip() and name not in fields:
+            fields[name] = el.text.strip()
+    num = lambda v: float(re.sub(r"[^\d.]", "", v or "") or 0)
+    info.update({
+        "issuer": fields.get("issuerName", ""),
+        "issuer_cik": fields.get("issuerCik", "").lstrip("0"),
+        "shares": num(fields.get("reportingPersonBeneficiallyOwnedAggregateNumberOfShares")
+                      or fields.get("amountBeneficiallyOwned")),
+        "percent": num(fields.get("classPercent")),
+        "event_date": fields.get("eventDateRequiresFilingThisStatement") or fields.get("dateOfEvent", ""),
+        "rule": fields.get("designateRulePursuantThisScheduleFiled", ""),
+    })
+    return info
+
+
+def stake_ticker_price(sec, issuer_cik):
+    try:
+        tickers = sec.json(f"https://data.sec.gov/submissions/CIK{int(issuer_cik):010d}.json").get("tickers") or []
+        if not tickers:
+            return "", None
+        from insider import yahoo_chart  # 순환 import 방지
+        price, _ = yahoo_chart(tickers[0])
+        return tickers[0], price
+    except Exception as e:
+        print(f"[경고] 지분 공시 종목 시세 조회 실패: {e}", file=sys.stderr)
+        return "", None
+
+
+def build_stake_message(person, info, prev, ticker, price):
+    form = info["form"]
+    kind = ("13D (경영 참여 가능성 있는 대량 보유)" if "13D" in form else
+            "13G (수동적 투자 목적 대량 보유)")
+    lines = [f"<b>📢 {html.escape(person)} 지분 공시 — {html.escape(form)}</b>", f"<i>{kind}</i>"]
+    if info.get("issuer"):
+        name = html.escape(info["issuer"]) + (f" (${html.escape(ticker)})" if ticker else "")
+        lines += ["", f"<b>{name}</b>"]
+        stake = f"보유 {info['shares']:,.0f}주 · 지분 <b>{info['percent']:.2f}%</b>"
+        if prev:
+            delta_pct = info["percent"] - prev["percent"]
+            delta_sh = info["shares"] - prev["shares"]
+            stake += (f"\n직전 공시({prev['filed']}) {prev['percent']:.2f}% · {prev['shares']:,.0f}주 → "
+                      f"{delta_pct:+.2f}%p · {delta_sh:+,.0f}주")
+        else:
+            stake += "\n🆕 이 종목 첫 지분 공시"
+        lines.append(stake)
+        if price and info["shares"]:
+            lines.append(f"평가액 약 {money(info['shares'] * price)} (현재가 ${price:,.2f} 기준)")
+        if info["percent"] < 5:
+            lines.append("⚠️ 지분 5% 미만 — 대량 보유 공시 의무 종료(지분 축소) 신호")
+        lines.append(f"기준일 {info.get('event_date') or '-'} · 제출 {info['filed']}")
+    else:
+        lines += ["", f"제출 {info['filed']} (구 형식 공시 — 상세 수치는 원문 참고)"]
+    lines.append(f'<a href="{info["url"]}">공시 원문</a>')
+    if "13G" in form:
+        lines.append("<i>ℹ️ 13G(수동적 기관투자자)는 분기 말 기준 45일 안에 제출되며, Dalal Street 외 "
+                     "다른 운용 계좌까지 합산된 보유량입니다.</i>")
+    return "\n".join(lines)
+
+
+def check_stakes(sec, state, dry_run, force):
+    """추적 인물의 새 13D/13G를 전송. 처음이면 기존 공시를 기준점으로만 기록."""
+    seen = state.setdefault("stake_seen", [])
+    history = state.setdefault("stake_history", {})  # issuer_cik → 마지막 지분 정보
+    first_run = not seen
+    sent = 0
+    for person, ciks in STAKE_FILERS.items():
+        filings = {}
+        for cik in ciks:
+            for f in stake_filings(sec, cik):
+                filings.setdefault(f["accession"], f)  # 여러 CIK에 같은 공시 → 하나로
+        ordered = sorted(filings.values(), key=lambda f: (f["filed"], f["accession"]))
+        for filing in ordered:
+            is_new = filing["accession"] not in seen
+            target = (is_new and not first_run) or (force and filing is ordered[-1])
+            # 새 XML 형식만 수치 파싱 (첫 실행 땐 직전 비교용 이력 확보, 이후엔 새 공시만)
+            if target or (first_run and filing["form"].startswith("SCHEDULE")):
+                info = parse_stake(sec, filing)
+            else:
+                info = filing
+            key = info.get("issuer_cik")
+            if target:
+                prev = history.get(key) if key else None
+                if prev and prev.get("accession") == filing["accession"]:  # 강제 재전송: 그 이전 공시와 비교
+                    prev = prev.get("prev")
+                ticker, price = stake_ticker_price(sec, key) if key else ("", None)
+                deliver(build_stake_message(person, info, prev, ticker, price), dry_run)
+                sent += 1
+            if key and info.get("percent"):
+                old = history.get(key)
+                if not (old and old.get("accession") == info["accession"]):
+                    record = {k: info[k] for k in ("accession", "filed", "percent", "shares", "issuer")}
+                    record["prev"] = {k: v for k, v in old.items() if k != "prev"} if old else None
+                    history[key] = record
+            if is_new:
+                seen.append(filing["accession"])
+    if first_run and not force:
+        print(f"[정보] 13D/13G 첫 실행: 기존 공시 {len(seen)}건을 기준점으로 기록", file=sys.stderr)
+    return sent
 
 
 def load_state():
@@ -302,7 +438,12 @@ def main():
         except Exception as e:  # 한 펀드가 실패해도 나머지는 계속
             print(f"[경고] {fund} 처리 실패: {e}", file=sys.stderr)
 
-    print(f"13F: 새 보고서 {sent}건 전송")
+    if not args.only or args.only in {c for ciks in STAKE_FILERS.values() for c in ciks}:
+        try:
+            sent += check_stakes(sec, state, args.dry_run, args.force)
+        except Exception as e:
+            print(f"[경고] 13D/13G 확인 실패: {e}", file=sys.stderr)
+    print(f"13F/13D/13G: 새 공시 {sent}건 전송")
     if not args.dry_run:
         save_state(state)
 
