@@ -1,0 +1,121 @@
+{
+ "date": "2026-10-19",
+ "days": [
+  "2026-10-13",
+  "2026-10-14",
+  "2026-10-15",
+  "2026-10-16",
+  "2026-10-17"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 1409,
+    "upvotes": 4810,
+    "days": 5
+   },
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 1285,
+    "upvotes": 3995,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 614,
+    "upvotes": 1711,
+    "days": 5
+   },
+   {
+    "ticker": "NBIS",
+    "name": "Nebius Group",
+    "mentions": 484,
+    "upvotes": 1626,
+    "days": 5
+   },
+   {
+    "ticker": "CRWV",
+    "name": "CoreWeave",
+    "mentions": 447,
+    "upvotes": 1972,
+    "days": 5
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "mentions": 390,
+    "upvotes": 24626,
+    "days": 5
+   },
+   {
+    "ticker": "SNDK",
+    "name": "Sandisk",
+    "mentions": 334,
+    "upvotes": 1423,
+    "days": 5
+   },
+   {
+    "ticker": "ASTS",
+    "name": "AST SpaceMobile",
+    "mentions": 324,
+    "upvotes": 1886,
+    "days": 5
+   },
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "mentions": 319,
+    "upvotes": 925,
+    "days": 5
+   },
+   {
+    "ticker": "DTE",
+    "name": "DTE Energy",
+    "mentions": 233,
+    "upvotes": 1708,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 105,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "VOO",
+    "name": "Vanguard S&P 500 ETF",
+    "mentions": 44,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "SPYI",
+    "name": "NEOS S&P 500 High Income ETF",
+    "mentions": 25,
+    "upvotes": null,
+    "days": 4
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 25,
+    "upvotes": null,
+    "days": 4
+   },
+   {
+    "ticker": "JEPQ",
+    "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+    "mentions": 23,
+    "upvotes": null,
+    "days": 5
+   }
+  ]
+ }
+}
