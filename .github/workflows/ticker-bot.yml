@@ -22,4 +22,4 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           BOT_ALLOWED_USERS: ${{ secrets.BOT_ALLOWED_USERS }}
-        run: python3 ticker_bot.py ${{ inputs.test_ticker && format('--test {0}', inputs.test_ticker) || '' }}
+        run: python3 ticker_bot.py ${{ inputs.test_ticker && format('--test "{0}"', inputs.test_ticker) || '' }}
