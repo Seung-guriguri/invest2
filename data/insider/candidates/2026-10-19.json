@@ -1,0 +1,43 @@
+{
+ "filing_days": [
+  "2026-10-19"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "APLD",
+   "issuer": "Applied Digital Corp.",
+   "issuer_cik": "1144879",
+   "score": 12,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1006686,
+   "market_cap": 5820952445,
+   "avg_price": 18.04,
+   "price_at_run": 19.25,
+   "drawdown_52w": 0.6443568153244271,
+   "holding_increase": 0.0096,
+   "cluster_size": 2,
+   "tx_date": "2026-10-16",
+   "filed": "2026-10-19",
+   "insiders": [
+    {
+     "name": "Cummins Wes",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1006686
+    }
+   ]
+  }
+ ]
+}
