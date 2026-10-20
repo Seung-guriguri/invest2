@@ -1,0 +1,25 @@
+name: Ticker Bot
+
+# cron-job.org가 1분마다 workflow_dispatch로 실행 → 쌓인 텔레그램 1:1 메시지에 답장
+on:
+  workflow_dispatch:
+    inputs:
+      test_ticker:
+        description: "테스트: 이 티커의 답장 내용을 로그에만 출력 (예: TSLA)"
+        type: string
+        default: ""
+
+concurrency:
+  group: ticker-bot
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reply to ticker messages
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BOT_ALLOWED_USERS: ${{ secrets.BOT_ALLOWED_USERS }}
+        run: python3 ticker_bot.py ${{ inputs.test_ticker && format('--test {0}', inputs.test_ticker) || '' }}
