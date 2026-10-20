@@ -21,5 +21,6 @@ jobs:
       - name: Reply to ticker messages
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          BOT_ALLOWED_USERS: ${{ secrets.BOT_ALLOWED_USERS }}
+          # 봇 사용 허용 텔레그램 사용자 ID (Secret이 없으면 소유자 ID 기본값)
+          BOT_ALLOWED_USERS: ${{ secrets.BOT_ALLOWED_USERS || '299257234' }}
         run: python3 ticker_bot.py ${{ inputs.test_ticker && format('--test "{0}"', inputs.test_ticker) || '' }}

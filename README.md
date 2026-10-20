@@ -96,3 +96,15 @@ SEC EDGAR Form 4를 매일 파싱해 **의미 있는 내부자 장내 매수**�
 - 테스트: Actions → Run workflow → `mode: insider`, `insider_date`에 공시일 입력 (상태에 영향 없음).
 - 필요한 Secret: `SEC_USER_AGENT` (13F와 공용).
 
+## 티커 조회 봇 (`ticker_bot.py`)
+
+텔레그램 봇과의 **1:1 대화방**에 티커를 보내면(예: `TSLA`, `$nvda`, `AAPL MSFT` — 최대 3개) 답장합니다.
+
+- 📊 StockTwits: 최근 메시지 30개의 강세/약세 비율, 인기 메시지 3개(번역), 트렌딩 중이면 화제 이유
+- 🔥 Reddit: ApeWisdom 기준 r/wallstreetbets·주식 서브레딧 전체 순위와 24시간 언급 수(전일 대비), 최근 1주일 주요 서브레딧 글(번역, 링크)
+- 상시 서버 없이 **cron-job.org가 1분마다** `ticker-bot.yml` 워크플로를 실행 → 쌓인 메시지를 처리 (응답까지 1~2분)
+  - cron-job.org 작업: URL `https://api.github.com/repos/Seung-guriguri/invest2/actions/workflows/ticker-bot.yml/dispatches`,
+    POST, 헤더는 일간 작업과 동일, 본문 `{"ref":"main"}`, 실행 주기 매 1분
+- 허용 사용자만 응답 (`BOT_ALLOWED_USERS` Secret, 기본값은 소유자 ID). 채널·그룹 메시지는 무시
+- 테스트: Actions → Ticker Bot → Run workflow → `test_ticker`에 티커 입력 (로그에만 출력)
+

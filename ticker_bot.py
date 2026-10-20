@@ -70,11 +70,13 @@ def stocktwits(symbol):
     messages = data.get("messages") or []
     bull = sum(1 for m in messages if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bullish")
     bear = sum(1 for m in messages if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bearish")
-    popular = sorted(messages, key=lambda m: -((m.get("likes") or {}).get("total") or 0))[:3]
+    popular = sorted(messages, key=lambda m: -((m.get("likes") or {}).get("total") or 0))
     picks = []
     for m in popular:
         body = " ".join(re.sub(r"https?://\S+", "", m.get("body", "")).split())
-        if body:
+        if len(re.sub(r"\$[A-Za-z.]+", "", body).strip()) >= 15:  # 티커만 있는 짧은 글 제외
+            if len(picks) == 3:
+                break
             sentiment = ((m.get("entities") or {}).get("sentiment") or {}).get("basic")
             picks.append((sentiment, (m.get("likes") or {}).get("total") or 0, body[:140]))
     summary = ""
@@ -107,14 +109,14 @@ def reddit_posts(symbol, limit=3):
     query = urllib.parse.quote(f'"{symbol}" OR "${symbol}"')
     req = urllib.request.Request(REDDIT_SEARCH.format(q=query),
                                  headers={"User-Agent": "python:invest2-ticker-bot:v1.0 (by /u/invest2bot)"})
-    for attempt in range(3):
+    for attempt in range(4):
         try:
             with urllib.request.urlopen(req, timeout=20) as resp:
                 root = ET.fromstring(resp.read())
             break
         except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < 2:
-                time.sleep(5 * (attempt + 1))
+            if e.code == 429 and attempt < 3:
+                time.sleep(8 * 2 ** attempt)  # Reddit 요청 제한: 8·16·32초 대기 후 재시도
                 continue
             raise
     pattern = re.compile(rf"(?<![A-Za-z]){re.escape(symbol)}(?![A-Za-z])")
