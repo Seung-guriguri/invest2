@@ -107,7 +107,8 @@ def name_to_ticker(sec, names):
         if not want:
             continue
         for tokens, ticker in index:
-            if len(tokens) >= len(want) and all(t.startswith(w) or w.startswith(t) for w, t in zip(want, tokens)):
+            # 13F 이름은 잘려 있을 수 있음(예: RESOUR) → 13F 단어가 회사명 단어의 앞부분이면 일치
+            if len(tokens) >= len(want) and all(t.startswith(w) for w, t in zip(want, tokens)):
                 result[name] = ticker
                 break
     return result
