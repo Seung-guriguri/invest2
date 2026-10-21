@@ -106,5 +106,20 @@ SEC EDGAR Form 4를 매일 파싱해 **의미 있는 내부자 장내 매수**�
   - cron-job.org 작업: URL `https://api.github.com/repos/Seung-guriguri/invest2/actions/workflows/ticker-bot.yml/dispatches`,
     POST, 헤더는 일간 작업과 동일, 본문 `{"ref":"main"}`, 실행 주기 매 1분
 - 허용 사용자만 응답 (`BOT_ALLOWED_USERS` Secret, 기본값은 소유자 ID). 채널·그룹 메시지는 무시
-- 테스트: Actions → Ticker Bot → Run workflow → `test_ticker`에 티커 입력 (로그에만 출력)
+- 📅 `TSLA 실적` → 다음 실적 발표일(장전/장후, 한국시간)·컨센서스 EPS, 최근 SEC 실적 공시 자료 링크
+- ⭐ `/add TSLA`, `/del TSLA`, `/list` → 실적 알림 관심 종목 관리 (`data/watchlist.json`, 봇 워크플로가 커밋)
+- 테스트: Actions → Ticker Bot → Run workflow → `test_ticker`에 티커 입력 (로그에만 출력, `TSLA 실적`도 가능)
+
+## 실적 발표 알림 (`earnings.py`) — 개인 대화방 전용
+
+봇 1:1 대화방(`BOT_OWNER_ID`, 기본 소유자 ID)으로만 전송합니다.
+
+- 대상: ⭐ 직접 등록(`/add`) + 🏦 파브라이 13F 보유 종목(SEC 회사명→티커 매칭) + 🕵️ 최근 30일 내부자 다이제스트 종목
+- 📅 **D-7 / D-1 일정 알림**: 발표일, 장전/장후와 한국시간 환산, 컨센서스 EPS·애널리스트 수·전년 동기 EPS (Nasdaq 실적 캘린더, 일간 실행)
+- 📄 **자료 공개 알림**: SEC 8-K(Item 2.02)의 보도자료(EX-99.1)·추가 자료(EX-99.2) 링크, 보도자료 속 컨퍼런스콜 웹캐스트 링크, EPS 서프라이즈
+  — `earnings-materials.yml`이 매시간 확인 (발표일 전후 종목만)
+- 📈 **발표 후 반응**: 다음 일간 실행 때 발표 직전 종가 대비 주가 변동, EPS, StockTwits 강세/약세
+- 🗓 **월요일 주간 요약**: 이번 주 관심 종목 실적 발표 일정
+- 상태: `data/earnings/state.json`. 테스트: Actions → Run workflow → `mode: earnings`, `dry_run`
+- 해외 기업(6-K 제출)은 자료 공개 알림이 오지 않을 수 있음. 웹캐스트 링크는 보도자료에 있을 때만 추출
 

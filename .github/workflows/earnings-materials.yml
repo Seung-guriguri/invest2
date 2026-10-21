@@ -1,0 +1,38 @@
+name: Earnings Materials
+
+# 매시간 관심 종목의 SEC 실적 공시(8-K 2.02)를 확인해 자료 링크를 개인 대화방으로 전송
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: earnings-materials
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check earnings materials
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BOT_OWNER_ID: ${{ secrets.BOT_OWNER_ID || '299257234' }}
+        run: python3 earnings.py --materials
+      - name: Commit state
+        run: |
+          git add data/earnings 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: earnings materials sent"
+          for i in 1 2 3; do
+            git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

@@ -13,9 +13,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "auto: 월요일(KST)이면 주간, 아니면 일간 / sec13f: 13F만 / insider: 내부자 매수만"
+        description: "auto: 월요일(KST)이면 주간, 아니면 일간 / sec13f: 13F만 / insider: 내부자 매수만 / earnings: 실적 알림만"
         type: choice
-        options: [auto, daily, weekly, sec13f, insider]
+        options: [auto, daily, weekly, sec13f, insider, earnings]
         default: auto
       dry_run:
         description: "텔레그램 전송·스냅샷 저장 없이 결과만 로그에 출력"
@@ -39,7 +39,7 @@ on:
         default: false
 
 permissions:
-  contents: write  # 스냅샷(data/daily, data/weekly, data/13f, data/insider) 커밋용
+  contents: write  # 스냅샷(data/daily, data/weekly, data/13f, data/insider, data/earnings) 커밋용
 
 concurrency:
   group: reddit-top10
@@ -53,7 +53,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Send Reddit ranking to Telegram
-        if: ${{ inputs.mode != 'sec13f' && inputs.mode != 'insider' }}
+        if: ${{ inputs.mode != 'sec13f' && inputs.mode != 'insider' && inputs.mode != 'earnings' }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -61,19 +61,26 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: python reddit_top10.py --mode ${{ inputs.mode || 'auto' }} ${{ inputs.dry_run && '--dry-run' || '' }} ${{ (github.event_name == 'schedule' || inputs.skip_if_done) && '--skip-if-done' || '' }}
       - name: Check new 13F filings
-        if: ${{ !cancelled() && inputs.mode != 'insider' }}
+        if: ${{ !cancelled() && inputs.mode != 'insider' && inputs.mode != 'earnings' }}
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python sec13f.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.sec13f_force && '--force' || '' }} ${{ inputs.sec13f_only && format('--only {0}', inputs.sec13f_only) || '' }}
       - name: Insider buying digest
-        if: ${{ !cancelled() && inputs.mode != 'sec13f' }}
+        if: ${{ !cancelled() && inputs.mode != 'sec13f' && inputs.mode != 'earnings' }}
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python insider.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.insider_date && format('--date {0}', inputs.insider_date) || '' }}
+      - name: Earnings alerts (private chat)
+        if: ${{ !cancelled() && inputs.mode != 'sec13f' && inputs.mode != 'insider' }}
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BOT_OWNER_ID: ${{ secrets.BOT_OWNER_ID || '299257234' }}
+        run: python earnings.py ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Commit snapshot
         if: ${{ !cancelled() && !inputs.dry_run }}
         run: |

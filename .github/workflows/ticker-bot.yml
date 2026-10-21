@@ -9,6 +9,9 @@ on:
         type: string
         default: ""
 
+permissions:
+  contents: write  # 관심 종목(data/watchlist.json) 변경 커밋
+
 concurrency:
   group: ticker-bot
 
@@ -21,6 +24,20 @@ jobs:
       - name: Reply to ticker messages
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           # 봇 사용 허용 텔레그램 사용자 ID (Secret이 없으면 소유자 ID 기본값)
           BOT_ALLOWED_USERS: ${{ secrets.BOT_ALLOWED_USERS || '299257234' }}
         run: python3 ticker_bot.py ${{ inputs.test_ticker && format('--test "{0}"', inputs.test_ticker) || '' }}
+      - name: Commit watchlist changes
+        run: |
+          git add data/watchlist.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: watchlist update"
+          for i in 1 2 3; do
+            git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
+
