@@ -1,0 +1,43 @@
+{
+ "filing_days": [
+  "2026-10-20"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "DX",
+   "issuer": "DYNEX CAPITAL INC",
+   "issuer_cik": "826675",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 156560,
+   "market_cap": 2711827879,
+   "avg_price": 13.0467,
+   "price_at_run": 10.96,
+   "drawdown_52w": 0.1261442464844572,
+   "holding_increase": 0.0224,
+   "cluster_size": 1,
+   "tx_date": "2026-10-20",
+   "filed": "2026-10-20",
+   "insiders": [
+    {
+     "name": "Popenoe Smriti Laxman",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 156560
+    }
+   ]
+  }
+ ]
+}
