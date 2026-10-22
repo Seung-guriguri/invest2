@@ -1,0 +1,76 @@
+{
+ "filing_days": [
+  "2026-10-21"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "RAPP",
+   "issuer": "Rapport Therapeutics, Inc.",
+   "issuer_cik": "2012593",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 3,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 143550,
+   "market_cap": 1202335847,
+   "avg_price": 26.1,
+   "price_at_run": 25.06,
+   "drawdown_52w": 0.5068959030886724,
+   "holding_increase": 0.55,
+   "cluster_size": 1,
+   "tx_date": "2026-10-21",
+   "filed": "2026-10-21",
+   "insiders": [
+    {
+     "name": "Ignelzi Troy A.",
+     "roles": [
+      "CFO"
+     ],
+     "value": 143550
+    }
+   ]
+  },
+  {
+   "symbol": "FBK",
+   "issuer": "FB Financial Corp",
+   "issuer_cik": "1649749",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1537788,
+   "market_cap": 2603860990,
+   "avg_price": 52.8795,
+   "price_at_run": 52.1,
+   "drawdown_52w": 0.15602157790765303,
+   "holding_increase": 0.3051,
+   "cluster_size": 1,
+   "tx_date": "2026-10-20",
+   "filed": "2026-10-21",
+   "insiders": [
+    {
+     "name": "INGRAM ORRIN H II",
+     "roles": [
+      "이사"
+     ],
+     "value": 1537788
+    }
+   ]
+  }
+ ]
+}
