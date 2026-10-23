@@ -116,7 +116,8 @@ def clean_lines(page):
     page = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", page)
     page = re.sub(r"(?i)</(p|div|tr|li|h\d|table)>|<br\s*/?>", "\n", page)
     text = html.unescape(re.sub(r"<[^>]+>", " ", page)).replace("\xa0", " ")
-    return [l for l in (" ".join(line.split()) for line in text.splitlines()) if l]
+    lines = (re.sub(r"^[•◦▪●·○■□\-–—*]+\s*", "", " ".join(line.split())) for line in text.splitlines())  # 목록 기호 제거
+    return [l for l in lines if l]
 
 
 def split_sentences(lines):
