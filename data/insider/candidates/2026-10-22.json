@@ -1,0 +1,49 @@
+{
+ "filing_days": [
+  "2026-10-22"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "RAPP",
+   "issuer": "Rapport Therapeutics, Inc.",
+   "issuer_cik": "2012593",
+   "score": 15,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1223169,
+   "market_cap": 1272863928,
+   "avg_price": 27.1105,
+   "price_at_run": 26.53,
+   "drawdown_52w": 0.48780530908192643,
+   "holding_increase": "new",
+   "cluster_size": 5,
+   "tx_date": "2026-10-22",
+   "filed": "2026-10-22",
+   "insiders": [
+    {
+     "name": "MARAGANORE JOHN",
+     "roles": [
+      "이사"
+     ],
+     "value": 248891
+    },
+    {
+     "name": "PAUL STEVEN M",
+     "roles": [
+      "이사"
+     ],
+     "value": 974278
+    }
+   ]
+  }
+ ]
+}
