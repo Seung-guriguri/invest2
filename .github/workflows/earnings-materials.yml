@@ -1,10 +1,24 @@
 name: Earnings Materials
 
-# 매시간 관심 종목의 SEC 실적 공시(8-K 2.02)를 확인해 자료 링크를 개인 대화방으로 전송
+# 매시간: ① 실적 발표일 전후 종목의 8-K 자료 링크(개인 대화방)  ② 관심 종목(/add)의 새 공시 요약(8-K 실적·10-Q·10-K·6-K 실적)
 on:
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
+    inputs:
+      test_ticker:
+        description: "테스트: 이 티커의 최근 공시 요약 (예: NFLX) — 상태에 영향 없음"
+        type: string
+        default: ""
+      test_form:
+        description: "테스트 대상 양식"
+        type: choice
+        options: ["8-K", "10-Q", "10-K", "6-K"]
+        default: "8-K"
+      dry_run:
+        description: "텔레그램 전송 없이 로그에만 출력"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -19,18 +33,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check earnings materials
+        if: ${{ !inputs.test_ticker }}
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           BOT_OWNER_ID: ${{ secrets.BOT_OWNER_ID || '299257234' }}
-        run: python3 earnings.py --materials
+        run: python3 earnings.py --materials ${{ inputs.dry_run && '--dry-run' || '' }}
+      - name: Summarize new filings (watchlist)
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BOT_OWNER_ID: ${{ secrets.BOT_OWNER_ID || '299257234' }}
+        run: python3 filings.py ${{ inputs.test_ticker && format('--test {0} --form {1}', inputs.test_ticker, inputs.test_form) || '' }} ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Commit state
+        if: ${{ !inputs.test_ticker && !inputs.dry_run }}
         run: |
-          git add data/earnings 2>/dev/null || exit 0
+          git add data/earnings data/filings 2>/dev/null || exit 0
           git diff --cached --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "data: earnings materials sent"
+          git commit -m "data: earnings/filings state"
           for i in 1 2 3; do
             git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0
             sleep $((i * 5))

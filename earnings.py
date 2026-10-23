@@ -371,10 +371,15 @@ def check_materials(sec, state, send, today):
             eps = actual_eps(sym, us_day)
         except Exception:
             eps = (None, None, None)
-        send(msg_materials(sym, info.get("src", ""), info, mat, eps))
+        text = msg_materials(sym, info.get("src", ""), info, mat, eps)
+        if sym in load(WATCHLIST_PATH, {"tickers": {}})["tickers"]:  # 등록 종목은 핵심 요약도 함께
+            import filings
+            text = (text + filings.summary_text(sec, mat))[:4000]
+        send(text)
         rec["materials_for"] = info["date"]
         rec["materials_at"] = datetime.now(KST).isoformat(timespec="minutes")
-        state.setdefault("last_materials", {})[sym] = {"filed": mat["filed"], "docs": mat["docs"],
+        state.setdefault("last_materials", {})[sym] = {"accession": mat["accession"], "filed": mat["filed"],
+                                                        "docs": mat["docs"],
                                                         "webcast": mat["webcast"], "index": mat["index"]}
 
 
