@@ -1,0 +1,121 @@
+{
+ "date": "2026-10-26",
+ "days": [
+  "2026-10-20",
+  "2026-10-21",
+  "2026-10-22",
+  "2026-10-23",
+  "2026-10-24"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 1090,
+    "upvotes": 9088,
+    "days": 5
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 883,
+    "upvotes": 2814,
+    "days": 5
+   },
+   {
+    "ticker": "SPCX",
+    "name": "SpaceX",
+    "mentions": 807,
+    "upvotes": 2751,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 703,
+    "upvotes": 5044,
+    "days": 5
+   },
+   {
+    "ticker": "META",
+    "name": "Meta Platforms (Facebook)",
+    "mentions": 625,
+    "upvotes": 1349,
+    "days": 5
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "mentions": 544,
+    "upvotes": 5364,
+    "days": 5
+   },
+   {
+    "ticker": "CRWV",
+    "name": "CoreWeave",
+    "mentions": 446,
+    "upvotes": 1544,
+    "days": 5
+   },
+   {
+    "ticker": "NBIS",
+    "name": "Nebius Group",
+    "mentions": 445,
+    "upvotes": 1326,
+    "days": 5
+   },
+   {
+    "ticker": "NFLX",
+    "name": "Netflix",
+    "mentions": 379,
+    "upvotes": 3730,
+    "days": 5
+   },
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "mentions": 310,
+    "upvotes": 1884,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 76,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 43,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "VOO",
+    "name": "Vanguard S&P 500 ETF",
+    "mentions": 36,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "VT",
+    "name": "Vanguard Total World Stock Index ETF",
+    "mentions": 25,
+    "upvotes": null,
+    "days": 3
+   },
+   {
+    "ticker": "GPIQ",
+    "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
+    "mentions": 23,
+    "upvotes": null,
+    "days": 4
+   }
+  ]
+ }
+}
