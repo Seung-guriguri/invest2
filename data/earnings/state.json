@@ -1,4 +1,34 @@
 {
- "upcoming": {},
- "sent": {}
+ "upcoming": {
+  "RIG": {
+   "date": "2026-11-02",
+   "time": "time-after-hours",
+   "name": "Transocean Ltd.",
+   "eps_forecast": "$0.03",
+   "estimates": "6",
+   "last_year_eps": "$0.06",
+   "quarter": "Sep/2026",
+   "src": "⭐🏦"
+  },
+  "PAM": {
+   "date": "2026-11-02",
+   "time": "time-after-hours",
+   "name": "Pampa Energia S.A.",
+   "eps_forecast": "$2.29",
+   "estimates": "2",
+   "last_year_eps": "$0.42",
+   "quarter": "Sep/2026",
+   "src": "🕵️"
+  }
+ },
+ "sent": {
+  "RIG": {
+   "for": "2026-11-02",
+   "d7": true
+  },
+  "PAM": {
+   "for": "2026-11-02",
+   "d7": true
+  }
+ }
 }
