@@ -432,7 +432,9 @@ def run_daily(sec, state, send, today, weekly):
             send(msg_reaction(sym, info["src"], info, reaction, senti, eps))
             rec["reaction"] = True
 
-    if weekly:
+    week_key = datetime.now(KST).date().isoformat()
+    if weekly and state.get("weekly_sent") != week_key:
+        state["weekly_sent"] = week_key
         week_end = today + timedelta(days=6)
         entries = [(s, i["src"], i) for s, i in upcoming.items()
                    if today <= date.fromisoformat(i["date"]) <= week_end]
