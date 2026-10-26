@@ -32,7 +32,7 @@ STATE_PATH = os.path.join("data", "filings", "state.json")
 FORMS = {"8-K", "6-K", "10-Q", "10-K"}
 FORM_LABEL = {"8-K": "8-K 실적 발표", "6-K": "6-K 실적 발표(해외 기업)", "10-Q": "10-Q 분기보고서", "10-K": "10-K 연간보고서"}
 FRESH_DAYS = 5  # 이보다 오래된 미확인 공시는 알리지 않고 기록만
-KEEP_SEEN = 80
+KEEP_SEEN = 2000  # 종목당 공시 목록 전체보다 커야 함 (잘리면 최신 공시가 재전송됨)
 MAX_BULLETS = 4
 
 # (표시 이름, us-gaap 개념 후보, 단위)
