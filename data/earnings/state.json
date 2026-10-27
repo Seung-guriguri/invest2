@@ -19,6 +19,16 @@
    "last_year_eps": "$0.42",
    "quarter": "Sep/2026",
    "src": "🕵️"
+  },
+  "MOS": {
+   "date": "2026-11-03",
+   "time": "time-after-hours",
+   "name": "Mosaic Company (The)",
+   "eps_forecast": "$0.02",
+   "estimates": "6",
+   "last_year_eps": "$1.04",
+   "quarter": "Sep/2026",
+   "src": "⭐"
   }
  },
  "sent": {
@@ -28,6 +38,10 @@
   },
   "PAM": {
    "for": "2026-11-02",
+   "d7": true
+  },
+  "MOS": {
+   "for": "2026-11-03",
    "d7": true
   }
  }

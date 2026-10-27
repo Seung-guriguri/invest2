@@ -1,0 +1,84 @@
+{
+ "filing_days": [
+  "2026-10-26"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "THRM",
+   "issuer": "Gentherm Inc",
+   "issuer_cik": "903129",
+   "score": 15,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 662600,
+   "market_cap": 1501103998,
+   "avg_price": 26.5064,
+   "price_at_run": 28.59,
+   "drawdown_52w": 0.45178083035756333,
+   "holding_increase": 7.471,
+   "cluster_size": 2,
+   "tx_date": "2026-10-23",
+   "filed": "2026-10-26",
+   "insiders": [
+    {
+     "name": "Presley William T.",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 130000
+    },
+    {
+     "name": "MASCARENAS PAUL ANTHONY",
+     "roles": [
+      "이사"
+     ],
+     "value": 532600
+    }
+   ]
+  },
+  {
+   "symbol": "BBT",
+   "issuer": "Beacon Financial Corp",
+   "issuer_cik": "1108134",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 104984,
+   "market_cap": 2586564414,
+   "avg_price": 30.43,
+   "price_at_run": 30.86,
+   "drawdown_52w": 0.073103920109577,
+   "holding_increase": 0.1049,
+   "cluster_size": 1,
+   "tx_date": "2026-10-26",
+   "filed": "2026-10-26",
+   "insiders": [
+    {
+     "name": "Hollister Thomas J",
+     "roles": [
+      "이사"
+     ],
+     "value": 104984
+    }
+   ]
+  }
+ ]
+}
