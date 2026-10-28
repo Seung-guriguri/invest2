@@ -1,0 +1,187 @@
+{
+ "filing_days": [
+  "2026-10-27"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "NPB",
+   "issuer": "NORTHPOINTE BANCSHARES INC",
+   "issuer_cik": "1336706",
+   "score": 16,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1722152,
+   "market_cap": 545009830,
+   "avg_price": 15.3764,
+   "price_at_run": 15.76,
+   "drawdown_52w": 0.21987024108315523,
+   "holding_increase": "new",
+   "cluster_size": 3,
+   "tx_date": "2026-10-23",
+   "filed": "2026-10-27",
+   "insiders": [
+    {
+     "name": "Boer Carrie L",
+     "roles": [
+      "이사"
+     ],
+     "value": 184762
+    },
+    {
+     "name": "Williams Charles Alan",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1537390
+    }
+   ]
+  },
+  {
+   "symbol": "STC",
+   "issuer": "STEWART INFORMATION SERVICES CORP",
+   "issuer_cik": "94344",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 133350,
+   "market_cap": 1327105213,
+   "avg_price": 44.45,
+   "price_at_run": 43.48,
+   "drawdown_52w": 0.4345503160555031,
+   "holding_increase": 0.0176,
+   "cluster_size": 5,
+   "tx_date": "2026-10-26",
+   "filed": "2026-10-27",
+   "insiders": [
+    {
+     "name": "EPPINGER FREDERICK H",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 133350
+    }
+   ]
+  },
+  {
+   "symbol": "MSM",
+   "issuer": "MSC INDUSTRIAL DIRECT CO INC",
+   "issuer_cik": "1003078",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 28984170,
+   "market_cap": 6612500227,
+   "avg_price": 115.9367,
+   "price_at_run": 118.38,
+   "drawdown_52w": 0.1344779276583521,
+   "holding_increase": 0.0659,
+   "cluster_size": 2,
+   "tx_date": "2026-10-23",
+   "filed": "2026-10-27",
+   "insiders": [
+    {
+     "name": "JACOBSON MITCHELL",
+     "roles": [
+      "이사"
+     ],
+     "value": 28984170
+    }
+   ]
+  },
+  {
+   "symbol": "LRN",
+   "issuer": "Stride, Inc.",
+   "issuer_cik": "1157408",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 12178122,
+   "market_cap": 3330689646,
+   "avg_price": 78.9782,
+   "price_at_run": 79.21,
+   "drawdown_52w": 0.4906604035568184,
+   "holding_increase": 0.0884,
+   "cluster_size": 1,
+   "tx_date": "2026-10-23",
+   "filed": "2026-10-27",
+   "insiders": [
+    {
+     "name": "Haggart Dylan G.",
+     "roles": [
+      "이사"
+     ],
+     "value": 12178122
+    }
+   ]
+  },
+  {
+   "symbol": "SRRK",
+   "issuer": "Scholar Rock Holding Corp",
+   "issuer_cik": "1727196",
+   "score": 7,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 11999922,
+   "market_cap": 5174656632,
+   "avg_price": 41.4548,
+   "price_at_run": 42.49,
+   "drawdown_52w": 0.3287758133161319,
+   "holding_increase": 0.0423,
+   "cluster_size": 1,
+   "tx_date": "2026-10-23",
+   "filed": "2026-10-27",
+   "insiders": [
+    {
+     "name": "AKKARAJU SRINIVAS",
+     "roles": [
+      "이사"
+     ],
+     "value": 11999922
+    }
+   ]
+  }
+ ]
+}
