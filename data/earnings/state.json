@@ -49,6 +49,16 @@
    "last_year_eps": "$0.10",
    "quarter": "Sep/2026",
    "src": "⭐🕵️"
+  },
+  "RAPP": {
+   "date": "2026-11-05",
+   "time": "time-not-supplied",
+   "name": "Rapport Therapeutics, Inc.",
+   "eps_forecast": "($1.21)",
+   "estimates": "5",
+   "last_year_eps": "($0.71)",
+   "quarter": "Sep/2026",
+   "src": "🕵️"
   }
  },
  "sent": {
@@ -70,6 +80,10 @@
   },
   "BORR": {
    "for": "2026-11-04",
+   "d7": true
+  },
+  "RAPP": {
+   "for": "2026-11-05",
    "d7": true
   }
  }
