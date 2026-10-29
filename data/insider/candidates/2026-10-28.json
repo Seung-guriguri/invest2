@@ -1,0 +1,160 @@
+{
+ "filing_days": [
+  "2026-10-28"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "TTMI",
+   "issuer": "TTM TECHNOLOGIES INC",
+   "issuer_cik": "1116942",
+   "score": 13,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1342810,
+   "market_cap": 9567043461,
+   "avg_price": 89.5325,
+   "price_at_run": 90.79,
+   "drawdown_52w": 0.599997973003948,
+   "holding_increase": 0.3871,
+   "cluster_size": 2,
+   "tx_date": "2026-10-28",
+   "filed": "2026-10-28",
+   "insiders": [
+    {
+     "name": "Ali Wajid",
+     "roles": [
+      "이사"
+     ],
+     "value": 902460
+    },
+    {
+     "name": "Roks Edwin",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 440350
+    }
+   ]
+  },
+  {
+   "symbol": "ACN",
+   "issuer": "Accenture plc",
+   "issuer_cik": "1467373",
+   "score": 11,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 3200889,
+   "market_cap": 155049729206,
+   "avg_price": 246.2257,
+   "price_at_run": 243.4,
+   "drawdown_52w": 0.15412531732065893,
+   "holding_increase": 0.3323,
+   "cluster_size": 2,
+   "tx_date": "2026-10-26",
+   "filed": "2026-10-28",
+   "insiders": [
+    {
+     "name": "Price Paula A",
+     "roles": [
+      "이사"
+     ],
+     "value": 199848
+    },
+    {
+     "name": "Sweet Julie Spellman",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 3001041
+    }
+   ]
+  },
+  {
+   "symbol": "HXL",
+   "issuer": "HEXCEL CORP /DE/",
+   "issuer_cik": "717605",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 242010,
+   "market_cap": 5905506623,
+   "avg_price": 80.67,
+   "price_at_run": 78.01,
+   "drawdown_52w": 0.2780561880952357,
+   "holding_increase": 11.811,
+   "cluster_size": 1,
+   "tx_date": "2026-10-26",
+   "filed": "2026-10-28",
+   "insiders": [
+    {
+     "name": "KEATING NEAL J.",
+     "roles": [
+      "이사"
+     ],
+     "value": 242010
+    }
+   ]
+  },
+  {
+   "symbol": "HBAN",
+   "issuer": "HUNTINGTON BANCSHARES INC /MD/",
+   "issuer_cik": "49196",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 2
+   },
+   "sent": false,
+   "total_value": 253720,
+   "market_cap": 31641579841,
+   "avg_price": 18.1229,
+   "price_at_run": 15.7,
+   "drawdown_52w": 0.06871233322320314,
+   "holding_increase": 0.5957,
+   "cluster_size": 1,
+   "tx_date": "2026-10-26",
+   "filed": "2026-10-28",
+   "insiders": [
+    {
+     "name": "ROLLINS JAMES D III",
+     "roles": [
+      "이사"
+     ],
+     "value": 253720
+    }
+   ]
+  }
+ ]
+}
