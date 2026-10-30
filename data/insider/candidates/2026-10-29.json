@@ -1,0 +1,180 @@
+{
+ "filing_days": [
+  "2026-10-29"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "XYL",
+   "issuer": "Xylem Inc.",
+   "issuer_cik": "1524472",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 985600,
+   "market_cap": 20814407570,
+   "avg_price": 89.6,
+   "price_at_run": 90.76,
+   "drawdown_52w": 0.419200119799344,
+   "holding_increase": 8.8212,
+   "cluster_size": 1,
+   "tx_date": "2026-10-29",
+   "filed": "2026-10-29",
+   "insiders": [
+    {
+     "name": "KOCH D CHRISTIAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 985600
+    }
+   ]
+  },
+  {
+   "symbol": "TFC",
+   "issuer": "TRUIST FINANCIAL CORP",
+   "issuer_cik": "92230",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1209050,
+   "market_cap": 59109448480,
+   "avg_price": 48.362,
+   "price_at_run": 49.32,
+   "drawdown_52w": 0.13946620385293917,
+   "holding_increase": 1.1905,
+   "cluster_size": 1,
+   "tx_date": "2026-10-28",
+   "filed": "2026-10-29",
+   "insiders": [
+    {
+     "name": "Lyons Michael P.",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1209050
+    }
+   ]
+  },
+  {
+   "symbol": "DINO",
+   "issuer": "HF Sinclair Corp",
+   "issuer_cik": "1915657",
+   "score": 5,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 1108000,
+   "market_cap": 19174719540,
+   "avg_price": 110.8,
+   "price_at_run": 111.89,
+   "drawdown_52w": 0.14354174706713252,
+   "holding_increase": 0.0506,
+   "cluster_size": 1,
+   "tx_date": "2026-10-29",
+   "filed": "2026-10-29",
+   "insiders": [
+    {
+     "name": "MYERS FRANKLIN",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1108000
+    }
+   ]
+  },
+  {
+   "symbol": "PNFP",
+   "issuer": "Pinnacle Financial Partners, Inc.",
+   "issuer_cik": "2082866",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 991600,
+   "market_cap": 15369666614,
+   "avg_price": 99.16,
+   "price_at_run": 101.71,
+   "drawdown_52w": 0.10124174427332111,
+   "holding_increase": 0.0366,
+   "cluster_size": 1,
+   "tx_date": "2026-10-28",
+   "filed": "2026-10-29",
+   "insiders": [
+    {
+     "name": "INGRAM DAVID B",
+     "roles": [
+      "이사"
+     ],
+     "value": 991600
+    }
+   ]
+  },
+  {
+   "symbol": "HBAN",
+   "issuer": "HUNTINGTON BANCSHARES INC /MD/",
+   "issuer_cik": "49196",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 199834,
+   "market_cap": 32185734398,
+   "avg_price": 15.735,
+   "price_at_run": 15.97,
+   "drawdown_52w": 0.19141825589523664,
+   "holding_increase": 0.0134,
+   "cluster_size": 2,
+   "tx_date": "2026-10-27",
+   "filed": "2026-10-29",
+   "insiders": [
+    {
+     "name": "TORGOW GARY",
+     "roles": [
+      "이사"
+     ],
+     "value": 199834
+    }
+   ]
+  }
+ ]
+}
