@@ -1,0 +1,42 @@
+{
+ "filing_days": [
+  "2026-10-30"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "RAPP",
+   "issuer": "Rapport Therapeutics, Inc.",
+   "issuer_cik": "2012593",
+   "score": 15,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 20359080,
+   "market_cap": 1201856064,
+   "avg_price": 21.0,
+   "price_at_run": 25.05,
+   "drawdown_52w": 0.6032495771977824,
+   "holding_increase": 0.5091,
+   "cluster_size": 7,
+   "tx_date": "2026-10-28",
+   "filed": "2026-10-30",
+   "insiders": [
+    {
+     "name": "HEALY JAMES",
+     "roles": [
+      "이사"
+     ],
+     "value": 20359080
+    }
+   ]
+  }
+ ]
+}
