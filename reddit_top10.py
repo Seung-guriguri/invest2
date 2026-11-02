@@ -606,6 +606,10 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="텔레그램 전송·스냅샷 저장 없이 출력만")
     args = parser.parse_args()
 
+    if args.skip_if_done and not 12 <= datetime.now(KST).hour < 22:
+        # GitHub 예약 실행이 몇 시간씩 밀려 자정을 넘기면 다음 날 분이 새벽에 나가버림
+        print("예약 시간대(KST 12~22시)가 아님 — 건너뜀")
+        return
     mode = args.mode
     if mode == "auto":
         mode = "weekly" if datetime.now(KST).weekday() == 0 else "daily"
