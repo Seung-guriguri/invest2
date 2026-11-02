@@ -85,7 +85,9 @@
   "RIG": {
    "for": "2026-11-02",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-02",
+   "materials_at": "2026-11-03T06:47+09:00"
   },
   "PAM": {
    "for": "2026-11-02",
@@ -118,5 +120,25 @@
    "d7": true
   }
  },
- "weekly_sent": "2026-11-02"
+ "weekly_sent": "2026-11-02",
+ "last_materials": {
+  "RIG": {
+   "accession": "0001451505-26-000083",
+   "filed": "2026-11-02",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/1451505/000145150526000083/rig-ex99d1.htm"
+    ],
+    [
+     "EX-99.2",
+     "EX-99.2",
+     "https://www.sec.gov/Archives/edgar/data/1451505/000145150526000083/rig-ex99d2.htm"
+    ]
+   ],
+   "webcast": "https://www.deepwater.com",
+   "index": "https://www.sec.gov/Archives/edgar/data/1451505/000145150526000083/0001451505-26-000083-index.htm"
+  }
+ }
 }
