@@ -1,0 +1,121 @@
+{
+ "date": "2026-11-02",
+ "days": [
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29",
+  "2026-10-30",
+  "2026-10-31"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet (Google)",
+    "mentions": 1000,
+    "upvotes": 11968,
+    "days": 5
+   },
+   {
+    "ticker": "RDDT",
+    "name": "Reddit",
+    "mentions": 681,
+    "upvotes": 32022,
+    "days": 5
+   },
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 603,
+    "upvotes": 1995,
+    "days": 5
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet (Google)",
+    "mentions": 556,
+    "upvotes": 2601,
+    "days": 5
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 410,
+    "upvotes": 1262,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 407,
+    "upvotes": 921,
+    "days": 5
+   },
+   {
+    "ticker": "INTC",
+    "name": "Intel",
+    "mentions": 337,
+    "upvotes": 5402,
+    "days": 5
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft",
+    "mentions": 334,
+    "upvotes": 2112,
+    "days": 5
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "mentions": 261,
+    "upvotes": 1049,
+    "days": 5
+   },
+   {
+    "ticker": "AMZN",
+    "name": "Amazon",
+    "mentions": 254,
+    "upvotes": 1381,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 84,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 41,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "SPYI",
+    "name": "NEOS S&P 500 High Income ETF",
+    "mentions": 31,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "GPIQ",
+    "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
+    "mentions": 25,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "JEPQ",
+    "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+    "mentions": 25,
+    "upvotes": null,
+    "days": 5
+   }
+  ]
+ }
+}
