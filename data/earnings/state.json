@@ -69,6 +69,16 @@
    "last_year_eps": "($0.42)",
    "quarter": "Sep/2026",
    "src": "⭐🏦"
+  },
+  "TDW": {
+   "date": "2026-11-09",
+   "time": "time-not-supplied",
+   "name": "Tidewater Inc.",
+   "eps_forecast": "$0.64",
+   "estimates": "1",
+   "last_year_eps": "$0.53",
+   "quarter": "Sep/2026",
+   "src": "⭐"
   }
  },
  "sent": {
@@ -84,7 +94,8 @@
   },
   "MOS": {
    "for": "2026-11-03",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "HCC": {
    "for": "2026-11-04",
@@ -100,6 +111,10 @@
   },
   "AMR": {
    "for": "2026-11-06",
+   "d7": true
+  },
+  "TDW": {
+   "for": "2026-11-09",
    "d7": true
   }
  },
