@@ -79,6 +79,26 @@
    "last_year_eps": "$0.53",
    "quarter": "Sep/2026",
    "src": "⭐"
+  },
+  "VG": {
+   "date": "2026-11-10",
+   "time": "time-pre-market",
+   "name": "Venture Global, Inc.",
+   "eps_forecast": "$0.50",
+   "estimates": "7",
+   "last_year_eps": "$0.16",
+   "quarter": "Sep/2026",
+   "src": "⭐"
+  },
+  "SRRK": {
+   "date": "2026-11-10",
+   "time": "time-pre-market",
+   "name": "Scholar Rock Holding Corporation",
+   "eps_forecast": "($0.87)",
+   "estimates": "8",
+   "last_year_eps": "($0.90)",
+   "quarter": "Sep/2026",
+   "src": "🕵️"
   }
  },
  "sent": {
@@ -87,7 +107,8 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-02",
-   "materials_at": "2026-11-03T06:47+09:00"
+   "materials_at": "2026-11-03T06:47+09:00",
+   "reaction": true
   },
   "PAM": {
    "for": "2026-11-02",
@@ -101,11 +122,13 @@
   },
   "HCC": {
    "for": "2026-11-04",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "BORR": {
    "for": "2026-11-04",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "RAPP": {
    "for": "2026-11-05",
@@ -117,6 +140,14 @@
   },
   "TDW": {
    "for": "2026-11-09",
+   "d7": true
+  },
+  "VG": {
+   "for": "2026-11-10",
+   "d7": true
+  },
+  "SRRK": {
+   "for": "2026-11-10",
    "d7": true
   }
  },
