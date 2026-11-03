@@ -118,7 +118,9 @@
   "MOS": {
    "for": "2026-11-03",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-03",
+   "materials_at": "2026-11-04T07:00+09:00"
   },
   "HCC": {
    "for": "2026-11-04",
@@ -170,6 +172,24 @@
    ],
    "webcast": "https://www.deepwater.com",
    "index": "https://www.sec.gov/Archives/edgar/data/1451505/000145150526000083/0001451505-26-000083-index.htm"
+  },
+  "MOS": {
+   "accession": "0001285785-26-000139",
+   "filed": "2026-11-03",
+   "docs": [
+    [
+     "EX-99.1",
+     "PRESS RELEASE Q3 2026 - EXHIBIT 99.1",
+     "https://www.sec.gov/Archives/edgar/data/1285785/000128578526000139/pressreleaseq32026-ex991.htm"
+    ],
+    [
+     "EX-99.2",
+     "PERFORMANCE DATA Q3 2026 - EXHIBIT 99.2",
+     "https://www.sec.gov/Archives/edgar/data/1285785/000128578526000139/performancedataq32026-ex992.htm"
+    ]
+   ],
+   "webcast": "https://www.mosaicco.com/investors",
+   "index": "https://www.sec.gov/Archives/edgar/data/1285785/000128578526000139/0001285785-26-000139-index.htm"
   }
  }
 }
