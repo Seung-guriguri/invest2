@@ -1,0 +1,181 @@
+{
+ "filing_days": [
+  "2026-11-02"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "OCFC",
+   "issuer": "OCEANFIRST FINANCIAL CORP",
+   "issuer_cik": "1004702",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 178277,
+   "market_cap": 1804366239,
+   "avg_price": 17.8277,
+   "price_at_run": 18.67,
+   "drawdown_52w": 0.13499759960968305,
+   "holding_increase": 0.2931,
+   "cluster_size": 2,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-02",
+   "insiders": [
+    {
+     "name": "Katsoulis Nicos",
+     "roles": [
+      "이사"
+     ],
+     "value": 178277
+    }
+   ]
+  },
+  {
+   "symbol": "LSTR",
+   "issuer": "LANDSTAR SYSTEM INC",
+   "issuer_cik": "853816",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 714619,
+   "market_cap": 4973080361,
+   "avg_price": 142.9238,
+   "price_at_run": 147.53,
+   "drawdown_52w": 0.3744034150405865,
+   "holding_increase": 0.2164,
+   "cluster_size": 1,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-02",
+   "insiders": [
+    {
+     "name": "Lonegro Frank A",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 714619
+    }
+   ]
+  },
+  {
+   "symbol": "JBLU",
+   "issuer": "JETBLUE AIRWAYS CORP",
+   "issuer_cik": "1158463",
+   "score": 8,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 300000,
+   "market_cap": 1196205377,
+   "avg_price": 3.0,
+   "price_at_run": 3.17,
+   "drawdown_52w": 0.5468277867278786,
+   "holding_increase": 0.7548,
+   "cluster_size": 1,
+   "tx_date": "2026-10-29",
+   "filed": "2026-11-02",
+   "insiders": [
+    {
+     "name": "BONEPARTH PETER",
+     "roles": [
+      "이사"
+     ],
+     "value": 300000
+    }
+   ]
+  },
+  {
+   "symbol": "ENPH",
+   "issuer": "Enphase Energy, Inc.",
+   "issuer_cik": "1463101",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 267514,
+   "market_cap": 3695537757,
+   "avg_price": 26.7514,
+   "price_at_run": 27.93,
+   "drawdown_52w": 0.6372199515190969,
+   "holding_increase": 0.0057,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-02",
+   "insiders": [
+    {
+     "name": "Kothandaraman Badrinarayanan",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 267514
+    }
+   ]
+  },
+  {
+   "symbol": "FCPT",
+   "issuer": "Four Corners Property Trust, Inc.",
+   "issuer_cik": "1650132",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 226072,
+   "market_cap": 2546348619,
+   "avg_price": 22.6072,
+   "price_at_run": 23.2,
+   "drawdown_52w": 0.15833211145619186,
+   "holding_increase": 0.0128,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-02",
+   "insiders": [
+    {
+     "name": "Lenehan William H",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 226072
+    }
+   ]
+  }
+ ]
+}
