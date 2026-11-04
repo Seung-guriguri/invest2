@@ -1,0 +1,330 @@
+{
+ "filing_days": [
+  "2026-11-03"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "BA",
+   "issuer": "BOEING CO",
+   "issuer_cik": "12927",
+   "score": 13,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1508848,
+   "market_cap": 137339499101,
+   "avg_price": 172.0493,
+   "price_at_run": 173.31,
+   "drawdown_52w": 0.3235725946404244,
+   "holding_increase": 1.3138,
+   "cluster_size": 2,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "MOLLENKOPF STEVEN M",
+     "roles": [
+      "이사"
+     ],
+     "value": 510427
+    },
+    {
+     "name": "Buckley Mortimer J",
+     "roles": [
+      "이사"
+     ],
+     "value": 998421
+    }
+   ]
+  },
+  {
+   "symbol": "LKQ",
+   "issuer": "LKQ CORP",
+   "issuer_cik": "1065696",
+   "score": 12,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 591530,
+   "market_cap": 4861186963,
+   "avg_price": 18.609,
+   "price_at_run": 19.26,
+   "drawdown_52w": 0.4988152743052653,
+   "holding_increase": 0.9093,
+   "cluster_size": 2,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "CLARKE ANDREW C",
+     "roles": [
+      "이사"
+     ],
+     "value": 400030
+    },
+    {
+     "name": "Powell Michael Scott",
+     "roles": [
+      "이사"
+     ],
+     "value": 191500
+    }
+   ]
+  },
+  {
+   "symbol": "TRTX",
+   "issuer": "TPG RE Finance Trust, Inc.",
+   "issuer_cik": "1630472",
+   "score": 12,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 253239,
+   "market_cap": 516381557,
+   "avg_price": 6.51,
+   "price_at_run": 6.81,
+   "drawdown_52w": 0.30374334391452795,
+   "holding_increase": 0.3881,
+   "cluster_size": 2,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "SILVERSTEIN WENDY",
+     "roles": [
+      "이사"
+     ],
+     "value": 253239
+    }
+   ]
+  },
+  {
+   "symbol": "MGM",
+   "issuer": "MGM Resorts International",
+   "issuer_cik": "789570",
+   "score": 10,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 51740827,
+   "market_cap": 7848387168,
+   "avg_price": 29.6408,
+   "price_at_run": 31.02,
+   "drawdown_52w": 0.42545361298793183,
+   "holding_increase": 0.3264,
+   "cluster_size": 1,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "Meister Keith A.",
+     "roles": [
+      "이사"
+     ],
+     "value": 51740827
+    }
+   ]
+  },
+  {
+   "symbol": "LRN",
+   "issuer": "Stride, Inc.",
+   "issuer_cik": "1157408",
+   "score": 10,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 17573121,
+   "market_cap": 3155766418,
+   "avg_price": 77.0558,
+   "price_at_run": 75.05,
+   "drawdown_52w": 0.25672006620067955,
+   "holding_increase": 0.12,
+   "cluster_size": 1,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "Haggart Dylan G.",
+     "roles": [
+      "이사"
+     ],
+     "value": 17573121
+    }
+   ]
+  },
+  {
+   "symbol": "STRZ",
+   "issuer": "STARZ ENTERTAINMENT CORP /CN/",
+   "issuer_cik": "929351",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 110650,
+   "market_cap": 403160125,
+   "avg_price": 22.13,
+   "price_at_run": 23.36,
+   "drawdown_52w": 0.32074896389643326,
+   "holding_increase": 0.009,
+   "cluster_size": 2,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "Hirsch Jeffrey",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 110650
+    }
+   ]
+  },
+  {
+   "symbol": "SITE",
+   "issuer": "SiteOne Landscape Supply, Inc.",
+   "issuer_cik": "1650729",
+   "score": 7,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1003684,
+   "market_cap": 4818268571,
+   "avg_price": 110.295,
+   "price_at_run": 111.71,
+   "drawdown_52w": 0.3456632558287742,
+   "holding_increase": 0.0151,
+   "cluster_size": 1,
+   "tx_date": "2026-10-30",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "BLACK DOUG",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1003684
+    }
+   ]
+  },
+  {
+   "symbol": "CAT",
+   "issuer": "CATERPILLAR INC",
+   "issuer_cik": "18230",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 620390,
+   "market_cap": 286809550243,
+   "avg_price": 620.39,
+   "price_at_run": 623.94,
+   "drawdown_52w": 0.42206507687703043,
+   "holding_increase": 0.2373,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "Fish James C Jr",
+     "roles": [
+      "이사"
+     ],
+     "value": 620390
+    }
+   ]
+  },
+  {
+   "symbol": "NPKI",
+   "issuer": "NPK International Inc.",
+   "issuer_cik": "71829",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 138600,
+   "market_cap": 764539632,
+   "avg_price": 9.24,
+   "price_at_run": 9.11,
+   "drawdown_52w": 0.43999999999999995,
+   "holding_increase": 0.0591,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-03",
+   "insiders": [
+    {
+     "name": "MINGE JOHN C",
+     "roles": [
+      "이사"
+     ],
+     "value": 138600
+    }
+   ]
+  }
+ ]
+}

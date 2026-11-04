@@ -99,6 +99,16 @@
    "last_year_eps": "($0.90)",
    "quarter": "Sep/2026",
    "src": "🕵️"
+  },
+  "AYA": {
+   "date": "2026-11-11",
+   "time": "time-pre-market",
+   "name": "Aya Gold & Silver Inc.",
+   "eps_forecast": "$0.33",
+   "estimates": "1",
+   "last_year_eps": "N/A",
+   "quarter": "Sep/2026",
+   "src": "⭐"
   }
  },
  "sent": {
@@ -120,7 +130,8 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-03",
-   "materials_at": "2026-11-04T07:00+09:00"
+   "materials_at": "2026-11-04T07:00+09:00",
+   "reaction": true
   },
   "HCC": {
    "for": "2026-11-04",
@@ -134,7 +145,8 @@
   },
   "RAPP": {
    "for": "2026-11-05",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "AMR": {
    "for": "2026-11-06",
@@ -150,6 +162,10 @@
   },
   "SRRK": {
    "for": "2026-11-10",
+   "d7": true
+  },
+  "AYA": {
+   "for": "2026-11-11",
    "d7": true
   }
  },
