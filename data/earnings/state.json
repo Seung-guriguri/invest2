@@ -146,7 +146,9 @@
   "RAPP": {
    "for": "2026-11-05",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-05",
+   "materials_at": "2026-11-04T21:27+09:00"
   },
   "AMR": {
    "for": "2026-11-06",
@@ -206,6 +208,19 @@
    ],
    "webcast": "https://www.mosaicco.com/investors",
    "index": "https://www.sec.gov/Archives/edgar/data/1285785/000128578526000139/0001285785-26-000139-index.htm"
+  },
+  "RAPP": {
+   "accession": "0001193125-26-446202",
+   "filed": "2026-11-04",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/2012593/000119312526446202/rapp-ex99_1.htm"
+    ]
+   ],
+   "webcast": "",
+   "index": "https://www.sec.gov/Archives/edgar/data/2012593/000119312526446202/0001193125-26-446202-index.htm"
   }
  }
 }
