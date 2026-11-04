@@ -136,7 +136,9 @@
   "HCC": {
    "for": "2026-11-04",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-04",
+   "materials_at": "2026-11-05T07:00+09:00"
   },
   "BORR": {
    "for": "2026-11-04",
@@ -221,6 +223,19 @@
    ],
    "webcast": "",
    "index": "https://www.sec.gov/Archives/edgar/data/2012593/000119312526446202/0001193125-26-446202-index.htm"
+  },
+  "HCC": {
+   "accession": "0001193125-26-447189",
+   "filed": "2026-11-04",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-ex99_1.htm"
+    ]
+   ],
+   "webcast": "http://investors.warriormetcoal.com",
+   "index": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/0001193125-26-447189-index.htm"
   }
  }
 }
