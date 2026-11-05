@@ -1,0 +1,345 @@
+{
+ "filing_days": [
+  "2026-11-04"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "UPBD",
+   "issuer": "UPBOUND GROUP, INC.",
+   "issuer_cik": "933036",
+   "score": 16,
+   "breakdown": {
+    "amount": 3,
+    "role": 3,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1044006,
+   "market_cap": 1407419453,
+   "avg_price": 22.6738,
+   "price_at_run": 24.14,
+   "drawdown_52w": 0.05447070401291809,
+   "holding_increase": "new",
+   "cluster_size": 6,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "BROWN JEFFREY J",
+     "roles": [
+      "이사"
+     ],
+     "value": 400012
+    },
+    {
+     "name": "Khouri Halim",
+     "roles": [
+      "CFO"
+     ],
+     "value": 250580
+    },
+    {
+     "name": "MARINO GLENN P",
+     "roles": [
+      "이사"
+     ],
+     "value": 393414
+    }
+   ]
+  },
+  {
+   "symbol": "LRN",
+   "issuer": "Stride, Inc.",
+   "issuer_cik": "1157408",
+   "score": 14,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1669737,
+   "market_cap": 3331951112,
+   "avg_price": 75.8971,
+   "price_at_run": 79.24,
+   "drawdown_52w": 0.26789689772115277,
+   "holding_increase": 14.3229,
+   "cluster_size": 2,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Shepherd Brian A.",
+     "roles": [
+      "이사"
+     ],
+     "value": 1669737
+    }
+   ]
+  },
+  {
+   "symbol": "AN",
+   "issuer": "AUTONATION, INC.",
+   "issuer_cik": "350698",
+   "score": 13,
+   "breakdown": {
+    "amount": 3,
+    "role": 3,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1331014,
+   "market_cap": 5868022285,
+   "avg_price": 183.6429,
+   "price_at_run": 183.47,
+   "drawdown_52w": 0.2212249885281936,
+   "holding_increase": 0.0894,
+   "cluster_size": 3,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Szlosek Thomas A",
+     "roles": [
+      "CFO"
+     ],
+     "value": 299990
+    },
+    {
+     "name": "Manley Michael Mark",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1031024
+    }
+   ]
+  },
+  {
+   "symbol": "JBLU",
+   "issuer": "JETBLUE AIRWAYS CORP",
+   "issuer_cik": "1158463",
+   "score": 13,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 323844,
+   "market_cap": 1343372600,
+   "avg_price": 3.2384,
+   "price_at_run": 3.56,
+   "drawdown_52w": 0.5108104145040324,
+   "holding_increase": 0.7218,
+   "cluster_size": 2,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Mittal Nik",
+     "roles": [
+      "이사"
+     ],
+     "value": 323844
+    }
+   ]
+  },
+  {
+   "symbol": "HGV",
+   "issuer": "Hilton Grand Vacations Inc.",
+   "issuer_cik": "1674168",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 603099,
+   "market_cap": 3318002621,
+   "avg_price": 41.0285,
+   "price_at_run": 43.76,
+   "drawdown_52w": 0.2594132278960113,
+   "holding_increase": 0.0239,
+   "cluster_size": 2,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Wang Mark D",
+     "roles": [
+      "이사"
+     ],
+     "value": 499224
+    },
+    {
+     "name": "Potter Leonard",
+     "roles": [
+      "이사"
+     ],
+     "value": 103875
+    }
+   ]
+  },
+  {
+   "symbol": "PAM",
+   "issuer": "Pampa Energy Inc.",
+   "issuer_cik": "1469395",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 3,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 207321,
+   "market_cap": 88156861923,
+   "avg_price": 66.11,
+   "price_at_run": 64.84,
+   "drawdown_52w": 0.3004232804232805,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Zuberbuhler Adolfo Fernando",
+     "roles": [
+      "CFO"
+     ],
+     "value": 207321
+    }
+   ]
+  },
+  {
+   "symbol": "INTC",
+   "issuer": "INTEL CORP",
+   "issuer_cik": "50863",
+   "score": 8,
+   "breakdown": {
+    "amount": 4,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 9709680,
+   "market_cap": 309705050000,
+   "avg_price": 64.7312,
+   "price_at_run": 58.27,
+   "drawdown_52w": 0.5452673184086267,
+   "holding_increase": 0.1126,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "TAN LIP BU",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 9709680
+    }
+   ]
+  },
+  {
+   "symbol": "CACC",
+   "issuer": "CREDIT ACCEPTANCE CORP",
+   "issuer_cik": "885550",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1455600,
+   "market_cap": 5055351046,
+   "avg_price": 485.2,
+   "price_at_run": 498.68,
+   "drawdown_52w": 0.27458659416593467,
+   "holding_increase": 0.0161,
+   "cluster_size": 1,
+   "tx_date": "2026-11-02",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "TRYFOROS THOMAS N",
+     "roles": [
+      "이사"
+     ],
+     "value": 1455600
+    }
+   ]
+  },
+  {
+   "symbol": "LSCC",
+   "issuer": "LATTICE SEMICONDUCTOR CORP",
+   "issuer_cik": "855658",
+   "score": 6,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 1003689,
+   "market_cap": 15253705360,
+   "avg_price": 102.5219,
+   "price_at_run": 107.25,
+   "drawdown_52w": 0.347035878201707,
+   "holding_increase": 0.0301,
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-04",
+   "insiders": [
+    {
+     "name": "Tamer Ford",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1003689
+    }
+   ]
+  }
+ ]
+}
