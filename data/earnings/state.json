@@ -167,7 +167,9 @@
   "AMR": {
    "for": "2026-11-06",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-06",
+   "materials_at": "2026-11-06T22:00+09:00"
   },
   "TDW": {
    "for": "2026-11-09",
@@ -253,6 +255,24 @@
    ],
    "webcast": "http://investors.warriormetcoal.com",
    "index": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/0001193125-26-447189-index.htm"
+  },
+  "AMR": {
+   "accession": "0001704715-26-000041",
+   "filed": "2026-11-06",
+   "docs": [
+    [
+     "EX-99.1",
+     "PRESS RELEASE DATED NOVEMBER 6, 2026",
+     "https://www.sec.gov/Archives/edgar/data/1704715/000170471526000041/pressrelease9302026.htm"
+    ],
+    [
+     "EX-99.2",
+     "INVESTOR PRESENTATION DATED NOVEMBER 6, 2026",
+     "https://www.sec.gov/Archives/edgar/data/1704715/000170471526000041/amrinvestorpresentation1.htm"
+    ]
+   ],
+   "webcast": "https://alphametresources.com/investors",
+   "index": "https://www.sec.gov/Archives/edgar/data/1704715/000170471526000041/0001704715-26-000041-index.htm"
   }
  }
 }
