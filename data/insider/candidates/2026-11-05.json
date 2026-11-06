@@ -1,0 +1,426 @@
+{
+ "filing_days": [
+  "2026-11-05"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "BXMT",
+   "issuer": "BLACKSTONE MORTGAGE TRUST, INC.",
+   "issuer_cik": "1061630",
+   "score": 14,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1149642,
+   "market_cap": 1900561718,
+   "avg_price": 11.4965,
+   "price_at_run": 11.45,
+   "drawdown_52w": 0.4438092037507989,
+   "holding_increase": 0.1705,
+   "cluster_size": 2,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Johnson Timothy Steven",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1035351
+    },
+    {
+     "name": "NASSAU HENRY N",
+     "roles": [
+      "이사"
+     ],
+     "value": 114291
+    }
+   ]
+  },
+  {
+   "symbol": "FBRT",
+   "issuer": "Franklin BSP Realty Trust, Inc.",
+   "issuer_cik": "1562528",
+   "score": 13,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 998364,
+   "market_cap": 475225781,
+   "avg_price": 6.14,
+   "price_at_run": 6.28,
+   "drawdown_52w": 0.43253233149931714,
+   "holding_increase": 0.3411,
+   "cluster_size": 2,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Byrne Richard J",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 998364
+    }
+   ]
+  },
+  {
+   "symbol": "TTMI",
+   "issuer": "TTM TECHNOLOGIES INC",
+   "issuer_cik": "1116942",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 631541,
+   "market_cap": 6556464854,
+   "avg_price": 63.1541,
+   "price_at_run": 62.22,
+   "drawdown_52w": 0.7178479226048157,
+   "holding_increase": 0.2791,
+   "cluster_size": 2,
+   "tx_date": "2026-11-05",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Ali Wajid",
+     "roles": [
+      "이사"
+     ],
+     "value": 631541
+    }
+   ]
+  },
+  {
+   "symbol": "SPXC",
+   "issuer": "SPX Technologies, Inc.",
+   "issuer_cik": "88205",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 493020,
+   "market_cap": 6941133435,
+   "avg_price": 164.34,
+   "price_at_run": 138.54,
+   "drawdown_52w": 0.34546758482748385,
+   "holding_increase": 4.0431,
+   "cluster_size": 1,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Deck Brian A",
+     "roles": [
+      "이사"
+     ],
+     "value": 493020
+    }
+   ]
+  },
+  {
+   "symbol": "UPBD",
+   "issuer": "UPBOUND GROUP, INC.",
+   "issuer_cik": "933036",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 100083,
+   "market_cap": 1450563214,
+   "avg_price": 22.71,
+   "price_at_run": 24.88,
+   "drawdown_52w": 0.05296078258881787,
+   "holding_increase": 0.0173,
+   "cluster_size": 7,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Karam Fahmi",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 100083
+    }
+   ]
+  },
+  {
+   "symbol": "MTDR",
+   "issuer": "Matador Resources Co",
+   "issuer_cik": "1520006",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 3,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 105140,
+   "market_cap": 6171622752,
+   "avg_price": 52.57,
+   "price_at_run": 49.87,
+   "drawdown_52w": 0.21349487013363544,
+   "holding_increase": 0.0154,
+   "cluster_size": 2,
+   "tx_date": "2026-11-05",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Calvert Christopher P",
+     "roles": [
+      "CFO"
+     ],
+     "value": 105140
+    }
+   ]
+  },
+  {
+   "symbol": "BKR",
+   "issuer": "Baker Hughes Co",
+   "issuer_cik": "1701605",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 531000,
+   "market_cap": 45880225453,
+   "avg_price": 53.1,
+   "price_at_run": 46.2,
+   "drawdown_52w": 0.24584579976985044,
+   "holding_increase": 0.1486,
+   "cluster_size": 1,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "RICE JOHN G",
+     "roles": [
+      "이사"
+     ],
+     "value": 531000
+    }
+   ]
+  },
+  {
+   "symbol": "SYY",
+   "issuer": "SYSCO CORP",
+   "issuer_cik": "96021",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 191550,
+   "market_cap": 37038451681,
+   "avg_price": 76.62,
+   "price_at_run": 75.24,
+   "drawdown_52w": 0.16581381303356435,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Ondrof Thomas Gerard",
+     "roles": [
+      "이사"
+     ],
+     "value": 191550
+    }
+   ]
+  },
+  {
+   "symbol": "MTUS",
+   "issuer": "Metallus Inc.",
+   "issuer_cik": "1598428",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 166100,
+   "market_cap": 650240169,
+   "avg_price": 16.61,
+   "price_at_run": 15.76,
+   "drawdown_52w": 0.2643932658936077,
+   "holding_increase": 0.0659,
+   "cluster_size": 1,
+   "tx_date": "2026-11-05",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "RICE RONALD A",
+     "roles": [
+      "이사"
+     ],
+     "value": 166100
+    }
+   ]
+  },
+  {
+   "symbol": "CLX",
+   "issuer": "CLOROX CO /DE/",
+   "issuer_cik": "21076",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 400251,
+   "market_cap": 12078395381,
+   "avg_price": 100.0627,
+   "price_at_run": 99.7,
+   "drawdown_52w": 0.22371834958846248,
+   "holding_increase": 0.2222,
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Breber Pierre R",
+     "roles": [
+      "이사"
+     ],
+     "value": 400251
+    }
+   ]
+  },
+  {
+   "symbol": "CRH",
+   "issuer": "CRH PUBLIC LTD CO",
+   "issuer_cik": "849395",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 189260,
+   "market_cap": 63496275183,
+   "avg_price": 94.63,
+   "price_at_run": 95.45,
+   "drawdown_52w": 0.28065376051136826,
+   "holding_increase": 0.2351,
+   "cluster_size": 1,
+   "tx_date": "2026-11-03",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Talbot Siobhan",
+     "roles": [
+      "이사"
+     ],
+     "value": 189260
+    }
+   ]
+  },
+  {
+   "symbol": "RRBI",
+   "issuer": "RED RIVER BANCSHARES INC",
+   "issuer_cik": "1071236",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 112606,
+   "market_cap": 687907395,
+   "avg_price": 107.7565,
+   "price_at_run": 104.48,
+   "drawdown_52w": 0.017716842955024292,
+   "holding_increase": 0.0023,
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-05",
+   "insiders": [
+    {
+     "name": "Price Teddy Ray",
+     "roles": [
+      "이사"
+     ],
+     "value": 112606
+    }
+   ]
+  }
+ ]
+}
