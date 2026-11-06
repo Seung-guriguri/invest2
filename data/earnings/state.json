@@ -109,6 +109,16 @@
    "last_year_eps": "N/A",
    "quarter": "Sep/2026",
    "src": "⭐"
+  },
+  "INBX": {
+   "date": "2026-11-13",
+   "time": "time-not-supplied",
+   "name": "Inhibrx Biosciences, Inc.",
+   "eps_forecast": "($2.50)",
+   "estimates": "2",
+   "last_year_eps": "($2.28)",
+   "quarter": "Sep/2026",
+   "src": "🕵️"
   }
  },
  "sent": {
@@ -151,7 +161,8 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-05",
-   "materials_at": "2026-11-04T21:27+09:00"
+   "materials_at": "2026-11-04T21:27+09:00",
+   "reaction": true
   },
   "AMR": {
    "for": "2026-11-06",
@@ -172,6 +183,10 @@
   },
   "AYA": {
    "for": "2026-11-11",
+   "d7": true
+  },
+  "INBX": {
+   "for": "2026-11-13",
    "d7": true
   }
  },
