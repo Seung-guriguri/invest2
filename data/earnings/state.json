@@ -105,7 +105,7 @@
    "time": "time-pre-market",
    "name": "Aya Gold & Silver Inc.",
    "eps_forecast": "$0.33",
-   "estimates": "1",
+   "estimates": "N/A",
    "last_year_eps": "N/A",
    "quarter": "Sep/2026",
    "src": "⭐"
@@ -169,7 +169,8 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-06",
-   "materials_at": "2026-11-06T22:00+09:00"
+   "materials_at": "2026-11-06T22:00+09:00",
+   "reaction": true
   },
   "TDW": {
    "for": "2026-11-09",
