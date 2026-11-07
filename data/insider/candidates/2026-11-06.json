@@ -1,0 +1,214 @@
+{
+ "filing_days": [
+  "2026-11-06"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "LKQ",
+   "issuer": "LKQ CORP",
+   "issuer_cik": "1065696",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 201085,
+   "market_cap": 5060581444,
+   "avg_price": 20.5294,
+   "price_at_run": 20.05,
+   "drawdown_52w": 0.44709400998026694,
+   "holding_increase": 0.8906,
+   "cluster_size": 3,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "GOVE SUE",
+     "roles": [
+      "이사"
+     ],
+     "value": 201085
+    }
+   ]
+  },
+  {
+   "symbol": "TRNS",
+   "issuer": "TRANSCAT INC",
+   "issuer_cik": "99302",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 230366,
+   "market_cap": 954685917,
+   "avg_price": 101.26,
+   "price_at_run": 101.51,
+   "drawdown_52w": 0.08337106109289205,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-05",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "IRICK JAIME A",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 230366
+    }
+   ]
+  },
+  {
+   "symbol": "MDGL",
+   "issuer": "MADRIGAL PHARMACEUTICALS, INC.",
+   "issuer_cik": "1157601",
+   "score": 7,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 35023032,
+   "market_cap": 9283229462,
+   "avg_price": 381.4896,
+   "price_at_run": 399.63,
+   "drawdown_52w": 0.3796917448015601,
+   "holding_increase": 0.0471,
+   "cluster_size": 1,
+   "tx_date": "2026-11-04",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "BAKER BROS. ADVISORS LP",
+     "roles": [
+      "이사"
+     ],
+     "value": 35023032
+    }
+   ]
+  },
+  {
+   "symbol": "KMI",
+   "issuer": "KINDER MORGAN, INC.",
+   "issuer_cik": "1506307",
+   "score": 7,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 14994200,
+   "market_cap": 66742348261,
+   "avg_price": 29.9884,
+   "price_at_run": 29.96,
+   "drawdown_52w": 0.13851195584814113,
+   "holding_increase": 0.0019,
+   "cluster_size": 1,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "KINDER RICHARD D",
+     "roles": [
+      "이사"
+     ],
+     "value": 14994200
+    }
+   ]
+  },
+  {
+   "symbol": "YPF",
+   "issuer": "YPF SOCIEDAD ANONIMA",
+   "issuer_cik": "904851",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 356341,
+   "market_cap": 15205472577,
+   "avg_price": 51.42,
+   "price_at_run": 38.66,
+   "drawdown_52w": 0.10558360586620663,
+   "holding_increase": 0.278,
+   "cluster_size": 1,
+   "tx_date": "2026-07-26",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "Francos Guillermo Alberto",
+     "roles": [
+      "이사"
+     ],
+     "value": 356341
+    }
+   ]
+  },
+  {
+   "symbol": "KMT",
+   "issuer": "KENNAMETAL INC",
+   "issuer_cik": "55242",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 165368,
+   "market_cap": 1771841179,
+   "avg_price": 23.624,
+   "price_at_run": 23.0,
+   "drawdown_52w": 0.4607623999207978,
+   "holding_increase": 0.0256,
+   "cluster_size": 1,
+   "tx_date": "2026-11-05",
+   "filed": "2026-11-06",
+   "insiders": [
+    {
+     "name": "Chowbey Sanjay",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 165368
+    }
+   ]
+  }
+ ]
+}
