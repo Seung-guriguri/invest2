@@ -41,7 +41,7 @@
    "src": "⭐🏦"
   },
   "BORR": {
-   "date": "2026-11-04",
+   "date": "2026-11-11",
    "time": "time-not-supplied",
    "name": "Borr Drilling Limited",
    "eps_forecast": "($0.11)",
@@ -105,7 +105,7 @@
    "time": "time-pre-market",
    "name": "Aya Gold & Silver Inc.",
    "eps_forecast": "$0.33",
-   "estimates": "1",
+   "estimates": "3",
    "last_year_eps": "N/A",
    "quarter": "Sep/2026",
    "src": "⭐"
@@ -152,9 +152,8 @@
    "reaction": true
   },
   "BORR": {
-   "for": "2026-11-04",
-   "d7": true,
-   "d1": true
+   "for": "2026-11-11",
+   "d7": true
   },
   "RAPP": {
    "for": "2026-11-05",
@@ -179,11 +178,13 @@
   },
   "VG": {
    "for": "2026-11-10",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "SRRK": {
    "for": "2026-11-10",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "AYA": {
    "for": "2026-11-11",
