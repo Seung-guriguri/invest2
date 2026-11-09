@@ -1,0 +1,121 @@
+{
+ "date": "2026-11-09",
+ "days": [
+  "2026-11-03",
+  "2026-11-04",
+  "2026-11-05",
+  "2026-11-06",
+  "2026-11-07"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 1215,
+    "upvotes": 4225,
+    "days": 5
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 1038,
+    "upvotes": 3571,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 821,
+    "upvotes": 2751,
+    "days": 5
+   },
+   {
+    "ticker": "AMD",
+    "name": "AMD",
+    "mentions": 635,
+    "upvotes": 5897,
+    "days": 5
+   },
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "mentions": 604,
+    "upvotes": 2620,
+    "days": 5
+   },
+   {
+    "ticker": "SNDK",
+    "name": "Sandisk",
+    "mentions": 412,
+    "upvotes": 2426,
+    "days": 5
+   },
+   {
+    "ticker": "SOXL",
+    "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+    "mentions": 351,
+    "upvotes": 1527,
+    "days": 5
+   },
+   {
+    "ticker": "AAPL",
+    "name": "Apple",
+    "mentions": 239,
+    "upvotes": 547,
+    "days": 5
+   },
+   {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "mentions": 227,
+    "upvotes": 915,
+    "days": 5
+   },
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet (Google)",
+    "mentions": 226,
+    "upvotes": 899,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 92,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 59,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "VOO",
+    "name": "Vanguard S&P 500 ETF",
+    "mentions": 35,
+    "upvotes": null,
+    "days": 4
+   },
+   {
+    "ticker": "SPYI",
+    "name": "NEOS S&P 500 High Income ETF",
+    "mentions": 33,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "JEPQ",
+    "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+    "mentions": 31,
+    "upvotes": null,
+    "days": 5
+   }
+  ]
+ }
+}
