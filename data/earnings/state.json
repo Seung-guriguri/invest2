@@ -174,7 +174,9 @@
   "TDW": {
    "for": "2026-11-09",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-09",
+   "materials_at": "2026-11-10T07:01+09:00"
   },
   "VG": {
    "for": "2026-11-10",
@@ -276,6 +278,19 @@
    ],
    "webcast": "https://alphametresources.com/investors",
    "index": "https://www.sec.gov/Archives/edgar/data/1704715/000170471526000041/0001704715-26-000041-index.htm"
+  },
+  "TDW": {
+   "accession": "0001437749-26-035930",
+   "filed": "2026-11-09",
+   "docs": [
+    [
+     "EX-99.1",
+     "EXHIBIT 99.1",
+     "https://www.sec.gov/Archives/edgar/data/98222/000143774926035930/ex_999694.htm"
+    ]
+   ],
+   "webcast": "",
+   "index": "https://www.sec.gov/Archives/edgar/data/98222/000143774926035930/0001437749-26-035930-index.htm"
   }
  }
 }
