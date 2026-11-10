@@ -153,7 +153,8 @@
   },
   "BORR": {
    "for": "2026-11-11",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "RAPP": {
    "for": "2026-11-05",
@@ -176,12 +177,15 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-09",
-   "materials_at": "2026-11-10T07:01+09:00"
+   "materials_at": "2026-11-10T07:01+09:00",
+   "reaction": true
   },
   "VG": {
    "for": "2026-11-10",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-10",
+   "materials_at": "2026-11-10T20:54+09:00"
   },
   "SRRK": {
    "for": "2026-11-10",
@@ -190,7 +194,8 @@
   },
   "AYA": {
    "for": "2026-11-11",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "INBX": {
    "for": "2026-11-13",
@@ -291,6 +296,19 @@
    ],
    "webcast": "",
    "index": "https://www.sec.gov/Archives/edgar/data/98222/000143774926035930/0001437749-26-035930-index.htm"
+  },
+  "VG": {
+   "accession": "0002007855-26-000091",
+   "filed": "2026-11-10",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000091/vgincq32026earningsrelease.htm"
+    ]
+   ],
+   "webcast": "https://www.ventureglobal.com",
+   "index": "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000091/0002007855-26-000091-index.htm"
   }
  }
 }
