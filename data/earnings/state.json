@@ -190,7 +190,9 @@
   "SRRK": {
    "for": "2026-11-10",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-10",
+   "materials_at": "2026-11-10T21:55+09:00"
   },
   "AYA": {
    "for": "2026-11-11",
@@ -309,6 +311,24 @@
    ],
    "webcast": "https://www.ventureglobal.com",
    "index": "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000091/0002007855-26-000091-index.htm"
+  },
+  "SRRK": {
+   "accession": "0001193125-26-454423",
+   "filed": "2026-11-10",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/1727196/000119312526454423/srrk-ex99_1.htm"
+    ],
+    [
+     "EX-99.2",
+     "EX-99.2",
+     "https://www.sec.gov/Archives/edgar/data/1727196/000119312526454423/srrk-ex99_2.htm"
+    ]
+   ],
+   "webcast": "http://investors.scholarrock.com",
+   "index": "https://www.sec.gov/Archives/edgar/data/1727196/000119312526454423/0001193125-26-454423-index.htm"
   }
  }
 }
