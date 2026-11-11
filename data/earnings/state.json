@@ -185,14 +185,16 @@
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-10",
-   "materials_at": "2026-11-10T20:54+09:00"
+   "materials_at": "2026-11-10T20:54+09:00",
+   "reaction": true
   },
   "SRRK": {
    "for": "2026-11-10",
    "d7": true,
    "d1": true,
    "materials_for": "2026-11-10",
-   "materials_at": "2026-11-10T21:55+09:00"
+   "materials_at": "2026-11-10T21:55+09:00",
+   "reaction": true
   },
   "AYA": {
    "for": "2026-11-11",
