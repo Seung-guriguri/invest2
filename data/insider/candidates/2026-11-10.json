@@ -1,0 +1,349 @@
+{
+ "filing_days": [
+  "2026-11-10"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "FUN",
+   "issuer": "Six Flags Entertainment Corporation/NEW",
+   "issuer_cik": "1999001",
+   "score": 12,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 14929000,
+   "market_cap": 1039467781,
+   "avg_price": 10.2959,
+   "price_at_run": 10.16,
+   "drawdown_52w": 0.6082244368358224,
+   "holding_increase": 0.2959,
+   "cluster_size": 3,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "JAFFER REHAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 14929000
+    }
+   ]
+  },
+  {
+   "symbol": "WD",
+   "issuer": "Walker & Dunlop, Inc.",
+   "issuer_cik": "1497770",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 200526,
+   "market_cap": 1380324340,
+   "avg_price": 41.3455,
+   "price_at_run": 39.97,
+   "drawdown_52w": 0.4123720915102276,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Pinkus Gary S",
+     "roles": [
+      "이사"
+     ],
+     "value": 200526
+    }
+   ]
+  },
+  {
+   "symbol": "STVN",
+   "issuer": "Stevanato Group S.p.A.",
+   "issuer_cik": "1849853",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 326750,
+   "market_cap": 4097459512,
+   "avg_price": 13.07,
+   "price_at_run": 13.53,
+   "drawdown_52w": 0.5159259259259259,
+   "holding_increase": 0.668,
+   "cluster_size": 1,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "MOREL DONALD E JR",
+     "roles": [
+      "이사"
+     ],
+     "value": 326750
+    }
+   ]
+  },
+  {
+   "symbol": "PSEC",
+   "issuer": "PROSPECT CAPITAL CORP",
+   "issuer_cik": "1287032",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1727314,
+   "market_cap": 835483833,
+   "avg_price": 1.4127,
+   "price_at_run": 1.5,
+   "drawdown_52w": 0.5486581634670844,
+   "holding_increase": 0.0134,
+   "cluster_size": 1,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Barry John F",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1727314
+    }
+   ]
+  },
+  {
+   "symbol": "CRH",
+   "issuer": "CRH PUBLIC LTD CO",
+   "issuer_cik": "849395",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 569700,
+   "market_cap": 64434250542,
+   "avg_price": 94.95,
+   "price_at_run": 96.86,
+   "drawdown_52w": 0.27822122541006467,
+   "holding_increase": 0.0414,
+   "cluster_size": 2,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "FEARON RICHARD H",
+     "roles": [
+      "이사"
+     ],
+     "value": 569700
+    }
+   ]
+  },
+  {
+   "symbol": "NVT",
+   "issuer": "nVent Electric plc",
+   "issuer_cik": "1720635",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 339435,
+   "market_cap": 18176549789,
+   "avg_price": 113.145,
+   "price_at_run": 112.48,
+   "drawdown_52w": 0.3872129529136942,
+   "holding_increase": 0.1682,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Parker Herbert K",
+     "roles": [
+      "이사"
+     ],
+     "value": 339435
+    }
+   ]
+  },
+  {
+   "symbol": "SPXC",
+   "issuer": "SPX Technologies, Inc.",
+   "issuer_cik": "88205",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 140750,
+   "market_cap": 7521314792,
+   "avg_price": 140.75,
+   "price_at_run": 150.12,
+   "drawdown_52w": 0.439421702351639,
+   "holding_increase": 0.2672,
+   "cluster_size": 1,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Deck Brian A",
+     "roles": [
+      "이사"
+     ],
+     "value": 140750
+    }
+   ]
+  },
+  {
+   "symbol": "ARLO",
+   "issuer": "Arlo Technologies, Inc.",
+   "issuer_cik": "1736946",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 100402,
+   "market_cap": 1324784322,
+   "avg_price": 12.1699,
+   "price_at_run": 12.32,
+   "drawdown_52w": 0.2794611936185918,
+   "holding_increase": 0.0201,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Faison Ralph E",
+     "roles": [
+      "이사"
+     ],
+     "value": 100402
+    }
+   ]
+  },
+  {
+   "symbol": "TXO",
+   "issuer": "TXO Partners, L.P.",
+   "issuer_cik": "1559432",
+   "score": 6,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 3078749,
+   "market_cap": 761279168,
+   "avg_price": 13.2227,
+   "price_at_run": 13.73,
+   "drawdown_52w": 0.15125169337688715,
+   "holding_increase": 0.0245,
+   "cluster_size": 1,
+   "tx_date": "2026-11-06",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "SIMPSON BOB R",
+     "roles": [
+      "이사"
+     ],
+     "value": 3078749
+    }
+   ]
+  },
+  {
+   "symbol": "ATEC",
+   "issuer": "Alphatec Holdings, Inc.",
+   "issuer_cik": "1350653",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 242550,
+   "market_cap": 1085978768,
+   "avg_price": 6.93,
+   "price_at_run": 7.0,
+   "drawdown_52w": 0.7024474140153512,
+   "holding_increase": 0.1324,
+   "cluster_size": 1,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-10",
+   "insiders": [
+    {
+     "name": "Valentine Keith",
+     "roles": [
+      "이사"
+     ],
+     "value": 242550
+    }
+   ]
+  }
+ ]
+}
