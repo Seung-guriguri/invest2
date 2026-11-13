@@ -1,0 +1,849 @@
+{
+ "filing_days": [
+  "2026-11-12"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "HPP",
+   "issuer": "Hudson Pacific Properties, Inc.",
+   "issuer_cik": "1482512",
+   "score": 15,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 862112,
+   "market_cap": 477329811,
+   "avg_price": 9.0749,
+   "price_at_run": 8.8,
+   "drawdown_52w": 0.4723904374453064,
+   "holding_increase": 2.119,
+   "cluster_size": 2,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "BORTZ JON E",
+     "roles": [
+      "이사"
+     ],
+     "value": 680112
+    },
+    {
+     "name": "COLEMAN VICTOR J",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 182000
+    }
+   ]
+  },
+  {
+   "symbol": "MP",
+   "issuer": "MP Materials Corp. / DE",
+   "issuer_cik": "1801368",
+   "score": 14,
+   "breakdown": {
+    "amount": 3,
+    "role": 3,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 2178516,
+   "market_cap": 6676135701,
+   "avg_price": 36.023,
+   "price_at_run": 37.45,
+   "drawdown_52w": 0.530951076019438,
+   "holding_increase": 0.3645,
+   "cluster_size": 3,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Corbett Ryan",
+     "roles": [
+      "CFO"
+     ],
+     "value": 198516
+    },
+    {
+     "name": "WEISENBURGER RANDALL J",
+     "roles": [
+      "이사"
+     ],
+     "value": 1980000
+    }
+   ]
+  },
+  {
+   "symbol": "CSQR",
+   "issuer": "Csquare, Inc.",
+   "issuer_cik": "2105398",
+   "score": 14,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 419429,
+   "market_cap": 2869437204,
+   "avg_price": 17.8054,
+   "price_at_run": 17.22,
+   "drawdown_52w": 0.2423231480242508,
+   "holding_increase": 1.0,
+   "cluster_size": 2,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "MULLEE SPENCER EDWARD",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 247029
+    },
+    {
+     "name": "Kelley Philip M",
+     "roles": [
+      "이사"
+     ],
+     "value": 172400
+    }
+   ]
+  },
+  {
+   "symbol": "FIP",
+   "issuer": "FTAI Infrastructure Inc.",
+   "issuer_cik": "1899883",
+   "score": 11,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1530000,
+   "market_cap": 499908748,
+   "avg_price": 3.825,
+   "price_at_run": 4.23,
+   "drawdown_52w": 0.4282511259664773,
+   "holding_increase": 0.1839,
+   "cluster_size": 1,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Nicholson Kenneth J.",
+     "roles": [
+      "CEO"
+     ],
+     "value": 1530000
+    }
+   ]
+  },
+  {
+   "symbol": "COHR",
+   "issuer": "COHERENT CORP.",
+   "issuer_cik": "820318",
+   "score": 11,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1220285,
+   "market_cap": 45710167902,
+   "avg_price": 203.7549,
+   "price_at_run": 232.08,
+   "drawdown_52w": 0.5369206313856636,
+   "holding_increase": 0.0939,
+   "cluster_size": 2,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "ANDERSON JAMES ROBERT",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 997400
+    },
+    {
+     "name": "Digirolomo Enrico",
+     "roles": [
+      "이사"
+     ],
+     "value": 222885
+    }
+   ]
+  },
+  {
+   "symbol": "STVN",
+   "issuer": "Stevanato Group S.p.A.",
+   "issuer_cik": "1849853",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 274400,
+   "market_cap": 4348818817,
+   "avg_price": 13.72,
+   "price_at_run": 14.36,
+   "drawdown_52w": 0.46090374897044395,
+   "holding_increase": 0.3414,
+   "cluster_size": 2,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "FEDERICI WILLIAM J",
+     "roles": [
+      "이사"
+     ],
+     "value": 274400
+    }
+   ]
+  },
+  {
+   "symbol": "DOX",
+   "issuer": "AMDOCS LTD",
+   "issuer_cik": "1062579",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 250530,
+   "market_cap": 4979602778,
+   "avg_price": 42.0,
+   "price_at_run": 44.11,
+   "drawdown_52w": 0.5095176766653049,
+   "holding_increase": 0.2048,
+   "cluster_size": 3,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Genish Amos",
+     "roles": [
+      "이사"
+     ],
+     "value": 149730
+    },
+    {
+     "name": "Kanouff Yvette",
+     "roles": [
+      "이사"
+     ],
+     "value": 100800
+    }
+   ]
+  },
+  {
+   "symbol": "HOS",
+   "issuer": "HORNBECK OFFSHORE SERVICES, INC.",
+   "issuer_cik": "866829",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1500009,
+   "market_cap": 1294091134,
+   "avg_price": 5.3407,
+   "price_at_run": 5.83,
+   "drawdown_52w": 0.5201562960763824,
+   "holding_increase": 0.0495,
+   "cluster_size": 1,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "HORNBECK TODD M",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1500009
+    }
+   ]
+  },
+  {
+   "symbol": "VISN",
+   "issuer": "Vistance Networks, Inc.",
+   "issuer_cik": "1517228",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1029255,
+   "market_cap": 814338168,
+   "avg_price": 4.1184,
+   "price_at_run": 4.0,
+   "drawdown_52w": 0.7995891065338743,
+   "holding_increase": 0.1473,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Watts Claudius E. IV",
+     "roles": [
+      "이사"
+     ],
+     "value": 831060
+    },
+    {
+     "name": "Watts Claudius E. IV",
+     "roles": [
+      "이사"
+     ],
+     "value": 198195
+    }
+   ]
+  },
+  {
+   "symbol": "ALNY",
+   "issuer": "ALNYLAM PHARMACEUTICALS, INC.",
+   "issuer_cik": "1178670",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 543126,
+   "market_cap": 20981321280,
+   "avg_price": 154.7703,
+   "price_at_run": 156.65,
+   "drawdown_52w": 0.6774207762210648,
+   "holding_increase": 0.4643,
+   "cluster_size": 2,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "SCHULMAN AMY W",
+     "roles": [
+      "이사"
+     ],
+     "value": 299526
+    },
+    {
+     "name": "Sigal Charles Elliott",
+     "roles": [
+      "이사"
+     ],
+     "value": 243600
+    }
+   ]
+  },
+  {
+   "symbol": "BLMN",
+   "issuer": "Bloomin' Brands, Inc.",
+   "issuer_cik": "1546417",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 502000,
+   "market_cap": 867814237,
+   "avg_price": 10.04,
+   "price_at_run": 10.12,
+   "drawdown_52w": 0.20506730728209244,
+   "holding_increase": 0.2057,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Spanos Mike",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 502000
+    }
+   ]
+  },
+  {
+   "symbol": "BKD",
+   "issuer": "Brookdale Senior Living Inc.",
+   "issuer_cik": "1332349",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 358068,
+   "market_cap": 2144271844,
+   "avg_price": 8.9517,
+   "price_at_run": 8.96,
+   "drawdown_52w": 0.47620246225425167,
+   "holding_increase": 5.9444,
+   "cluster_size": 1,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "WINKLE C CHRISTIAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 358068
+    }
+   ]
+  },
+  {
+   "symbol": "BOOT",
+   "issuer": "Boot Barn Holdings, Inc.",
+   "issuer_cik": "1610250",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 3,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 270740,
+   "market_cap": 3997332109,
+   "avg_price": 135.37,
+   "price_at_run": 133.67,
+   "drawdown_52w": 0.35614744351961947,
+   "holding_increase": 0.2467,
+   "cluster_size": 1,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Watkins James M",
+     "roles": [
+      "CFO"
+     ],
+     "value": 270740
+    }
+   ]
+  },
+  {
+   "symbol": "EGBN",
+   "issuer": "EAGLE BANCORP INC",
+   "issuer_cik": "1050441",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 149582,
+   "market_cap": 1048340264,
+   "avg_price": 34.05,
+   "price_at_run": 34.38,
+   "drawdown_52w": 0.028530649324613577,
+   "holding_increase": 0.0874,
+   "cluster_size": 2,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Curley Stephen Russell",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 149582
+    }
+   ]
+  },
+  {
+   "symbol": "ASR",
+   "issuer": "SOUTHEAST AIRPORT GROUP",
+   "issuer_cik": "1123452",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 497650,
+   "market_cap": 81519000000,
+   "avg_price": 265.4132,
+   "price_at_run": 271.73,
+   "drawdown_52w": 0.30432688288191145,
+   "holding_increase": 3.7955,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Perez Anton Jose Antonio",
+     "roles": [
+      "이사"
+     ],
+     "value": 497650
+    }
+   ]
+  },
+  {
+   "symbol": "ADTN",
+   "issuer": "ADTRAN Holdings, Inc.",
+   "issuer_cik": "926282",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 171920,
+   "market_cap": 396069710,
+   "avg_price": 4.298,
+   "price_at_run": 4.86,
+   "drawdown_52w": 0.784884879956362,
+   "holding_increase": 0.0284,
+   "cluster_size": 2,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "STANTON THOMAS R",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 171920
+    }
+   ]
+  },
+  {
+   "symbol": "RM",
+   "issuer": "Regional Management Corp.",
+   "issuer_cik": "1519401",
+   "score": 8,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 359108,
+   "market_cap": 310833510,
+   "avg_price": 34.46,
+   "price_at_run": 34.74,
+   "drawdown_52w": 0.222121882765826,
+   "holding_increase": 0.0221,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "BASSWOOD CAPITAL MANAGEMENT, L.L.C.",
+     "roles": [
+      "이사"
+     ],
+     "value": 359108
+    }
+   ]
+  },
+  {
+   "symbol": "MTDR",
+   "issuer": "Matador Resources Co",
+   "issuer_cik": "1520006",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 123225,
+   "market_cap": 6535119945,
+   "avg_price": 49.29,
+   "price_at_run": 52.81,
+   "drawdown_52w": 0.26256728455177647,
+   "holding_increase": 0.0253,
+   "cluster_size": 8,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Foran Joseph Wm",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 123225
+    }
+   ]
+  },
+  {
+   "symbol": "MNR",
+   "issuer": "MACH NATURAL RESOURCES LP",
+   "issuer_cik": "1980088",
+   "score": 7,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1008700,
+   "market_cap": 1536969999,
+   "avg_price": 9.17,
+   "price_at_run": 9.02,
+   "drawdown_52w": 0.389480711016881,
+   "holding_increase": 0.0039,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "WARD TOM L.",
+     "roles": [
+      "이사"
+     ],
+     "value": 1008700
+    }
+   ]
+  },
+  {
+   "symbol": "TH",
+   "issuer": "Target Hospitality Corp.",
+   "issuer_cik": "1712189",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 312675,
+   "market_cap": 1173217381,
+   "avg_price": 11.37,
+   "price_at_run": 11.98,
+   "drawdown_52w": 0.477481623143151,
+   "holding_increase": 0.0149,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Archer James Bradley",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 312675
+    }
+   ]
+  },
+  {
+   "symbol": "NOMD",
+   "issuer": "Nomad Foods Ltd",
+   "issuer_cik": "1651717",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 3,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 100161,
+   "market_cap": 1659270531,
+   "avg_price": 11.9538,
+   "price_at_run": 11.65,
+   "drawdown_52w": 0.08610091210053783,
+   "holding_increase": 0.0228,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "BALDEW RUBEN",
+     "roles": [
+      "CFO",
+      "이사"
+     ],
+     "value": 100161
+    }
+   ]
+  },
+  {
+   "symbol": "ITIC",
+   "issuer": "INVESTORS TITLE CO",
+   "issuer_cik": "720858",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 133000,
+   "market_cap": 475183316,
+   "avg_price": 266.0,
+   "price_at_run": 251.59,
+   "drawdown_52w": 0.14068806173591442,
+   "holding_increase": 0.1333,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "Parker, Jr. Elton C.",
+     "roles": [
+      "이사"
+     ],
+     "value": 133000
+    }
+   ]
+  },
+  {
+   "symbol": "ECL",
+   "issuer": "ECOLAB INC.",
+   "issuer_cik": "31462",
+   "score": 2,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 184875,
+   "market_cap": 85377198432,
+   "avg_price": 308.125,
+   "price_at_run": 304.41,
+   "drawdown_52w": 0.03387888541033335,
+   "holding_increase": 0.0201,
+   "cluster_size": 1,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-12",
+   "insiders": [
+    {
+     "name": "MacLennan David",
+     "roles": [
+      "이사"
+     ],
+     "value": 184875
+    }
+   ]
+  }
+ ]
+}
