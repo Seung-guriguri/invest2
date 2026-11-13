@@ -193,7 +193,9 @@
   "INBX": {
    "for": "2026-11-13",
    "d7": true,
-   "d1": true
+   "d1": true,
+   "materials_for": "2026-11-13",
+   "materials_at": "2026-11-14T07:00+09:00"
   },
   "HAFN": {
    "for": "2026-11-18",
@@ -325,6 +327,19 @@
    ],
    "webcast": "http://investors.scholarrock.com",
    "index": "https://www.sec.gov/Archives/edgar/data/1727196/000119312526454423/0001193125-26-454423-index.htm"
+  },
+  "INBX": {
+   "accession": "0002007919-26-000057",
+   "filed": "2026-11-13",
+   "docs": [
+    [
+     "EX-99.1",
+     "EX-99.1",
+     "https://www.sec.gov/Archives/edgar/data/2007919/000200791926000057/exhibit99109302026.htm"
+    ]
+   ],
+   "webcast": "",
+   "index": "https://www.sec.gov/Archives/edgar/data/2007919/000200791926000057/0002007919-26-000057-index.htm"
   }
  }
 }
