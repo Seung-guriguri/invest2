@@ -1,15 +1,5 @@
 {
  "upcoming": {
-  "MOS": {
-   "date": "2026-11-03",
-   "time": "time-after-hours",
-   "name": "Mosaic Company (The)",
-   "eps_forecast": "($0.03)",
-   "estimates": "5",
-   "last_year_eps": "$1.04",
-   "quarter": "Sep/2026",
-   "src": "⭐"
-  },
   "HCC": {
    "date": "2026-11-04",
    "time": "time-after-hours",

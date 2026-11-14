@@ -1,0 +1,497 @@
+{
+ "filing_days": [
+  "2026-11-13"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "STWD",
+   "issuer": "STARWOOD PROPERTY TRUST, INC.",
+   "issuer_cik": "1465128",
+   "score": 16,
+   "breakdown": {
+    "amount": 4,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 16711132,
+   "market_cap": 4127816451,
+   "avg_price": 11.8117,
+   "price_at_run": 11.34,
+   "drawdown_52w": 0.3670052977816395,
+   "holding_increase": 1.3392,
+   "cluster_size": 2,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Pollack Jonathan Lee",
+     "roles": [
+      "이사"
+     ],
+     "value": 2013450
+    },
+    {
+     "name": "STERNLICHT BARRY S",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 14697682
+    }
+   ]
+  },
+  {
+   "symbol": "FUN",
+   "issuer": "Six Flags Entertainment Corporation/NEW",
+   "issuer_cik": "1999001",
+   "score": 12,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 9246000,
+   "market_cap": 1181678433,
+   "avg_price": 11.2073,
+   "price_at_run": 11.55,
+   "drawdown_52w": 0.5735436668779147,
+   "holding_increase": 0.1299,
+   "cluster_size": 3,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "JAFFER REHAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 9246000
+    }
+   ]
+  },
+  {
+   "symbol": "KGS",
+   "issuer": "Kodiak Gas Services, Inc.",
+   "issuer_cik": "1767042",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 449900,
+   "market_cap": 4530559358,
+   "avg_price": 44.99,
+   "price_at_run": 44.69,
+   "drawdown_52w": 0.4208290444998577,
+   "holding_increase": 1.4015,
+   "cluster_size": 3,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Darden Alexander Newsom",
+     "roles": [
+      "이사"
+     ],
+     "value": 449900
+    }
+   ]
+  },
+  {
+   "symbol": "IOND",
+   "issuer": "Ionic Digital Inc.",
+   "issuer_cik": "2007691",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 1291579,
+   "market_cap": 2692571112,
+   "avg_price": 65.756,
+   "price_at_run": 59.84,
+   "drawdown_52w": 0.2641454534043276,
+   "holding_increase": 0.5255,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Abbate Michael",
+     "roles": [
+      "이사"
+     ],
+     "value": 1291579
+    }
+   ]
+  },
+  {
+   "symbol": "CTRI",
+   "issuer": "Centuri Holdings, Inc.",
+   "issuer_cik": "1981599",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 249920,
+   "market_cap": 2203112923,
+   "avg_price": 22.72,
+   "price_at_run": 21.82,
+   "drawdown_52w": 0.4714435343167446,
+   "holding_increase": 0.3753,
+   "cluster_size": 2,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Patton Charles R.",
+     "roles": [
+      "이사"
+     ],
+     "value": 249920
+    }
+   ]
+  },
+  {
+   "symbol": "PSEC",
+   "issuer": "PROSPECT CAPITAL CORP",
+   "issuer_cik": "1287032",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 6054559,
+   "market_cap": 813204264,
+   "avg_price": 1.508,
+   "price_at_run": 1.46,
+   "drawdown_52w": 0.518203108655803,
+   "holding_increase": 0.0435,
+   "cluster_size": 1,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Barry John F",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 6054559
+    }
+   ]
+  },
+  {
+   "symbol": "AKAM",
+   "issuer": "AKAMAI TECHNOLOGIES INC",
+   "issuer_cik": "1086222",
+   "score": 9,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 2552400,
+   "market_cap": 12317171545,
+   "avg_price": 85.08,
+   "price_at_run": 85.4,
+   "drawdown_52w": 0.4857660829899222,
+   "holding_increase": 0.1701,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "LEIGHTON F THOMSON",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 2552400
+    }
+   ]
+  },
+  {
+   "symbol": "UPST",
+   "issuer": "Upstart Holdings, Inc.",
+   "issuer_cik": "1647639",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1028400,
+   "market_cap": 1934653350,
+   "avg_price": 20.568,
+   "price_at_run": 19.56,
+   "drawdown_52w": 0.6052207178045033,
+   "holding_increase": 0.0384,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Gu Paul",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1028400
+    }
+   ]
+  },
+  {
+   "symbol": "CAT",
+   "issuer": "CATERPILLAR INC",
+   "issuer_cik": "18230",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 208635,
+   "market_cap": 274648023235,
+   "avg_price": 596.1,
+   "price_at_run": 600.2,
+   "drawdown_52w": 0.4446928421257561,
+   "holding_increase": 0.0416,
+   "cluster_size": 2,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "MacLennan David",
+     "roles": [
+      "이사"
+     ],
+     "value": 208635
+    }
+   ]
+  },
+  {
+   "symbol": "CTEV",
+   "issuer": "Claritev Corp",
+   "issuer_cik": "1793229",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 149927,
+   "market_cap": 457945734,
+   "avg_price": 29.34,
+   "price_at_run": 26.82,
+   "drawdown_52w": 0.5207448641788344,
+   "holding_increase": 0.0093,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Dalton Travis",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 149927
+    }
+   ]
+  },
+  {
+   "symbol": "TXO",
+   "issuer": "TXO Partners, L.P.",
+   "issuer_cik": "1559432",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 945220,
+   "market_cap": 740763998,
+   "avg_price": 14.0739,
+   "price_at_run": 13.36,
+   "drawdown_52w": 0.09660855933642654,
+   "holding_increase": 0.0069,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "SIMPSON BOB R",
+     "roles": [
+      "이사"
+     ],
+     "value": 945220
+    }
+   ]
+  },
+  {
+   "symbol": "WY",
+   "issuer": "WEYERHAEUSER CO",
+   "issuer_cik": "106535",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 306600,
+   "market_cap": 14990358640,
+   "avg_price": 20.44,
+   "price_at_run": 20.81,
+   "drawdown_52w": 0.2634234234234234,
+   "holding_increase": 0.4685,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "BECKWITT RICHARD",
+     "roles": [
+      "이사"
+     ],
+     "value": 306600
+    }
+   ]
+  },
+  {
+   "symbol": "FCPT",
+   "issuer": "Four Corners Property Trust, Inc.",
+   "issuer_cik": "1650132",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 149992,
+   "market_cap": 2559519388,
+   "avg_price": 23.1899,
+   "price_at_run": 23.32,
+   "drawdown_52w": 0.13663814322242218,
+   "holding_increase": 0.0082,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Lenehan William H",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 149992
+    }
+   ]
+  },
+  {
+   "symbol": "IONS",
+   "issuer": "IONIS PHARMACEUTICALS INC",
+   "issuer_cik": "874015",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 148200,
+   "market_cap": 4839800606,
+   "avg_price": 29.64,
+   "price_at_run": 29.06,
+   "drawdown_52w": 0.6582891315428503,
+   "holding_increase": 0.0655,
+   "cluster_size": 1,
+   "tx_date": "2026-11-10",
+   "filed": "2026-11-13",
+   "insiders": [
+    {
+     "name": "Hayden Michael R",
+     "roles": [
+      "이사"
+     ],
+     "value": 148200
+    }
+   ]
+  }
+ ]
+}
