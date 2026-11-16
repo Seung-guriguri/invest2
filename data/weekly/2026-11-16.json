@@ -1,0 +1,121 @@
+{
+ "date": "2026-11-16",
+ "days": [
+  "2026-11-10",
+  "2026-11-11",
+  "2026-11-12",
+  "2026-11-13",
+  "2026-11-14"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "mentions": 7387,
+    "upvotes": 43912,
+    "days": 5
+   },
+   {
+    "ticker": "AMD",
+    "name": "AMD",
+    "mentions": 1486,
+    "upvotes": 9161,
+    "days": 5
+   },
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 1432,
+    "upvotes": 5498,
+    "days": 5
+   },
+   {
+    "ticker": "NBIS",
+    "name": "Nebius Group",
+    "mentions": 908,
+    "upvotes": 1795,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 758,
+    "upvotes": 2233,
+    "days": 5
+   },
+   {
+    "ticker": "CRWV",
+    "name": "CoreWeave",
+    "mentions": 671,
+    "upvotes": 1634,
+    "days": 5
+   },
+   {
+    "ticker": "MSFT",
+    "name": "Microsoft",
+    "mentions": 630,
+    "upvotes": 2108,
+    "days": 5
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 580,
+    "upvotes": 1380,
+    "days": 5
+   },
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet (Google)",
+    "mentions": 289,
+    "upvotes": 4186,
+    "days": 5
+   },
+   {
+    "ticker": "GOOGL",
+    "name": "Alphabet (Google)",
+    "mentions": 267,
+    "upvotes": 569,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 77,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 41,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ Trust, Series 1",
+    "mentions": 39,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "GPIQ",
+    "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
+    "mentions": 36,
+    "upvotes": null,
+    "days": 5
+   },
+   {
+    "ticker": "GPIX",
+    "name": "Goldman Sachs S&P 500 Premium Income ETF",
+    "mentions": 29,
+    "upvotes": null,
+    "days": 4
+   }
+  ]
+ }
+}

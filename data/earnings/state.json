@@ -1,15 +1,5 @@
 {
  "upcoming": {
-  "HCC": {
-   "date": "2026-11-04",
-   "time": "time-after-hours",
-   "name": "Warrior Met Coal, Inc.",
-   "eps_forecast": "$1.71",
-   "estimates": "1",
-   "last_year_eps": "$0.70",
-   "quarter": "Sep/2026",
-   "src": "⭐🏦"
-  },
   "BORR": {
    "date": "2026-11-18",
    "time": "time-not-supplied",
@@ -18,7 +8,7 @@
    "estimates": "1",
    "last_year_eps": "$0.10",
    "quarter": "Sep/2026",
-   "src": "⭐🕵️"
+   "src": "⭐"
   },
   "RAPP": {
    "date": "2026-11-05",
@@ -182,7 +172,7 @@
    "d7": true
   }
  },
- "weekly_sent": "2026-11-09",
+ "weekly_sent": "2026-11-16",
  "last_materials": {
   "RIG": {
    "accession": "0001451505-26-000083",
