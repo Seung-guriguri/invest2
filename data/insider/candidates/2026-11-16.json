@@ -1,0 +1,647 @@
+{
+ "filing_days": [
+  "2026-11-16"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "CTVA",
+   "issuer": "Corteva, Inc.",
+   "issuer_cik": "1755672",
+   "score": 12,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 485712,
+   "market_cap": 6032599920,
+   "avg_price": 9.2885,
+   "price_at_run": 9.04,
+   "drawdown_52w": 0.36467257032630074,
+   "holding_increase": 0.2884,
+   "cluster_size": 2,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "KISSAM LUTHER C IV",
+     "roles": [
+      "CEO"
+     ],
+     "value": 300312
+    },
+    {
+     "name": "PAGE GREGORY R",
+     "roles": [
+      "이사"
+     ],
+     "value": 185400
+    }
+   ]
+  },
+  {
+   "symbol": "BRSP",
+   "issuer": "BrightSpire Capital, Inc.",
+   "issuer_cik": "1717547",
+   "score": 11,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1000180,
+   "market_cap": 407692917,
+   "avg_price": 3.2356,
+   "price_at_run": 3.27,
+   "drawdown_52w": 0.4751588499511509,
+   "holding_increase": 0.2046,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Mazzei Michael",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1000180
+    }
+   ]
+  },
+  {
+   "symbol": "CACC",
+   "issuer": "CREDIT ACCEPTANCE CORP",
+   "issuer_cik": "885550",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 252500,
+   "market_cap": 4968371596,
+   "avg_price": 505.0,
+   "price_at_run": 490.1,
+   "drawdown_52w": 0.24498398609603667,
+   "holding_increase": 0.3238,
+   "cluster_size": 2,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Quinn Sean Edward",
+     "roles": [
+      "이사"
+     ],
+     "value": 252500
+    }
+   ]
+  },
+  {
+   "symbol": "MP",
+   "issuer": "MP Materials Corp. / DE",
+   "issuer_cik": "1801368",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 3,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 128625,
+   "market_cap": 6433691254,
+   "avg_price": 36.75,
+   "price_at_run": 36.09,
+   "drawdown_52w": 0.5214843940145018,
+   "holding_increase": 0.0306,
+   "cluster_size": 3,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Corbett Ryan",
+     "roles": [
+      "CFO"
+     ],
+     "value": 128625
+    }
+   ]
+  },
+  {
+   "symbol": "ADIG",
+   "issuer": "ADI GLOBAL DISTRIBUTION INC.",
+   "issuer_cik": "2105139",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 100025,
+   "market_cap": 706820042,
+   "avg_price": 9.93,
+   "price_at_run": 9.3,
+   "drawdown_52w": 0.6795740537805848,
+   "holding_increase": 0.0886,
+   "cluster_size": 5,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Aarnes Robert B",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 100025
+    }
+   ]
+  },
+  {
+   "symbol": "SONO",
+   "issuer": "Sonos Inc",
+   "issuer_cik": "1314727",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1871497,
+   "market_cap": 2060681114,
+   "avg_price": 18.715,
+   "price_at_run": 17.42,
+   "drawdown_52w": 0.055753063160378646,
+   "holding_increase": 6.9618,
+   "cluster_size": 1,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Kennedy Joseph Jude",
+     "roles": [
+      "이사"
+     ],
+     "value": 1871497
+    }
+   ]
+  },
+  {
+   "symbol": "DOX",
+   "issuer": "AMDOCS LTD",
+   "issuer_cik": "1062579",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 421619,
+   "market_cap": 4926544213,
+   "avg_price": 43.0575,
+   "price_at_run": 43.64,
+   "drawdown_52w": 0.49716749554966977,
+   "holding_increase": 0.0839,
+   "cluster_size": 6,
+   "tx_date": "2026-11-09",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Gelman Eliahu Meir",
+     "roles": [
+      "이사"
+     ],
+     "value": 104300
+    },
+    {
+     "name": "DE LA VEGA RAFAEL",
+     "roles": [
+      "이사"
+     ],
+     "value": 102228
+    },
+    {
+     "name": "Gardner Adrian",
+     "roles": [
+      "이사"
+     ],
+     "value": 215090
+    }
+   ]
+  },
+  {
+   "symbol": "CRMD",
+   "issuer": "CorMedix Inc.",
+   "issuer_cik": "1410098",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 391200,
+   "market_cap": 383371357,
+   "avg_price": 4.89,
+   "price_at_run": 4.82,
+   "drawdown_52w": 0.6244239763383302,
+   "holding_increase": 0.1033,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Todisco Joseph",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 391200
+    }
+   ]
+  },
+  {
+   "symbol": "KURA",
+   "issuer": "Kura Oncology, Inc.",
+   "issuer_cik": "1422143",
+   "score": 9,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 1504765,
+   "market_cap": 651419940,
+   "avg_price": 7.5238,
+   "price_at_run": 7.09,
+   "drawdown_52w": 0.4587176074472772,
+   "holding_increase": 0.1647,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "WILSON TROY EDWARD",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1504765
+    }
+   ]
+  },
+  {
+   "symbol": "HOS",
+   "issuer": "HORNBECK OFFSHORE SERVICES, INC.",
+   "issuer_cik": "866829",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 500001,
+   "market_cap": 1311848817,
+   "avg_price": 5.8199,
+   "price_at_run": 5.91,
+   "drawdown_52w": 0.47709793888961294,
+   "holding_increase": 0.0144,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "HORNBECK TODD M",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 500001
+    }
+   ]
+  },
+  {
+   "symbol": "KTOS",
+   "issuer": "KRATOS DEFENSE & SECURITY SOLUTIONS, INC.",
+   "issuer_cik": "1069258",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 201091,
+   "market_cap": 5960739263,
+   "avg_price": 33.5152,
+   "price_at_run": 31.66,
+   "drawdown_52w": 0.7498865671641791,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "King David Arnold",
+     "roles": [
+      "이사"
+     ],
+     "value": 201091
+    }
+   ]
+  },
+  {
+   "symbol": "HL",
+   "issuer": "HECLA MINING CO/DE/",
+   "issuer_cik": "719413",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 125000,
+   "market_cap": 8209118924,
+   "avg_price": 12.5,
+   "price_at_run": 12.22,
+   "drawdown_52w": 0.6341820114184156,
+   "holding_increase": 2.0,
+   "cluster_size": 1,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Andres Dale",
+     "roles": [
+      "이사"
+     ],
+     "value": 125000
+    }
+   ]
+  },
+  {
+   "symbol": "HUBS",
+   "issuer": "HUBSPOT INC",
+   "issuer_cik": "1404655",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 4997858,
+   "market_cap": 11329082223,
+   "avg_price": 217.44,
+   "price_at_run": 231.98,
+   "drawdown_52w": 0.46567061803832266,
+   "holding_increase": 0.0556,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Halligan Brian",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 4997858
+    }
+   ]
+  },
+  {
+   "symbol": "SKYD",
+   "issuer": "Skydance Corp",
+   "issuer_cik": "2041610",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 1000637,
+   "market_cap": 7544535518,
+   "avg_price": 7.718,
+   "price_at_run": 7.04,
+   "drawdown_52w": 0.5502337951748639,
+   "holding_increase": 0.0003,
+   "cluster_size": 1,
+   "tx_date": "2026-11-11",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Cardinale Gerald J.",
+     "roles": [
+      "이사"
+     ],
+     "value": 1000637
+    }
+   ]
+  },
+  {
+   "symbol": "CNH",
+   "issuer": "CNH Industrial N.V.",
+   "issuer_cik": "1567094",
+   "score": 8,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 566585,
+   "market_cap": 14157840796,
+   "avg_price": 12.4251,
+   "price_at_run": 11.46,
+   "drawdown_52w": 0.14072614334569122,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Simonelli Lorenzo",
+     "roles": [
+      "이사"
+     ],
+     "value": 566585
+    }
+   ]
+  },
+  {
+   "symbol": "YUMC",
+   "issuer": "Yum China Holdings, Inc.",
+   "issuer_cik": "1673358",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 247500,
+   "market_cap": 17331456312,
+   "avg_price": 49.5,
+   "price_at_run": 51.45,
+   "drawdown_52w": 0.15225208910045795,
+   "holding_increase": 1.3546,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "DIMITRIEF ALEXANDER",
+     "roles": [
+      "이사"
+     ],
+     "value": 247500
+    }
+   ]
+  },
+  {
+   "symbol": "AMG",
+   "issuer": "AFFILIATED MANAGERS GROUP, INC.",
+   "issuer_cik": "1004434",
+   "score": 6,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 1000000,
+   "market_cap": 9569409500,
+   "avg_price": 400.0,
+   "price_at_run": 387.6,
+   "drawdown_52w": 0.019776036413788667,
+   "holding_increase": 0.3903,
+   "cluster_size": 1,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "Cates G. Staley",
+     "roles": [
+      "이사"
+     ],
+     "value": 1000000
+    }
+   ]
+  },
+  {
+   "symbol": "SENS",
+   "issuer": "Senseonics Holdings, Inc.",
+   "issuer_cik": "1616543",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 175860,
+   "market_cap": 597107537,
+   "avg_price": 10.32,
+   "price_at_run": 10.9,
+   "drawdown_52w": 0.26169693583166265,
+   "holding_increase": 0.0987,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-16",
+   "insiders": [
+    {
+     "name": "ROEDER DOUGLAS A",
+     "roles": [
+      "이사"
+     ],
+     "value": 175860
+    }
+   ]
+  }
+ ]
+}

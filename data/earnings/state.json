@@ -10,16 +10,6 @@
    "quarter": "Sep/2026",
    "src": "⭐"
   },
-  "AMR": {
-   "date": "2026-11-06",
-   "time": "time-pre-market",
-   "name": "Alpha Metallurgical Resources, Inc.",
-   "eps_forecast": "($0.29)",
-   "estimates": "1",
-   "last_year_eps": "($0.42)",
-   "quarter": "Sep/2026",
-   "src": "⭐🏦"
-  },
   "TDW": {
    "date": "2026-11-09",
    "time": "time-after-hours",
@@ -103,7 +93,8 @@
   },
   "BORR": {
    "for": "2026-11-18",
-   "d7": true
+   "d7": true,
+   "d1": true
   },
   "RAPP": {
    "for": "2026-11-05",
@@ -159,7 +150,8 @@
   },
   "HAFN": {
    "for": "2026-11-18",
-   "d7": true
+   "d7": true,
+   "d1": true
   }
  },
  "weekly_sent": "2026-11-16",
