@@ -1,0 +1,249 @@
+{
+ "filing_days": [
+  "2026-11-17"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "PCT",
+   "issuer": "PureCycle Technologies, Inc.",
+   "issuer_cik": "1830033",
+   "score": 13,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 371800,
+   "market_cap": 357783704,
+   "avg_price": 1.69,
+   "price_at_run": 1.78,
+   "drawdown_52w": 0.8809439918046488,
+   "holding_increase": 0.1679,
+   "cluster_size": 2,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "Olson Dustin",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 371800
+    }
+   ]
+  },
+  {
+   "symbol": "PRAA",
+   "issuer": "PRA GROUP INC",
+   "issuer_cik": "1185348",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 295000,
+   "market_cap": 420689097,
+   "avg_price": 11.8,
+   "price_at_run": 11.17,
+   "drawdown_52w": 0.4767183858433619,
+   "holding_increase": 0.1036,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "FREDRICKSON STEVEN D",
+     "roles": [
+      "이사"
+     ],
+     "value": 295000
+    }
+   ]
+  },
+  {
+   "symbol": "OPEN",
+   "issuer": "Opendoor Technologies Inc.",
+   "issuer_cik": "1801169",
+   "score": 9,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 241990,
+   "market_cap": 1097681924,
+   "avg_price": 1.21,
+   "price_at_run": 1.18,
+   "drawdown_52w": 0.869757803555614,
+   "holding_increase": 0.5766,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "HAMILTON DANA",
+     "roles": [
+      "이사"
+     ],
+     "value": 241990
+    }
+   ]
+  },
+  {
+   "symbol": "UPST",
+   "issuer": "Upstart Holdings, Inc.",
+   "issuer_cik": "1647639",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 950000,
+   "market_cap": 1793213970,
+   "avg_price": 19.0,
+   "price_at_run": 18.13,
+   "drawdown_52w": 0.6353166879757663,
+   "holding_increase": 0.037,
+   "cluster_size": 1,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "Gu Paul",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 950000
+    }
+   ]
+  },
+  {
+   "symbol": "PAM",
+   "issuer": "Pampa Energy Inc.",
+   "issuer_cik": "1469395",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 541019,
+   "market_cap": 85070555992,
+   "avg_price": 63.92,
+   "price_at_run": 62.57,
+   "drawdown_52w": 0.32359788359788355,
+   "holding_increase": 0.0012,
+   "cluster_size": 4,
+   "tx_date": "2026-11-12",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "Mindlin Marcos Marcelo",
+     "roles": [
+      "이사"
+     ],
+     "value": 541019
+    }
+   ]
+  },
+  {
+   "symbol": "ETN",
+   "issuer": "Eaton Corp plc",
+   "issuer_cik": "1551182",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 101646,
+   "market_cap": 130967235000,
+   "avg_price": 338.819,
+   "price_at_run": 337.11,
+   "drawdown_52w": 0.291173640167364,
+   "holding_increase": 0.164,
+   "cluster_size": 2,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "Johnson Gerald",
+     "roles": [
+      "이사"
+     ],
+     "value": 101646
+    }
+   ]
+  },
+  {
+   "symbol": "LPG",
+   "issuer": "DORIAN LPG LTD.",
+   "issuer_cik": "1596993",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 961460,
+   "market_cap": 1946236448,
+   "avg_price": 48.073,
+   "price_at_run": 45.3,
+   "drawdown_52w": 0.19838254091273866,
+   "holding_increase": 0.0099,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-17",
+   "insiders": [
+    {
+     "name": "HADJIPATERAS JOHN C",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 961460
+    }
+   ]
+  }
+ ]
+}
