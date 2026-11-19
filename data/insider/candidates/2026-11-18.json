@@ -1,0 +1,629 @@
+{
+ "filing_days": [
+  "2026-11-18"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "STWD",
+   "issuer": "STARWOOD PROPERTY TRUST, INC.",
+   "issuer_cik": "1465128",
+   "score": 14,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 2023102,
+   "market_cap": 4105976152,
+   "avg_price": 11.7138,
+   "price_at_run": 11.28,
+   "drawdown_52w": 0.372250798725245,
+   "holding_increase": 1.5624,
+   "cluster_size": 3,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "ZELNICK STRAUSS",
+     "roles": [
+      "이사"
+     ],
+     "value": 2023102
+    }
+   ]
+  },
+  {
+   "symbol": "OFRM",
+   "issuer": "Once Upon a Farm, PBC",
+   "issuer_cik": "1696556",
+   "score": 14,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 401487,
+   "market_cap": 480836352,
+   "avg_price": 11.1275,
+   "price_at_run": 11.38,
+   "drawdown_52w": 0.5878692496743261,
+   "holding_increase": 2.2327,
+   "cluster_size": 4,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Morris Scott James",
+     "roles": [
+      "이사"
+     ],
+     "value": 100385
+    },
+    {
+     "name": "PEIROS LARRY",
+     "roles": [
+      "이사"
+     ],
+     "value": 301102
+    }
+   ]
+  },
+  {
+   "symbol": "CGON",
+   "issuer": "CG Oncology, Inc.",
+   "issuer_cik": "1991792",
+   "score": 12,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 2366425,
+   "market_cap": 7145513280,
+   "avg_price": 78.88,
+   "price_at_run": 80.0,
+   "drawdown_52w": 0.16040444319060887,
+   "holding_increase": 0.1508,
+   "cluster_size": 2,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Kuan Arthur",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 2366425
+    }
+   ]
+  },
+  {
+   "symbol": "GPRK",
+   "issuer": "GeoPark Ltd",
+   "issuer_cik": "1464591",
+   "score": 12,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1565200,
+   "market_cap": 453472126,
+   "avg_price": 9.1,
+   "price_at_run": 8.77,
+   "drawdown_52w": 0.3069306991100904,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Gilinski Gabriel",
+     "roles": [
+      "이사"
+     ],
+     "value": 1565200
+    }
+   ]
+  },
+  {
+   "symbol": "LKQ",
+   "issuer": "LKQ CORP",
+   "issuer_cik": "1065696",
+   "score": 12,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 496101,
+   "market_cap": 4820803271,
+   "avg_price": 19.0808,
+   "price_at_run": 19.1,
+   "drawdown_52w": 0.4861082830297757,
+   "holding_increase": 0.682,
+   "cluster_size": 2,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Urbain Xavier",
+     "roles": [
+      "이사"
+     ],
+     "value": 496101
+    }
+   ]
+  },
+  {
+   "symbol": "TRTX",
+   "issuer": "TPG RE Finance Trust, Inc.",
+   "issuer_cik": "1630472",
+   "score": 12,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 224824,
+   "market_cap": 491358662,
+   "avg_price": 6.56,
+   "price_at_run": 6.48,
+   "drawdown_52w": 0.29839575054981626,
+   "holding_increase": 0.5339,
+   "cluster_size": 2,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Schuster Todd",
+     "roles": [
+      "이사"
+     ],
+     "value": 224824
+    }
+   ]
+  },
+  {
+   "symbol": "FUN",
+   "issuer": "Six Flags Entertainment Corporation/NEW",
+   "issuer_cik": "1999001",
+   "score": 11,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 6354000,
+   "market_cap": 1208278986,
+   "avg_price": 11.5527,
+   "price_at_run": 11.81,
+   "drawdown_52w": 0.5603985170899205,
+   "holding_increase": 0.0767,
+   "cluster_size": 3,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "JAFFER REHAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 6354000
+    }
+   ]
+  },
+  {
+   "symbol": "ANAB",
+   "issuer": "ANAPTYSBIO, INC",
+   "issuer_cik": "1370053",
+   "score": 10,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 17224593,
+   "market_cap": 1399086600,
+   "avg_price": 45.9837,
+   "price_at_run": 47.06,
+   "drawdown_52w": 0.36451425063505216,
+   "holding_increase": 0.0475,
+   "cluster_size": 1,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "EcoR1 Capital, LLC",
+     "roles": [
+      "이사"
+     ],
+     "value": 17224593
+    }
+   ]
+  },
+  {
+   "symbol": "CRMD",
+   "issuer": "CorMedix Inc.",
+   "issuer_cik": "1410098",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 122000,
+   "market_cap": 357919317,
+   "avg_price": 4.88,
+   "price_at_run": 4.5,
+   "drawdown_52w": 0.6251920254664727,
+   "holding_increase": 0.0956,
+   "cluster_size": 2,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Kaplan Myron",
+     "roles": [
+      "이사"
+     ],
+     "value": 122000
+    }
+   ]
+  },
+  {
+   "symbol": "BA",
+   "issuer": "BOEING CO",
+   "issuer_cik": "12927",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 500067,
+   "market_cap": 129098019725,
+   "avg_price": 166.689,
+   "price_at_run": 162.91,
+   "drawdown_52w": 0.34464715549422575,
+   "holding_increase": 20.0,
+   "cluster_size": 1,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "JOHRI AKHIL",
+     "roles": [
+      "이사"
+     ],
+     "value": 500067
+    }
+   ]
+  },
+  {
+   "symbol": "KGS",
+   "issuer": "Kodiak Gas Services, Inc.",
+   "issuer_cik": "1767042",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 493962,
+   "market_cap": 4336928380,
+   "avg_price": 42.9532,
+   "price_at_run": 42.78,
+   "drawdown_52w": 0.4470494357459721,
+   "holding_increase": 0.3765,
+   "cluster_size": 4,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "HOGAN RANDALL J",
+     "roles": [
+      "이사"
+     ],
+     "value": 493962
+    }
+   ]
+  },
+  {
+   "symbol": "PAM",
+   "issuer": "Pampa Energy Inc.",
+   "issuer_cik": "1469395",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 4012172,
+   "market_cap": 84866615072,
+   "avg_price": 63.1361,
+   "price_at_run": 62.42,
+   "drawdown_52w": 0.33189331032693525,
+   "holding_increase": 0.0088,
+   "cluster_size": 4,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Mindlin Marcos Marcelo",
+     "roles": [
+      "이사"
+     ],
+     "value": 4012172
+    }
+   ]
+  },
+  {
+   "symbol": "USAR",
+   "issuer": "USA Rare Earth, Inc.",
+   "issuer_cik": "1970622",
+   "score": 8,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 2996645,
+   "market_cap": 870108960,
+   "avg_price": 6.6592,
+   "price_at_run": 6.56,
+   "drawdown_52w": 0.7969752662802838,
+   "holding_increase": 0.2563,
+   "cluster_size": 1,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "BLITZER MICHAEL",
+     "roles": [
+      "이사"
+     ],
+     "value": 2996645
+    }
+   ]
+  },
+  {
+   "symbol": "OBK",
+   "issuer": "Origin Bancorp, Inc.",
+   "issuer_cik": "1516912",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 199690,
+   "market_cap": 1597886435,
+   "avg_price": 52.55,
+   "price_at_run": 52.47,
+   "drawdown_52w": 0.09396551724137936,
+   "holding_increase": 0.2153,
+   "cluster_size": 2,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Jones Cecil W.",
+     "roles": [
+      "이사"
+     ],
+     "value": 199690
+    }
+   ]
+  },
+  {
+   "symbol": "EFC",
+   "issuer": "Ellington Financial Inc.",
+   "issuer_cik": "1411342",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 106540,
+   "market_cap": 1403080058,
+   "avg_price": 10.654,
+   "price_at_run": 10.81,
+   "drawdown_52w": 0.2454674159809206,
+   "holding_increase": 0.0159,
+   "cluster_size": 1,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Penn Laurence",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 106540
+    }
+   ]
+  },
+  {
+   "symbol": "TSM",
+   "issuer": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+   "issuer_cik": "1046179",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 500039,
+   "market_cap": 9403652041805,
+   "avg_price": 363.665,
+   "price_at_run": 362.62,
+   "drawdown_52w": 0.2539746054335149,
+   "holding_increase": 0.3801,
+   "cluster_size": 1,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "BURNS URSULA M",
+     "roles": [
+      "이사"
+     ],
+     "value": 500039
+    }
+   ]
+  },
+  {
+   "symbol": "SLRC",
+   "issuer": "SLR Investment Corp.",
+   "issuer_cik": "1418076",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 226135,
+   "market_cap": 587156714,
+   "avg_price": 11.3067,
+   "price_at_run": 10.94,
+   "drawdown_52w": 0.30887838764224673,
+   "holding_increase": 0.0047,
+   "cluster_size": 1,
+   "tx_date": "2026-11-16",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "GROSS MICHAEL S",
+     "roles": [
+      "이사"
+     ],
+     "value": 226135
+    }
+   ]
+  },
+  {
+   "symbol": "NTB",
+   "issuer": "Bank of N.T. Butterfield & Son Ltd",
+   "issuer_cik": "1653242",
+   "score": 3,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 164850,
+   "market_cap": 2190363315,
+   "avg_price": 54.95,
+   "price_at_run": 54.83,
+   "drawdown_52w": 0.14368082331358512,
+   "holding_increase": 0.0127,
+   "cluster_size": 1,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-18",
+   "insiders": [
+    {
+     "name": "Lynch Mark T",
+     "roles": [
+      "이사"
+     ],
+     "value": 164850
+    }
+   ]
+  }
+ ]
+}
