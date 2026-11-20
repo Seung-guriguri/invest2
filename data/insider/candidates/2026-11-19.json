@@ -1,0 +1,330 @@
+{
+ "filing_days": [
+  "2026-11-19"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "CTGO",
+   "issuer": "Contango Silver & Gold Inc.",
+   "issuer_cik": "1502377",
+   "score": 12,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 299835,
+   "market_cap": 335873783,
+   "avg_price": 10.8802,
+   "price_at_run": 9.94,
+   "drawdown_52w": 0.6835302432660518,
+   "holding_increase": 0.0259,
+   "cluster_size": 2,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "JUNEAU JOHN B",
+     "roles": [
+      "이사"
+     ],
+     "value": 198738
+    },
+    {
+     "name": "Van Nieuwenhuyse Rick",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 101097
+    }
+   ]
+  },
+  {
+   "symbol": "PLD",
+   "issuer": "Prologis, Inc.",
+   "issuer_cik": "1045609",
+   "score": 8,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 587350,
+   "market_cap": 115013215680,
+   "avg_price": 124.968,
+   "price_at_run": 123.36,
+   "drawdown_52w": 0.1850799150562601,
+   "holding_increase": 8.3333,
+   "cluster_size": 1,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "KELLY ALFRED F JR",
+     "roles": [
+      "이사"
+     ],
+     "value": 587350
+    }
+   ]
+  },
+  {
+   "symbol": "MTDR",
+   "issuer": "Matador Resources Co",
+   "issuer_cik": "1520006",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 127450,
+   "market_cap": 6109427602,
+   "avg_price": 50.98,
+   "price_at_run": 49.37,
+   "drawdown_52w": 0.2372830222448684,
+   "holding_increase": 0.0247,
+   "cluster_size": 8,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "Foran Joseph Wm",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 127450
+    }
+   ]
+  },
+  {
+   "symbol": "ITT",
+   "issuer": "ITT INC.",
+   "issuer_cik": "216228",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 501561,
+   "market_cap": 18398392000,
+   "avg_price": 209.858,
+   "price_at_run": 206.26,
+   "drawdown_52w": 0.08884164064572397,
+   "holding_increase": 0.5882,
+   "cluster_size": 1,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "Berryman Kevin C",
+     "roles": [
+      "이사"
+     ],
+     "value": 501561
+    }
+   ]
+  },
+  {
+   "symbol": "SKYD",
+   "issuer": "Skydance Corp",
+   "issuer_cik": "2041610",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 494844,
+   "market_cap": 6794368634,
+   "avg_price": 7.0571,
+   "price_at_run": 6.34,
+   "drawdown_52w": 0.5673145167946672,
+   "holding_increase": 0.0002,
+   "cluster_size": 1,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "Cardinale Gerald J.",
+     "roles": [
+      "이사"
+     ],
+     "value": 494844
+    }
+   ]
+  },
+  {
+   "symbol": "IRTC",
+   "issuer": "iRhythm Holdings, Inc.",
+   "issuer_cik": "1388658",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 763706,
+   "market_cap": 3168174079,
+   "avg_price": 96.6717,
+   "price_at_run": 94.24,
+   "drawdown_52w": 0.4977310781582649,
+   "holding_increase": 0.3612,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "TALWALKAR ABHIJIT Y",
+     "roles": [
+      "이사"
+     ],
+     "value": 763706
+    }
+   ]
+  },
+  {
+   "symbol": "CCB",
+   "issuer": "COASTAL FINANCIAL CORP",
+   "issuer_cik": "1437958",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 737500,
+   "market_cap": 574803350,
+   "avg_price": 36.8786,
+   "price_at_run": 37.59,
+   "drawdown_52w": 0.692806706779735,
+   "holding_increase": 0.0086,
+   "cluster_size": 1,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "HOVDE STEVEN D",
+     "roles": [
+      "이사"
+     ],
+     "value": 187500
+    },
+    {
+     "name": "HOVDE STEVEN D",
+     "roles": [
+      "이사"
+     ],
+     "value": 550000
+    }
+   ]
+  },
+  {
+   "symbol": "CWBC",
+   "issuer": "Community West Bancshares",
+   "issuer_cik": "1127371",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 293988,
+   "market_cap": 652131090,
+   "avg_price": 24.499,
+   "price_at_run": 24.03,
+   "drawdown_52w": 0.13031594129753743,
+   "holding_increase": 0.0204,
+   "cluster_size": 1,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "GILL JAGROOP",
+     "roles": [
+      "이사"
+     ],
+     "value": 293988
+    }
+   ]
+  },
+  {
+   "symbol": "BCML",
+   "issuer": "BayCom Corp",
+   "issuer_cik": "1730984",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 151000,
+   "market_cap": 328149516,
+   "avg_price": 30.2,
+   "price_at_run": 30.05,
+   "drawdown_52w": 0.13664950270982013,
+   "holding_increase": 0.4471,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-19",
+   "insiders": [
+    {
+     "name": "PERDUE MICHAEL J",
+     "roles": [
+      "이사"
+     ],
+     "value": 151000
+    }
+   ]
+  }
+ ]
+}
