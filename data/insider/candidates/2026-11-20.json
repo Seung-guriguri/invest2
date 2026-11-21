@@ -1,0 +1,398 @@
+{
+ "filing_days": [
+  "2026-11-20"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "UPST",
+   "issuer": "Upstart Holdings, Inc.",
+   "issuer_cik": "1647639",
+   "score": 13,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 1811053,
+   "market_cap": 1548909584,
+   "avg_price": 16.4916,
+   "price_at_run": 15.66,
+   "drawdown_52w": 0.6834620960464286,
+   "holding_increase": 0.9083,
+   "cluster_size": 2,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Girouard Dave",
+     "roles": [
+      "이사"
+     ],
+     "value": 950988
+    },
+    {
+     "name": "Gu Paul",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 860065
+    }
+   ]
+  },
+  {
+   "symbol": "UPBD",
+   "issuer": "UPBOUND GROUP, INC.",
+   "issuer_cik": "933036",
+   "score": 13,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 398565,
+   "market_cap": 1483212547,
+   "avg_price": 26.05,
+   "price_at_run": 25.44,
+   "drawdown_52w": 0.01288364522591856,
+   "holding_increase": "new",
+   "cluster_size": 4,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "LEWIS HAROLD G",
+     "roles": [
+      "이사"
+     ],
+     "value": 398565
+    }
+   ]
+  },
+  {
+   "symbol": "OFRM",
+   "issuer": "Once Upon a Farm, PBC",
+   "issuer_cik": "1696556",
+   "score": 13,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 259731,
+   "market_cap": 514216028,
+   "avg_price": 11.806,
+   "price_at_run": 12.17,
+   "drawdown_52w": 0.5627420262087482,
+   "holding_increase": 0.9751,
+   "cluster_size": 5,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Garner Jennifer Anne",
+     "roles": [
+      "이사"
+     ],
+     "value": 118011
+    },
+    {
+     "name": "Morris Scott James",
+     "roles": [
+      "이사"
+     ],
+     "value": 141720
+    }
+   ]
+  },
+  {
+   "symbol": "LEGN",
+   "issuer": "Legend Biotech Corp",
+   "issuer_cik": "1801198",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 163200,
+   "market_cap": 5640767127,
+   "avg_price": 8.16,
+   "price_at_run": 15.25,
+   "drawdown_52w": 0.7824,
+   "holding_increase": 0.0177,
+   "cluster_size": 2,
+   "tx_date": "2026-11-17",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Zhang Ingrid",
+     "roles": [
+      "CEO"
+     ],
+     "value": 163200
+    }
+   ]
+  },
+  {
+   "symbol": "INOD",
+   "issuer": "INNODATA INC",
+   "issuer_cik": "903651",
+   "score": 9,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 320900,
+   "market_cap": 967684899,
+   "avg_price": 32.09,
+   "price_at_run": 28.12,
+   "drawdown_52w": 0.7435672034799892,
+   "holding_increase": 0.2399,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Massey Stewart R",
+     "roles": [
+      "이사"
+     ],
+     "value": 320900
+    }
+   ]
+  },
+  {
+   "symbol": "MTDR",
+   "issuer": "Matador Resources Co",
+   "issuer_cik": "1520006",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 123050,
+   "market_cap": 6017854250,
+   "avg_price": 49.22,
+   "price_at_run": 48.63,
+   "drawdown_52w": 0.26361456168874897,
+   "holding_increase": 0.0241,
+   "cluster_size": 6,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Foran Joseph Wm",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 123050
+    }
+   ]
+  },
+  {
+   "symbol": "TTMI",
+   "issuer": "TTM TECHNOLOGIES INC",
+   "issuer_cik": "1116942",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 291988,
+   "market_cap": 6201349352,
+   "avg_price": 58.3977,
+   "price_at_run": 58.85,
+   "drawdown_52w": 0.7390979782769328,
+   "holding_increase": 0.0309,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "FRANKLIN PHILIP G",
+     "roles": [
+      "이사"
+     ],
+     "value": 291988
+    }
+   ]
+  },
+  {
+   "symbol": "TJX",
+   "issuer": "TJX COMPANIES INC /DE/",
+   "issuer_cik": "109198",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 199823,
+   "market_cap": 153578378397,
+   "avg_price": 140.03,
+   "price_at_run": 139.62,
+   "drawdown_52w": 0.17629411764705882,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "PINTOFF CRAIG ADAM",
+     "roles": [
+      "이사"
+     ],
+     "value": 199823
+    }
+   ]
+  },
+  {
+   "symbol": "BHRB",
+   "issuer": "Burke & Herbert Financial Services Corp.",
+   "issuer_cik": "1964333",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 106131,
+   "market_cap": 1369333509,
+   "avg_price": 70.7543,
+   "price_at_run": 67.81,
+   "drawdown_52w": 0.057739999325353786,
+   "holding_increase": 0.3634,
+   "cluster_size": 1,
+   "tx_date": "2026-11-13",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Poillon Diane",
+     "roles": [
+      "이사"
+     ],
+     "value": 106131
+    }
+   ]
+  },
+  {
+   "symbol": "NTB",
+   "issuer": "Bank of N.T. Butterfield & Son Ltd",
+   "issuer_cik": "1653242",
+   "score": 4,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 376929,
+   "market_cap": 2142425398,
+   "avg_price": 53.847,
+   "price_at_run": 53.63,
+   "drawdown_52w": 0.1608695412732778,
+   "holding_increase": 0.0293,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "Lynch Mark T",
+     "roles": [
+      "이사"
+     ],
+     "value": 376929
+    }
+   ]
+  },
+  {
+   "symbol": "ELV",
+   "issuer": "Elevance Health, Inc.",
+   "issuer_cik": "1156039",
+   "score": 3,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 383860,
+   "market_cap": 85229727882,
+   "avg_price": 383.86,
+   "price_at_run": 394.48,
+   "drawdown_52w": 0.14828374731941119,
+   "holding_increase": 0.0917,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-20",
+   "insiders": [
+    {
+     "name": "PERU RAMIRO G",
+     "roles": [
+      "이사"
+     ],
+     "value": 383860
+    }
+   ]
+  }
+ ]
+}
