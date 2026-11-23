@@ -1,0 +1,121 @@
+{
+ "date": "2026-11-23",
+ "days": [
+  "2026-11-17",
+  "2026-11-18",
+  "2026-11-19",
+  "2026-11-20",
+  "2026-11-21"
+ ],
+ "sources": {
+  "wallstreetbets": [
+   {
+    "ticker": "NVDA",
+    "name": "NVIDIA",
+    "mentions": 6641,
+    "upvotes": 23917,
+    "days": 5
+   },
+   {
+    "ticker": "SPY",
+    "name": "SPDR S&amp;P 500 ETF Trust",
+    "mentions": 2540,
+    "upvotes": 8352,
+    "days": 5
+   },
+   {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ ETF",
+    "mentions": 1263,
+    "upvotes": 3761,
+    "days": 5
+   },
+   {
+    "ticker": "AMD",
+    "name": "AMD",
+    "mentions": 1097,
+    "upvotes": 3910,
+    "days": 5
+   },
+   {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "mentions": 706,
+    "upvotes": 1620,
+    "days": 5
+   },
+   {
+    "ticker": "SLS",
+    "name": "Sellas Life Sciences",
+    "mentions": 460,
+    "upvotes": 1848,
+    "days": 4
+   },
+   {
+    "ticker": "NBIS",
+    "name": "Nebius Group",
+    "mentions": 439,
+    "upvotes": 1014,
+    "days": 5
+   },
+   {
+    "ticker": "GOOG",
+    "name": "Alphabet (Google)",
+    "mentions": 432,
+    "upvotes": 1171,
+    "days": 5
+   },
+   {
+    "ticker": "SPCX",
+    "name": "SpaceX",
+    "mentions": 411,
+    "upvotes": 2126,
+    "days": 5
+   },
+   {
+    "ticker": "SNDK",
+    "name": "Sandisk",
+    "mentions": 406,
+    "upvotes": 954,
+    "days": 5
+   }
+  ],
+  "dividends": [
+   {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity ETF",
+    "mentions": 38,
+    "upvotes": null,
+    "days": 1
+   },
+   {
+    "ticker": "SPYI",
+    "name": "NEOS S&P 500 High Income ETF",
+    "mentions": 9,
+    "upvotes": null,
+    "days": 1
+   },
+   {
+    "ticker": "QQQI",
+    "name": "NEOS Nasdaq 100 High Income ETF",
+    "mentions": 9,
+    "upvotes": null,
+    "days": 1
+   },
+   {
+    "ticker": "VOO",
+    "name": "Vanguard S&P 500 ETF",
+    "mentions": 8,
+    "upvotes": null,
+    "days": 1
+   },
+   {
+    "ticker": "GPIX",
+    "name": "Goldman Sachs S&P 500 Premium Income ETF",
+    "mentions": 8,
+    "upvotes": null,
+    "days": 1
+   }
+  ]
+ }
+}

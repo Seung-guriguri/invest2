@@ -10,16 +10,6 @@
    "quarter": "Sep/2026",
    "src": "⭐"
   },
-  "AYA": {
-   "date": "2026-11-11",
-   "time": "time-pre-market",
-   "name": "Aya Gold & Silver Inc.",
-   "eps_forecast": "$0.33",
-   "estimates": "3",
-   "last_year_eps": "N/A",
-   "quarter": "Sep/2026",
-   "src": "⭐"
-  },
   "HAFN": {
    "date": "2026-11-18",
    "time": "time-pre-market",
@@ -124,7 +114,7 @@
    "d1": true
   }
  },
- "weekly_sent": "2026-11-16",
+ "weekly_sent": "2026-11-23",
  "last_materials": {
   "RIG": {
    "accession": "0001451505-26-000083",
