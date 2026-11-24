@@ -1,0 +1,474 @@
+{
+ "filing_days": [
+  "2026-11-23"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "HOS",
+   "issuer": "HORNBECK OFFSHORE SERVICES, INC.",
+   "issuer_cik": "866829",
+   "score": 16,
+   "breakdown": {
+    "amount": 3,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 1246655,
+   "market_cap": 1158688803,
+   "avg_price": 5.0011,
+   "price_at_run": 5.22,
+   "drawdown_52w": 0.5506655082693577,
+   "holding_increase": 2.7663,
+   "cluster_size": 2,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Fink Benjamin Matthew",
+     "roles": [
+      "이사"
+     ],
+     "value": 230300
+    },
+    {
+     "name": "HORNBECK TODD M",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 1016355
+    }
+   ]
+  },
+  {
+   "symbol": "TMS",
+   "issuer": "Teamshares Inc",
+   "issuer_cik": "2048951",
+   "score": 15,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 814525,
+   "market_cap": 318993237,
+   "avg_price": 4.3267,
+   "price_at_run": 4.4,
+   "drawdown_52w": 0.6722165318888484,
+   "holding_increase": "new",
+   "cluster_size": 3,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Brown Michael Ashby Sutherland",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 652500
+    },
+    {
+     "name": "Moore Evan Charles",
+     "roles": [
+      "이사"
+     ],
+     "value": 162025
+    }
+   ]
+  },
+  {
+   "symbol": "GNL",
+   "issuer": "Global Net Lease, Inc.",
+   "issuer_cik": "1526113",
+   "score": 14,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 350459,
+   "market_cap": 1401663097,
+   "avg_price": 6.0518,
+   "price_at_run": 6.29,
+   "drawdown_52w": 0.39693085636101844,
+   "holding_increase": 0.6913,
+   "cluster_size": 7,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Weil Edward M Jr.",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 200221
+    },
+    {
+     "name": "Richardson Leon",
+     "roles": [
+      "이사"
+     ],
+     "value": 150238
+    }
+   ]
+  },
+  {
+   "symbol": "FUN",
+   "issuer": "Six Flags Entertainment Corporation/NEW",
+   "issuer_cik": "1999001",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 4286000,
+   "market_cap": 1145869995,
+   "avg_price": 11.4293,
+   "price_at_run": 11.2,
+   "drawdown_52w": 0.5650938723475268,
+   "holding_increase": 0.0485,
+   "cluster_size": 3,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "JAFFER REHAN",
+     "roles": [
+      "이사"
+     ],
+     "value": 4286000
+    }
+   ]
+  },
+  {
+   "symbol": "ECVT",
+   "issuer": "Ecovyst Inc.",
+   "issuer_cik": "1708035",
+   "score": 10,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 200838,
+   "market_cap": 1014467649,
+   "avg_price": 9.3413,
+   "price_at_run": 9.34,
+   "drawdown_52w": 0.3807557191662111,
+   "holding_increase": 0.084,
+   "cluster_size": 2,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Fogarty Kevin Michael",
+     "roles": [
+      "이사"
+     ],
+     "value": 200838
+    }
+   ]
+  },
+  {
+   "symbol": "BORR",
+   "issuer": "Borr Drilling Ltd",
+   "issuer_cik": "1715497",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 30451500,
+   "market_cap": 1170490746,
+   "avg_price": 3.3835,
+   "price_at_run": 3.81,
+   "drawdown_52w": 0.4915852902583998,
+   "holding_increase": 0.2241,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Troim Tor Olav",
+     "roles": [
+      "이사"
+     ],
+     "value": 30451500
+    }
+   ]
+  },
+  {
+   "symbol": "PAM",
+   "issuer": "Pampa Energy Inc.",
+   "issuer_cik": "1469395",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 7316744,
+   "market_cap": 84513117476,
+   "avg_price": 62.0315,
+   "price_at_run": 62.16,
+   "drawdown_52w": 0.3435815923327793,
+   "holding_increase": 0.0162,
+   "cluster_size": 3,
+   "tx_date": "2026-11-18",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Mindlin Marcos Marcelo",
+     "roles": [
+      "이사"
+     ],
+     "value": 7316744
+    }
+   ]
+  },
+  {
+   "symbol": "ANAB",
+   "issuer": "ANAPTYSBIO, INC",
+   "issuer_cik": "1370053",
+   "score": 9,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 2176928,
+   "market_cap": 1382140587,
+   "avg_price": 46.9277,
+   "price_at_run": 46.49,
+   "drawdown_52w": 0.3514694469710967,
+   "holding_increase": 0.0056,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "EcoR1 Capital, LLC",
+     "roles": [
+      "이사"
+     ],
+     "value": 2176928
+    }
+   ]
+  },
+  {
+   "symbol": "BG",
+   "issuer": "Bunge Global SA",
+   "issuer_cik": "1996862",
+   "score": 7,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 1161650,
+   "market_cap": 17671463814,
+   "avg_price": 92.932,
+   "price_at_run": 91.97,
+   "drawdown_52w": 0.31095126147775043,
+   "holding_increase": 0.8429,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Mahoney Christopher",
+     "roles": [
+      "이사"
+     ],
+     "value": 1161650
+    }
+   ]
+  },
+  {
+   "symbol": "SKYD",
+   "issuer": "Skydance Corp",
+   "issuer_cik": "2041610",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 701305,
+   "market_cap": 6783651964,
+   "avg_price": 6.3283,
+   "price_at_run": 6.33,
+   "drawdown_52w": 0.6117590439449341,
+   "holding_increase": 0.0003,
+   "cluster_size": 1,
+   "tx_date": "2026-11-19",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Cardinale Gerald J.",
+     "roles": [
+      "이사"
+     ],
+     "value": 701305
+    }
+   ]
+  },
+  {
+   "symbol": "WMB",
+   "issuer": "WILLIAMS COMPANIES, INC.",
+   "issuer_cik": "107263",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 646500,
+   "market_cap": 80031847693,
+   "avg_price": 64.65,
+   "price_at_run": 65.43,
+   "drawdown_52w": 0.1926823361418929,
+   "holding_increase": 0.1078,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Turner Robb E",
+     "roles": [
+      "이사"
+     ],
+     "value": 646500
+    }
+   ]
+  },
+  {
+   "symbol": "URI",
+   "issuer": "UNITED RENTALS, INC.",
+   "issuer_cik": "1067701",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 2
+   },
+   "sent": false,
+   "total_value": 150086,
+   "market_cap": 64436593132,
+   "avg_price": 1007.29,
+   "price_at_run": 1040.7,
+   "drawdown_52w": 0.16207200271899191,
+   "holding_increase": 0.5731,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "Taussig Alexander R.",
+     "roles": [
+      "이사"
+     ],
+     "value": 150086
+    }
+   ]
+  },
+  {
+   "symbol": "BWFG",
+   "issuer": "Bankwell Financial Group, Inc.",
+   "issuer_cik": "1505732",
+   "score": 4,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 0,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 167972,
+   "market_cap": 545681483,
+   "avg_price": 67.895,
+   "price_at_run": 68.45,
+   "drawdown_52w": 0.08816807847375441,
+   "holding_increase": 0.0029,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-23",
+   "insiders": [
+    {
+     "name": "SEIDMAN LAWRENCE B",
+     "roles": [
+      "이사"
+     ],
+     "value": 167972
+    }
+   ]
+  }
+ ]
+}
