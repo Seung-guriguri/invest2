@@ -1,0 +1,358 @@
+{
+ "filing_days": [
+  "2026-11-24"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "COHR",
+   "issuer": "COHERENT CORP.",
+   "issuer_cik": "820318",
+   "score": 14,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 15218684,
+   "market_cap": 38651169205,
+   "avg_price": 185.5937,
+   "price_at_run": 196.24,
+   "drawdown_52w": 0.5781961297477827,
+   "holding_increase": "new",
+   "cluster_size": 3,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "PAGLIUCA STEPHEN G",
+     "roles": [
+      "이사"
+     ],
+     "value": 15218684
+    }
+   ]
+  },
+  {
+   "symbol": "OTF",
+   "issuer": "Blue Owl Technology Finance Corp.",
+   "issuer_cik": "1747777",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 501202,
+   "market_cap": 4182135702,
+   "avg_price": 9.1609,
+   "price_at_run": 9.24,
+   "drawdown_52w": 0.38927333333333336,
+   "holding_increase": "new",
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Packer Craig",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 501202
+    }
+   ]
+  },
+  {
+   "symbol": "PRE",
+   "issuer": "Prenetics Global Ltd",
+   "issuer_cik": "1876431",
+   "score": 11,
+   "breakdown": {
+    "amount": 2,
+    "role": 3,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 404200,
+   "market_cap": 685088013,
+   "avg_price": 10.105,
+   "price_at_run": 10.15,
+   "drawdown_52w": 0.6290381760313354,
+   "holding_increase": 1.7316,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Rosin Brian J",
+     "roles": [
+      "CFO"
+     ],
+     "value": 404200
+    }
+   ]
+  },
+  {
+   "symbol": "MNR",
+   "issuer": "MACH NATURAL RESOURCES LP",
+   "issuer_cik": "1980088",
+   "score": 10,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 2170109,
+   "market_cap": 1289896108,
+   "avg_price": 7.9842,
+   "price_at_run": 7.57,
+   "drawdown_52w": 0.4684258311862399,
+   "holding_increase": 0.0086,
+   "cluster_size": 2,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "McMullen William Wallace",
+     "roles": [
+      "이사"
+     ],
+     "value": 199243
+    },
+    {
+     "name": "WARD TOM L.",
+     "roles": [
+      "이사"
+     ],
+     "value": 1970866
+    }
+   ]
+  },
+  {
+   "symbol": "SNDA",
+   "issuer": "SONIDA SENIOR LIVING, INC.",
+   "issuer_cik": "1043000",
+   "score": 9,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 5049550,
+   "market_cap": 1624662629,
+   "avg_price": 31.9598,
+   "price_at_run": 33.07,
+   "drawdown_52w": 0.2800228741100995,
+   "holding_increase": 0.3218,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Simanovsky Michael",
+     "roles": [
+      "이사"
+     ],
+     "value": 5049550
+    }
+   ]
+  },
+  {
+   "symbol": "TEN",
+   "issuer": "TSAKOS ENERGY NAVIGATION LTD",
+   "issuer_cik": "1166663",
+   "score": 7,
+   "breakdown": {
+    "amount": 2,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 853966,
+   "market_cap": 1357549791,
+   "avg_price": 42.6983,
+   "price_at_run": 45.06,
+   "drawdown_52w": 0.24734178839168708,
+   "holding_increase": 0.0039,
+   "cluster_size": 1,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "TSAKOS NIKOLAOS",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 853966
+    }
+   ]
+  },
+  {
+   "symbol": "ALG",
+   "issuer": "ALAMO GROUP INC",
+   "issuer_cik": "897077",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 132580,
+   "market_cap": 1627060190,
+   "avg_price": 132.58,
+   "price_at_run": 133.75,
+   "drawdown_52w": 0.39703475961509094,
+   "holding_increase": 0.0803,
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Bauer Robert P",
+     "roles": [
+      "이사"
+     ],
+     "value": 132580
+    }
+   ]
+  },
+  {
+   "symbol": "HSHP",
+   "issuer": "Himalaya Shipping Ltd.",
+   "issuer_cik": "1959455",
+   "score": 7,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 103088,
+   "market_cap": 719343000,
+   "avg_price": 15.16,
+   "price_at_run": 15.42,
+   "drawdown_52w": 0.22455239940564864,
+   "holding_increase": 0.2933,
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Svensen Lars-Christian",
+     "roles": [
+      "CEO"
+     ],
+     "value": 103088
+    }
+   ]
+  },
+  {
+   "symbol": "MKL",
+   "issuer": "MARKEL GROUP INC.",
+   "issuer_cik": "1096343",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 184832,
+   "market_cap": 23987165686,
+   "avg_price": 1945.6,
+   "price_at_run": 1961.44,
+   "drawdown_52w": 0.11867696332200839,
+   "holding_increase": 0.1473,
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Harris Greta J",
+     "roles": [
+      "이사"
+     ],
+     "value": 184832
+    }
+   ]
+  },
+  {
+   "symbol": "MTDR",
+   "issuer": "Matador Resources Co",
+   "issuer_cik": "1520006",
+   "score": 5,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 143490,
+   "market_cap": 5913906119,
+   "avg_price": 47.83,
+   "price_at_run": 47.79,
+   "drawdown_52w": 0.284410493408632,
+   "holding_increase": 0.0277,
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-24",
+   "insiders": [
+    {
+     "name": "Foran Joseph Wm",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 143490
+    }
+   ]
+  }
+ ]
+}
