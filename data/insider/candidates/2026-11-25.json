@@ -1,0 +1,357 @@
+{
+ "filing_days": [
+  "2026-11-25"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "PRE",
+   "issuer": "Prenetics Global Ltd",
+   "issuer_cik": "1876431",
+   "score": 15,
+   "breakdown": {
+    "amount": 2,
+    "role": 3,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 860240,
+   "market_cap": 676988451,
+   "avg_price": 9.8411,
+   "price_at_run": 10.03,
+   "drawdown_52w": 0.6387250146742958,
+   "holding_increase": 0.6672,
+   "cluster_size": 3,
+   "tx_date": "2026-11-20",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Lo Hoi Chun",
+     "roles": [
+      "CFO"
+     ],
+     "value": 127140
+    },
+    {
+     "name": "Yeung Danny Sheng Wu",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 733100
+    }
+   ]
+  },
+  {
+   "symbol": "COHR",
+   "issuer": "COHERENT CORP.",
+   "issuer_cik": "820318",
+   "score": 14,
+   "breakdown": {
+    "amount": 4,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 3
+   },
+   "sent": true,
+   "total_value": 34652890,
+   "market_cap": 38641321271,
+   "avg_price": 203.9485,
+   "price_at_run": 196.19,
+   "drawdown_52w": 0.5364806741670725,
+   "holding_increase": 2.0721,
+   "cluster_size": 3,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "PAGLIUCA STEPHEN G",
+     "roles": [
+      "이사"
+     ],
+     "value": 34652890
+    }
+   ]
+  },
+  {
+   "symbol": "TROX",
+   "issuer": "Tronox Holdings plc",
+   "issuer_cik": "1530804",
+   "score": 11,
+   "breakdown": {
+    "amount": 1,
+    "role": 2,
+    "cap": 2,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 139320,
+   "market_cap": 324200464,
+   "avg_price": 1.8576,
+   "price_at_run": 2.03,
+   "drawdown_52w": 0.8245892376549158,
+   "holding_increase": 0.0477,
+   "cluster_size": 3,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Romano John D",
+     "roles": [
+      "CEO",
+      "이사"
+     ],
+     "value": 139320
+    }
+   ]
+  },
+  {
+   "symbol": "TMC",
+   "issuer": "TMC the metals Co Inc.",
+   "issuer_cik": "1798562",
+   "score": 8,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 805000,
+   "market_cap": 856105557,
+   "avg_price": 1.61,
+   "price_at_run": 1.94,
+   "drawdown_52w": 0.8398009980652273,
+   "holding_increase": 0.0081,
+   "cluster_size": 1,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Karkar Andrei",
+     "roles": [
+      "이사"
+     ],
+     "value": 805000
+    }
+   ]
+  },
+  {
+   "symbol": "BG",
+   "issuer": "Bunge Global SA",
+   "issuer_cik": "1996862",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 0,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 229956,
+   "market_cap": 16937474560,
+   "avg_price": 91.9826,
+   "price_at_run": 88.15,
+   "drawdown_52w": 0.3179906329789881,
+   "holding_increase": 0.0819,
+   "cluster_size": 2,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Zenuk Mark N",
+     "roles": [
+      "이사"
+     ],
+     "value": 229956
+    }
+   ]
+  },
+  {
+   "symbol": "SANM",
+   "issuer": "SANMINA CORP",
+   "issuer_cik": "897723",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 1
+   },
+   "sent": true,
+   "total_value": 148686,
+   "market_cap": 7314099016,
+   "avg_price": 139.48,
+   "price_at_run": 138.57,
+   "drawdown_52w": 0.5168352378453498,
+   "holding_increase": 0.1938,
+   "cluster_size": 2,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Loparco Michael J",
+     "roles": [
+      "이사"
+     ],
+     "value": 148686
+    }
+   ]
+  },
+  {
+   "symbol": "HL",
+   "issuer": "HECLA MINING CO/DE/",
+   "issuer_cik": "719413",
+   "score": 8,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 2
+   },
+   "sent": true,
+   "total_value": 107250,
+   "market_cap": 7577648237,
+   "avg_price": 10.725,
+   "price_at_run": 11.28,
+   "drawdown_52w": 0.6861281657970004,
+   "holding_increase": 0.6667,
+   "cluster_size": 1,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Andres Dale",
+     "roles": [
+      "이사"
+     ],
+     "value": 107250
+    }
+   ]
+  },
+  {
+   "symbol": "BORR",
+   "issuer": "Borr Drilling Ltd",
+   "issuer_cik": "1715497",
+   "score": 7,
+   "breakdown": {
+    "amount": 3,
+    "role": 1,
+    "cap": 2,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 3937300,
+   "market_cap": 1253438910,
+   "avg_price": 3.9373,
+   "price_at_run": 4.08,
+   "drawdown_52w": 0.4083696655340321,
+   "holding_increase": 0.0203,
+   "cluster_size": 1,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Troim Tor Olav",
+     "roles": [
+      "이사"
+     ],
+     "value": 3937300
+    }
+   ]
+  },
+  {
+   "symbol": "WMB",
+   "issuer": "WILLIAMS COMPANIES, INC.",
+   "issuer_cik": "107263",
+   "score": 6,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 0,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 0,
+    "holding": 1
+   },
+   "sent": false,
+   "total_value": 978650,
+   "market_cap": 81279478514,
+   "avg_price": 65.2433,
+   "price_at_run": 66.45,
+   "drawdown_52w": 0.18527307890205058,
+   "holding_increase": 0.1459,
+   "cluster_size": 1,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "Turner Robb E",
+     "roles": [
+      "이사"
+     ],
+     "value": 978650
+    }
+   ]
+  },
+  {
+   "symbol": "PATK",
+   "issuer": "PATRICK INDUSTRIES INC",
+   "issuer_cik": "76605",
+   "score": 5,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 0,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 432941,
+   "market_cap": 2745790389,
+   "avg_price": 83.2579,
+   "price_at_run": 85.49,
+   "drawdown_52w": 0.4393405076405077,
+   "holding_increase": 0.027,
+   "cluster_size": 1,
+   "tx_date": "2026-11-23",
+   "filed": "2026-11-25",
+   "insiders": [
+    {
+     "name": "WELCH M SCOTT",
+     "roles": [
+      "이사"
+     ],
+     "value": 432941
+    }
+   ]
+  }
+ ]
+}
