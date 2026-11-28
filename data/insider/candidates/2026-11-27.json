@@ -1,0 +1,76 @@
+{
+ "filing_days": [
+  "2026-11-27"
+ ],
+ "threshold": 7,
+ "candidates": [
+  {
+   "symbol": "IESC",
+   "issuer": "IES Holdings, Inc.",
+   "issuer_cik": "1048268",
+   "score": 10,
+   "breakdown": {
+    "amount": 2,
+    "role": 1,
+    "cap": 1,
+    "cluster": 3,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": true,
+   "total_value": 653000,
+   "market_cap": 7129867354,
+   "avg_price": 163.25,
+   "price_at_run": 178.64,
+   "drawdown_52w": 0.6001273761558414,
+   "holding_increase": 0.0171,
+   "cluster_size": 2,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-27",
+   "insiders": [
+    {
+     "name": "Gendell David B.",
+     "roles": [
+      "이사"
+     ],
+     "value": 653000
+    }
+   ]
+  },
+  {
+   "symbol": "SKYD",
+   "issuer": "Skydance Corp",
+   "issuer_cik": "2041610",
+   "score": 6,
+   "breakdown": {
+    "amount": 1,
+    "role": 1,
+    "cap": 1,
+    "cluster": 0,
+    "first_buy": 2,
+    "dip": 1,
+    "holding": 0
+   },
+   "sent": false,
+   "total_value": 149883,
+   "market_cap": 7094435388,
+   "avg_price": 6.5337,
+   "price_at_run": 6.62,
+   "drawdown_52w": 0.5929172047772074,
+   "holding_increase": 0.0001,
+   "cluster_size": 1,
+   "tx_date": "2026-11-24",
+   "filed": "2026-11-27",
+   "insiders": [
+    {
+     "name": "Cardinale Gerald J.",
+     "roles": [
+      "이사"
+     ],
+     "value": 149883
+    }
+   ]
+  }
+ ]
+}
